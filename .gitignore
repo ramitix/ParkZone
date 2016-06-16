@@ -1,5 +1,6 @@
 *.pyc
-Ds_Store
-.Ds_Store
+.pyc
+DS_Store
+.DS_Store
 ._*
 .Trashes
