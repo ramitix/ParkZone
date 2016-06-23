@@ -1,0 +1,1 @@
+web: gunicorn Park_web.wsgi --log-file -
