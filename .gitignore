@@ -5,3 +5,4 @@ DS_Store
 ._*
 .Trashes
 venv
+__pycache__
