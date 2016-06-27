@@ -7,11 +7,13 @@
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
  	<link rel="stylesheet" href="{% static 'css/OSMBuildings.css' %}">
  	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+ 	<link rel="stylesheet" href="{% static 'css/GLmap.css' %}">
  	<script src="{% static 'js/tween.js' %}"></script>
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
+ 	<script src="{% static 'js/GLmap.js' %}"></script>
  	<script src="{% static 'js/d3.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" > </script>
-	 <!-- <script src="{% static 'js/GLMap.js' %}"></script> -->
+	
 	 <div id="locationSearchContainer">
 		<input type="search" placeholder="Where do you want to Park?" id="locationSearch"/>
 		<button id="locationSearchButton">Go </button>
@@ -31,6 +33,45 @@
       height: 100%;
     }
 
+    .control {
+      position: absolute;
+      right: 10px;
+      z-index: 1000;
+    }
+
+    .control.tilt {
+      top: 5px;
+    }
+
+    .control.rotation {
+      top: 40px;
+    }
+
+    .control.zoom {
+      top: 75px;
+    }
+
+    .control.zoom button{
+      font-weight: normal;
+    }
+
+    .control button {
+      width: 30px;
+      height: 30px;
+      margin: 5px 0 0 0;
+      border: 1px solid #999999;
+      background: #ffffff;
+      opacity: 0.6;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #666666;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .control button:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
 
 		#locationSearchContainer {
 			top: 50%; 
@@ -132,24 +173,24 @@
 
  <div id="map"></div>
 <div class="control tilt">
-  <button class="dec">&#8601;</button>
-  <button class="inc">&#8599;</button>
+  <button title="Tilt" class="dec">&#8601;</button>
+  <button title="Tilt"  class="inc">&#8599;</button>
 </div>
 
 <div class="control rotation">
-  <button class="inc">&#8630;</button>
-  <button class="dec">&#8631;</button>
+  <button title="Rotation"  class="inc">&#8630;</button>
+  <button title="Rotation"  class="dec">&#8631;</button>
 </div>
 
 <div class="control zoom">
-  <button class="dec">-</button>
-  <button class="inc">+</button>
+  <button title="Zoom" class="dec">-</button>
+  <button title="Zoom" class="inc">+</button>
 </div>
 <div id="ParkZone-logo-container">
 		<a href="http://parkzone.us"></a>
 	</div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&establishment"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
 
@@ -165,26 +206,33 @@ $("#locationSearchButton").click(function(){
     position: { latitude:40.763554, longitude:-73.981703 },
     zoom: 16,
     minZoom: 12,
-    maxZoom: 20,
+    maxZoom: 22,
     state: true // stores map position/rotation in url
   });
+ 
+
+ 
 
   var osmb = new OSMBuildings({
-    baseURL: './OSMBuildings',
+    baseURL: './static/images/',
     minZoom: 15,
     maxZoom: 22,
     //effects: ['shadows'],
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).addTo(map);
 
+    osmb.addOBJ('./static/images/StopSign.obj', {longitude: -73.981513,latitude: 40.763664},{id: "i22",scale : 100, elevation :-13, rotation : 20});
+    osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763765},{id: "is23",scale : 50, elevation :-10});
+
+
   osmb.addMapTiles(
     'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
     {
-      attribution: '© Data <a href="https://openstreetmap.org/copyright/">OpenStreetMap</a> · © Map <a href="http://mapbox.com">Mapbox</a>'
+      attribution: '© Data <a href="https://openstreetmap.org/copyright/">OpenStreetMap</a> · '
     }
   );
 
-  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+  //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
 
 
   //***************************************************************************
@@ -223,6 +271,7 @@ var valuesFrom = {latitude: 40.710425, longitude: -74.014572, rotation: 0, zoom:
   	animationTime = 95000;
 var tween;
 spin();
+  
 
 function spin(){
 	 tween = new TWEEN.Tween(valuesFrom)
@@ -266,7 +315,9 @@ function spin(){
         	//}
     	});
 				tweenSearchPosition.start();
-				tweenSearchPosition.onComplete.remove(tweenSearchPosition);
+				//TWEEN.remove(tweenSearchPosition);
+	
+		
 			
 				
 			
@@ -295,17 +346,21 @@ function spin(){
 		}
 
 		function changePosition(position) {
-			var latitude = position.coords.latitude;
-			var longitude = position.coords.longitude;
-			//TWEEN.remove(tween);
+			var positionLatitude = position.coords.latitude;
+			var positionLongitude = position.coords.longitude;
+
+						
+				//tween.stop();
+				//tweenSearchPosition.onComplete(TWEEN.Tween(tween.stop()));
+			
 		
 
-			var valuesFromPosition = {latitude: map.lat, longitude: map.lon, rotation: map.rotation, zoom: map.zoom, tilt: map.tilt};
-			var valuesToPosition = {latitude: latitude, longitude:longitude, rotation: map.rotation, zoom: map.zoom, tilt: map.tilt};
+			var valuesFromPosition = {latitude: this.map.getPosition.latitude, longitude: this.map.getPosition.longitude, rotation: map.getRotation(), zoom: map.getZoom(), tilt: map.getTilt()};
+			var valuesToPosition = {latitude: positionLatitude, longitude:positionLongitude, rotation: map.getRotation(), zoom: map.getZoom(), tilt: map.getTilt()};
 
 			
-	 		tweenPosition = new TWEEN.Tween(valuesFromPosition)
-    			.to(valuesToPosition, 900)
+	 		var tweenPosition = new TWEEN.Tween(valuesFromPosition)
+    			.to(valuesToPosition, 9000)
    				.onUpdate(function() {
         		// here we call the functions to update the map state
         		map.setPosition({ latitude: this.latitude, longitude: this.longitude });
@@ -313,7 +368,10 @@ function spin(){
         		map.setZoom(this.zoom);
         		map.setTilt(this.tilt);
     	});
+
 				tweenPosition.start();
+
+
 				
 		}
 </script>

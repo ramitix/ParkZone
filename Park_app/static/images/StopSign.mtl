@@ -1,0 +1,18 @@
+# Exported from 3D Builder
+
+newmtl 0_0
+Kd 0.476990 0.476990 0.476990
+
+newmtl 1_0
+Kd 0.476990 0.476990 0.476990
+
+newmtl 2_0
+Kd 1.000000 1.000000 1.000000
+map_Kd 119498958977780800stop_sign_right_font_mig_.svg.med.png
+
+newmtl 2_1
+Kd 1.000000 1.000000 1.000000
+map_Kd 119498958977780800stop_sign_right_font_mig_.svg.med.png
+
+newmtl 3_0
+Kd 0.476990 0.476990 0.476990
