@@ -101,7 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+<<<<<<< HEAD:Park_web/settings.py
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+=======
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'  (I comment it to run on windows)
+>>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_web/settings.py
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
