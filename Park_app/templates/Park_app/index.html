@@ -49,7 +49,8 @@
 	  font-size: 1em;
 	  opacity: 0.99;
 	  padding: 15px 15px;
-	  /*display: none;*/
+	  overflow :auto;
+	  margin-bottom : 5px;
 	}
 
     .control {
@@ -189,15 +190,14 @@
 
 </head>
 <body>
-<div id="dataContainer"  style= "overflow :scroll; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
+<div id="dataContainer"  style= "overflow :scroll; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
-	<div class="parkingData" style="margin-bottom : 5px">
+	<div class="parkingData">
 		<p style= "font-size: 1.2em"><b> {{i.name }} 	</b></p>
 		<p><b>Address:</b> {{i.address}} </p>
 		<p><b>Phone: </b>{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
 		<p> {{i.half_hour }} 	&nbsp; {{i.one_hour}} &nbsp; {{i.two_hour}} &nbsp; {{i.ten_hours}} &nbsp; {{i.number_24hours}} </p>
 		<div style=" position: absolute;  right:10px; top:20px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
-		  <!-- <img src="{{i.image}}" alt="" width="100px" right="0px" /> -->
 		</div>
 		<div class="dataExpand" style="display:none; width: 50%" >
            <p> {{i.nearby_attractions}}</p>
