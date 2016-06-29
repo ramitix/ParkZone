@@ -196,8 +196,8 @@
 		<p><b>Address:</b> {{i.address}} </p>
 		<p><b>Phone: </b>{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
 		<p> {{i.half_hour }} 	&nbsp; {{i.one_hour}} &nbsp; {{i.two_hour}} &nbsp; {{i.ten_hours}} &nbsp; {{i.number_24hours}} </p>
-		<div style=" position: absolute;  right:10px; top:20px; border: 1px solid #ccc;float: right;">
-		  <img src="{{i.image}}" alt="" width="100px" right="0px" />
+		<div style=" position: absolute;  right:10px; top:20px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
+		  <!-- <img src="{{i.image}}" alt="" width="100px" right="0px" /> -->
 		</div>
 		<div class="dataExpand" style="display:none; width: 50%" >
            <p> {{i.nearby_attractions}}</p>

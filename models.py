@@ -11,30 +11,28 @@ from django.db import models
 
 
 class ParkInfo(models.Model):
-    id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    name = models.TextField(db_column='Name', blank=True, null=True)  # Field name made lowercase.
-    address = models.TextField(db_column='Address', blank=True, null=True)  # Field name made lowercase.
-    entrance = models.TextField(db_column='Entrance', blank=True, null=True)  # Field name made lowercase.
-    phone_number_1 = models.TextField(db_column='Phone_Number_1', blank=True, null=True)  # Field name made lowercase.
-    phone_number_2 = models.TextField(db_column='Phone_Number_2', blank=True, null=True)  # Field name made lowercase.
-    nearby_attractions = models.TextField(db_column='Nearby_Attractions', blank=True, null=True)  # Field name made lowercase.
-    features = models.TextField(db_column='Features', blank=True, null=True)  # Field name made lowercase.
-    half_hour = models.TextField(db_column='Half_Hour', blank=True, null=True)  # Field name made lowercase.
-    one_hour = models.TextField(db_column='One_Hour', blank=True, null=True)  # Field name made lowercase.
-    two_hours = models.TextField(db_column='Two_Hours', blank=True, null=True)  # Field name made lowercase.
-    ten_hours = models.TextField(db_column='Ten_Hours', blank=True, null=True)  # Field name made lowercase.
-    number_24hours = models.TextField(db_column='24Hours', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
-    early_bird = models.TextField(db_column='Early_Bird', blank=True, null=True)  # Field name made lowercase.
-    operation_hours = models.TextField(db_column='Operation_Hours', blank=True, null=True)  # Field name made lowercase.
-    image = models.TextField(db_column='Image', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='ID', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    name = models.TextField(db_column='Name', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    address = models.TextField(db_column='Address', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    entrance = models.TextField(db_column='Entrance', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    phone_number_1 = models.TextField(db_column='Phone_Number_1', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    phone_number_2 = models.TextField(db_column='Phone_Number_2', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    nearby_attractions = models.TextField(db_column='Nearby_Attractions', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    features = models.TextField(db_column='Features', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    half_hour = models.TextField(db_column='Half_Hour', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    one_hour = models.TextField(db_column='One_Hour', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    two_hours = models.TextField(db_column='Two_Hours', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    ten_hours = models.TextField(db_column='Ten_Hours', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    number_24hours = models.TextField(db_column='24Hours', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier. This field type is a guess.
+    early_bird = models.TextField(db_column='Early_Bird', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    operation_hours = models.TextField(db_column='Operation_Hours', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    image = models.TextField(db_column='Image', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     latitude = models.TextField(db_column='Latitude', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     longitude = models.TextField(db_column='Longitude', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
         managed = False
         db_table = 'Park_Info'
-
-
 
 
 class AuthGroup(models.Model):
