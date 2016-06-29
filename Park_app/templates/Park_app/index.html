@@ -7,10 +7,7 @@
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
  	<link rel="stylesheet" href="{% static 'css/OSMBuildings.css' %}">
  	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-<<<<<<< HEAD:Park_app/templates/Park_app/index.html
-=======
  	<link rel="stylesheet" href="{% static 'css/GLmap.css' %}">
->>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_app/templates/Park_app/index.html
  	<script src="{% static 'js/tween.js' %}"></script>
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
  	<script src="{% static 'js/GLmap.js' %}"></script>
@@ -53,9 +50,8 @@
 	  opacity: 0.99;
 	  padding: 15px 15px;
 	  /*display: none;*/
+	}
 
-<<<<<<< HEAD:Park_app/templates/Park_app/index.html
-=======
     .control {
       position: absolute;
       right: 10px;
@@ -94,7 +90,6 @@
     .control button:hover {
       opacity: 1;
       cursor: pointer;
->>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_app/templates/Park_app/index.html
     }
 
 		#locationSearchContainer {
@@ -233,13 +228,9 @@
 		<a href="http://parkzone.us"></a>
 	</div>
 
-<<<<<<< HEAD:Park_app/templates/Park_app/index.html
+
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-=======
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places&establishment"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
->>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_app/templates/Park_app/index.html
     <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
 
 
@@ -329,12 +320,9 @@ var valuesFrom = {latitude: 40.710425, longitude: -74.014572, rotation: 0, zoom:
 
   	animationTime = 95000;
 var tween;
-<<<<<<< HEAD:Park_app/templates/Park_app/index.html
+
 //spin();
-=======
-spin();
-  
->>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_app/templates/Park_app/index.html
+
 
 function spin(){
 	 tween = new TWEEN.Tween(valuesFrom)
@@ -425,13 +413,8 @@ function spin(){
 			var valuesToPosition = {latitude: positionLatitude, longitude:positionLongitude, rotation: map.getRotation(), zoom: map.getZoom(), tilt: map.getTilt()};
 
 			
-<<<<<<< HEAD:Park_app/templates/Park_app/index.html
 	 		 var tweenPosition = new TWEEN.Tween(valuesFromPosition)
     			.to(valuesToPosition, 900)
-=======
-	 		var tweenPosition = new TWEEN.Tween(valuesFromPosition)
-    			.to(valuesToPosition, 9000)
->>>>>>> f15ff4221db77b8919d387dc6d304c6d1e810213:Park_app/templates/Park_app/index.html
    				.onUpdate(function() {
         		// here we call the functions to update the map state
         		map.setPosition({ latitude: this.latitude, longitude: this.longitude });
