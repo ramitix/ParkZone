@@ -271,9 +271,10 @@ $("#locationSearchButton").click(function(){
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).addTo(map);
 
-    osmb.addOBJ('./static/images/StopSign.obj', {longitude: -73.981513,latitude: 40.763664},{id: "i22",scale : 100, elevation :-13, rotation : 20});
+    osmb.addOBJ('./static/images/StopSign.obj', {longitude: -73.981513,latitude: 40.763664},{id: "i22",scale : 100, elevation :-10, rotation : 20});
     osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763765},{id: "is23",scale : 50, elevation :-10});
 
+    osmb.addGeoJSON('./Docs/map.geojson');
 
   osmb.addMapTiles(
     'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
