@@ -1,0 +1,46 @@
+# Blender MTL File: 'parking__sign.blend'
+# Material Count: 4
+
+newmtl Material.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000113 0.029928 0.000036
+Ks 0.140505 0.140505 0.140505
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/sign_metal.JPG
+
+newmtl Material.001_No_Parking_Sign.jpg.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000113 0.029928 0.000036
+Ks 0.140505 0.140505 0.140505
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/No_Parking_Sign.jpg
+
+newmtl Material.006
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.787908 0.787908 0.787908
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/sign_metal.JPG
+
+newmtl Material.006_No_Parking_Sign.jpg.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.787908 0.787908 0.787908
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/No_Parking_Sign.jpg

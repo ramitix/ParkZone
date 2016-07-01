@@ -1,0 +1,35 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl Material.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.031744 0.001482
+Ks 0.000201 0.021110 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/sign_metal.JPG
+
+newmtl Material.003_GRYCON3.JPG.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.031744 0.001482
+Ks 0.000201 0.021110 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/GRYCON3.JPG
+
+newmtl Material.003_No_Parking_Sign.jpg.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.031744 0.001482
+Ks 0.000201 0.021110 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/ramitix/Desktop/digital_x_free_04_no_parking_sign/No_Parking_Sign.jpg

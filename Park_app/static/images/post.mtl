@@ -1,0 +1,47 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Leandro\Google Drive\3D\RunOrDie\Modelos\POSTE\POSTE2.fbm\HOUSE3_VIDRO.tga
+
+newmtl None_C:\Users\Leandro\Google_Drive\3D\RunOrDie\Modelos\POSTE\POS.000
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Leandro\Google Drive\3D\RunOrDie\Modelos\POSTE\POSTE.fbm\POSTE_CIMENTO.tga
+
+newmtl None_C:\Users\Leandro\Google_Drive\3D\RunOrDie\Modelos\POSTE\POS.002
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Leandro\Google Drive\3D\RunOrDie\Modelos\POSTE\POSTE.fbm\POSTE_METAL.tga
+
+newmtl None_C:\Users\Leandro\Google_Drive\3D\RunOrDie\Modelos\POSTE\POS.004
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Leandro\Google Drive\3D\RunOrDie\Modelos\POSTE\POSTE.fbm\POSTE_MADEIRA.tga
+
+newmtl None_C:\Users\Leandro\Google_Drive\3D\RunOrDie\Modelos\POSTE\POS.006
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd C:\Users\Leandro\Google Drive\3D\RunOrDie\Modelos\POSTE\POSTE.fbm\POSTE_FIO.tga

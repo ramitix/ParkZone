@@ -1,0 +1,28 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl None_119498958977780800stop_sign_right_font_mig_.svg.med.png
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd 119498958977780800stop_sign_right_font_mig_.svg.med.png
+
+newmtl None_119498958977780800stop_sign_right_font_mig_.svg.med.png.001
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd 119498958977780800stop_sign_right_font_mig_.svg.med.png
