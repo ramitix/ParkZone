@@ -41,17 +41,22 @@
       top: 70px;
       z-index: 1000;
 	  background: #fff;
-	  border: solid #ccc;
-	  border-width: 1px 0 1px 1px;
-	  border-radius: 3px 0 0 3px;
+	  border: solid #fff;
+	  border-width: 1px ;
+	  border-radius: 3px ;
 	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 	  color: #222;
 	  font-size: 1em;
 	  opacity: 0.99;
 	  padding: 15px 15px;
 	  overflow :auto;
-	  margin-bottom : 5px;
+	  margin-bottom : 10px;
 	}
+
+	.parkingData:hover {
+			background: #28aff8;
+			color: #fff;
+		}
 
     .control {
       position: absolute;
@@ -186,6 +191,7 @@
 
 		
   </style>
+  <style type="text/css">:: -webkit-scrollbar {display:none;} </style>
 
 
 </head>
@@ -271,9 +277,9 @@ $("#locationSearchButton").click(function(){
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).addTo(map);
 
-    osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20});
+    osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20 , color: 'red'});
     osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
-    osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 8, elevation :0, rotation : 0 , color: 'red'});
+    osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
     osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
 
 
@@ -286,9 +292,22 @@ $("#locationSearchButton").click(function(){
     }
   );
 
-  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+  //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
 
 
+  //***************************************************************************
+
+  map.on('pointermove', function(e) {
+    var id = osmb.getTarget(e.x, e.y, function(id) {
+      if (id) {
+        document.body.style.cursor = 'pointer';
+        osmb.highlight(id, '#28A828');
+      } else {
+        document.body.style.cursor = 'default';
+        osmb.highlight(null);
+      }
+    });
+  });
   //***************************************************************************
 
   var controlButtons = document.querySelectorAll('.control button');
