@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	{% load static from staticfiles %}
 	<title> ParkZone</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="alternative" href="{% static 'images/parkzone.obj' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
  	<link rel="stylesheet" href="{% static 'css/OSMBuildings.css' %}">
@@ -46,11 +49,13 @@
 	  border-radius: 3px ;
 	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 	  color: #222;
-	  font-size: 1em;
+	  font-size: 0.8em;
 	  opacity: 0.99;
 	  padding: 15px 15px;
 	  overflow :auto;
 	  margin-bottom : 10px;
+	  font-family: 'Open Sans';
+	  line-height: 100%;
 	}
 
 	.parkingData:hover {
@@ -105,6 +110,7 @@
 			z-index: 100;
 			opacity:0.95;
 			margin: -25px 0 0 -350px;
+			font-family: 'Open Sans';
 			
 		}
 
@@ -122,6 +128,7 @@
 			padding: 0 15px;
 			width: 500px;
 			box-shadow: 0 0 20px #666666;
+			font-family: 'Open Sans';
 			
 		}
 
@@ -149,6 +156,7 @@
 			line-height: 50px;
 			margin: 0px 0 0 0;
 			padding: 0 20px;
+			font-family: 'Open Sans';
 		}
 
 		button#locationSearchButton {
@@ -199,11 +207,12 @@
 <div id="dataContainer"  style= "overflow :scroll; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
 	<div class="parkingData">
-		<p style= "font-size: 1.2em"><b> {{i.name }} 	</b></p>
-		<p><b>Address:</b> {{i.address}} </p>
-		<p><b>Phone: </b>{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
+		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
+		<hr width="70%" align="left"  style="margin-bottom:1em ;margin-top:0.7em " >
+		<p><b>Address:</b>&nbsp;&nbsp;{{i.address}} </p>
+		<p><b>Phone: </b>&nbsp;&nbsp;{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
 		<p> {{i.half_hour }} 	&nbsp; {{i.one_hour}} &nbsp; {{i.two_hour}} &nbsp; {{i.ten_hours}} &nbsp; {{i.number_24hours}} </p>
-		<div style=" position: absolute;  right:10px; top:20px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
+		<div style=" position: absolute;  right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
 		</div>
 		<div class="dataExpand" style="display:none; width: 50%" >
            <p> {{i.nearby_attractions}}</p>
@@ -250,6 +259,7 @@ $('.parkingData').click(function(){
     $("#findMe").click(function(){
         $("#dataContainer").show("slow");
         $(".parkingData").show("slow");
+        osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
     });
 
 
@@ -273,14 +283,19 @@ $("#locationSearchButton").click(function(){
     baseURL: './static/images/',
     minZoom: 15,
     maxZoom: 22,
+    highlightColor:'#B2FF33',
     //effects: ['shadows'],
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).addTo(map);
 
     osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20 , color: 'red'});
     osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
-    osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
+    // osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
     osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
+    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is28",scale : 20, elevation :0, rotation : 0 , color: 'blue'});
+    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.953013,latitude: 40.749965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
+    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.963013,latitude: 40.739965},{id: "is30",scale : 20, elevation :0, rotation : 0 , color: 'yellow'});
+    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.973013,latitude: 40.729965},{id: "is31",scale : 20, elevation :0, rotation : 0 , color: 'white'});
 
 
     
@@ -297,11 +312,14 @@ $("#locationSearchButton").click(function(){
 
   //***************************************************************************
 
-  map.on('pointermove', function(e) {
+  osmb.on('pointermove', function(e) {
     var id = osmb.getTarget(e.x, e.y, function(id) {
       if (id) {
         document.body.style.cursor = 'pointer';
-        osmb.highlight(id, '#28A828');
+        osmb.highlight(id, '#B2FF33');
+       
+   
+
       } else {
         document.body.style.cursor = 'default';
         osmb.highlight(null);
