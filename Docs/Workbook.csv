@@ -1,26 +1,277 @@
 ID,Name,Address,Entrance,Phone_Number_1,Phone_Number_2,Nearby_Attractions,Features,Half_Hour,One_Hour,Two_Hours,Ten_Hours,24Hours,Early_Bird,Operation_Hours,Image,Latitude,Longitude
-1,COLUMBUS CIRCLE PARKING LLC,"330 West 58th Street, New York, NY, 10019",330 West 58th Street,(212) 245-9634,(212) 582-4008,"Hudson Hotel,Per Se,Shops at Columbus Circle,Columbus Circle,Lincoln Center Jazz ,Museum of Arts and Design,Marea,Jean Georges,Da Vinci Hotel,Fordham University","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$15.00 ,$40.00 ,$45.00 ,$55.00 ,$65.00 ,$21.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_150.jpg,40.767713,-73.983647
-2,EFFECTIVE PARKING LLC,"435 West 57th Street, New York, NY, 10019",435 West 57th Street,(212) 664-8520,(212) 664-8849,"Hudson Hotel,Museum of Arts and Design,Fordham University,Per Se,Shops at Columbus Circle,The Berenstain Bears Live! ,AMDA,Lincoln Center Jazz ,Rosa Mexicano 62nd St,Columbus Circle","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Cars, Minivans",N/A,$35.00 ,$40.00 ,$45.00 ,$60.00 ,N/A,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_76.jpg,40.768789,-73.987137
-3,APEX PARKING LLC.,"440 West 57th Street, New York, NY, 10019",440 West 57th Street,(212) 765-7069,(212) 581-8100,"Hudson Hotel,Museum of Arts and Design,Fordham University,Per Se,Shops at Columbus Circle,The Berenstain Bears Live! ,AMDA,St. Clare's,Lincoln Center Jazz ,Columbus Circle","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Vans, Cars, Minivans",$16.00 ,$35.00 ,$40.00 ,$45.00 ,$60.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_48.jpg,40.768266,-73.987415
-4,1350 SIXTH PARKING LLC,"1350 Sixth Avenue, New York, NY, 10019","47 West 54th St, 62 W 55th Street, South Side, b/t 5th & 6th Avenue",(212) 582-4294,(212) 765-9715,"Benoit,Mus. of Arts & Design,Uncle Jacks Midtown ,Lorna Luft,Micky Donenz,21 Club,TV & Radio,Modern Art,Henri Bendel ,Ben Benson's","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$17.00 ,$40.00 ,$50.00 ,$60.00 ,$70.00 ,$27.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_148.jpg,40.762517,-73.977761
-5,COMMAND PARKING LLC.,"1700 Broadway Street, New York, NY, 10019",216 West 54th Street,(212) 664-9042,(212) 664-8526,"Broadway Theatre,Fiddler on the Roof,Sheraton Hotel & Towers,Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Novotel Times Square,Neil Simon Theatre,Jersey Boys","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Cars, Minivans",$13.00 ,$35.00 ,$45.00 ,$55.00 ,$65.00 ,$22.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_63.jpg,40.763517,-73.982302
-6,1330 SIXTH PARKING LLC,"57-59 West 53rd Street, New York, NY, 10019","57-59 West 53rd Street or 54th Street, b/t 5th & 6th Avenue",(212) 586-0169,(212) 582-5417,"Mus. of Arts & Design,21 Club,Benoit,TV & Radio,Lorna Luft,Micky Donenz,Ben Benson's,Modern Art,Anthropologie,Uncle Jacks Midtown","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$16.00 ,$40.00 ,$50.00 ,$60.00 ,$70.00 ,$26.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_147.jpg,40.76122,-73.977698
-7,815 TENTH PARKING LLC,"815 Tenth Avenue, New York, NY, 10019",511 West 54th Street,(646) 414-4586,(646) 414-4587,"St. Clare's,The Berenstain Bears Live! ,Hudson Hotel,Museum of Arts and Design,Fordham University,Clinton the Musical,Churchill,AMDA,Avenue Q,Gazillion Bubble Show","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$15.00 ,$30.00 ,$35.00 ,$40.00 ,$50.00 ,N/A,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_177.jpg,40.767588,-73.990066
-8,REALITY PARKING LLC,"900 Eighth Avenue, New York, NY, 10019",281 West 53rd Street or 280 West 54th Street,(212) 956-2856,(212) 956-2867,"Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Jersey Boys,August Wilson Theatre,Neil Simon Theatre,The Illusionists,Hampton Inn Manhattan Times Square ,Fiddler on the Roof","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$13.00 ,$35.00 ,$45.00 ,$55.00 ,$65.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_164.jpg,40.764334,-73.984149
-9,MODERN PARKING LLC,"666 Fifth Avenue, New York, NY, 10103",20 West 53rd Street,(212) 581-1154,(212) 307-1737,"Mus. of Arts & Design,21 Club,TV & Radio,Lorna Luft,Micky Donenz,Modern Art,Anthropologie,Benoit,Brasserie Ruhlmann ,La Grenouille","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$20.00 ,$45.00 ,$55.00 ,$65.00 ,$75.00 ,$30.00 ,"SUN-THU 7am-12amFRI-SAT 7am-2am",http://www.iconparkingsystems.com/uploaded_files/facility/images/i_176.jpg,40.760385,-73.976674
-10,PARK-SERV LLC,"140-166 West 53rd Street, New York, NY, 10019","140 West 53rd Street, 139 West 52nd Street",(212) 397-9028,(212) 581-1000,"Ben Benson's,Sheraton Hotel & Towers,Bar Americain,New York City Center,Le Bernardin,Ruth's Chris Steak House,Capital Grille 51st ,Broadway Theatre,Fiddler on the Roof,Of Good Stock","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$15.00 ,$40.00 ,$45.00 ,$55.00 ,$65.00 ,$25.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_107.jpg,40.76241,-73.981011
-11,MATINEE 52 LLC,"810 7th Avenue, New York, NY, 10019","207 West 52nd Street, 1676 Broadway",(212) 247-4372,,"Novotel Times Square,Fiddler on the Roof,Sheraton Hotel & Towers,Broadway Theatre,School of Rock - The Musical,Wicked ,Gershwin Theatre,Bar Americain,Le Bernardin,Mamma Mia","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$15.00 ,$35.00 ,$50.00 ,$55.00 ,$65.00 ,$21.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_229.jpg,40.762838,-73.982465
-12,CIRCLE PARKING LLC,"200-206 West 52nd Street, New York, NY, 10019","209 West 51st Street, 206 West 52nd Street",(212) 397-9029,(212) 581-3300,"School of Rock - The Musical,Mamma Mia,Winter Garden Theatre,Wicked ,Gershwin Theatre,Le Bernardin,Bar Americain,Circle in the Square,Ruth's Chris Steak House,Novotel Times Square","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$14.00 ,$35.00 ,$45.00 ,$55.00 ,$65.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_58.jpg,40.762387,-73.982769
-13,CLINTON 53 PARKING LLC,"515 West 52nd Street, New York, NY, 10019",504 West 53rd Street,(212) 956-3218,,"St. Clare's,Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Pietrasanta Restaurant,Hudson Hotel,A Queen for a Day,The Berenstain Bears Live!","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$15.00 ,$30.00 ,$35.00 ,$40.00 ,$50.00 ,$22.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_196.jpg,40.766562,-73.991692
-14,HUDSON VIEW GARAGE LLC,"747 Tenth Avenue, New York, NY, 10019",520 West 51st Street,(212) 974-9608,(212) 245-7888,"St. Clare's,Pietrasanta Restaurant,A Queen for a Day,Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Black Angels Over Tuskegee,Diamond District","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",,$20.00 ,$35.00 ,$40.00 ,$50.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_89.jpg,40.7652,-73.991981
-15,HJ PARKING LLC,"851 Eighth Avenue, New York, NY, 10019",851-859 8th Avenue,(212) 581-8490,(212) 581-4100,"Hampton Inn Manhattan Times Square ,Broadway Parking,The Illusionists,The Palm 50th Street,Jersey Boys,August Wilson Theatre,Neil Simon Theatre,Fun Home,Avenue Q,Gazillion Bubble Show","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Vans, Cars",$14.00 ,$30.00 ,$40.00 ,$50.00 ,$65.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_140.jpg,40.763428,-73.98595
-16,THEATER 50 PARKING LLC,"307 West 50th Street, New York, NY, 10019",307 West 50th Street,(212) 307-0650,(212) 757-4151,"Broadway Parking,Avenue Q,Gazillion Bubble Show,New World Stages,The Palm 50th Street,Clinton the Musical,Churchill,Hampton Inn Manhattan Times Square ,Hilton Garden Inn Times Square ,Mayfair New York Hotel","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$14.00 ,$30.00 ,$40.00 ,$50.00 ,$65.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_222.jpg,40.762684,-73.986628
-17,MERCURY PARKING LLC,"350 West 50th Street, New York, NY, 10019",350 West 50th Street or 335 West 49th Street,(212) 265-5035,,"Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Broadway Parking,Hampton Inn Manhattan Times Square ,St. Clare's,The Palm 50th Street,Sombrero Restaurant","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Vans, Cars",$14.00 ,$30.00 ,$40.00 ,$50.00 ,$65.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_207.jpg,40.762895,-73.988075
-18,PRIMARY PARKING LLC,"721-735 10th Avenue, New York, NY, 10019",721 10th Avenue,(212) 245-1268,,"St. Clare's,A Queen for a Day,Pietrasanta Restaurant,Clinton the Musical,Churchill,Black Angels Over Tuskegee,Avenue Q,Gazillion Bubble Show,New World Stages,Becco","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Vans, Cars, Minivans",,$20.00 ,$35.00 ,$45.00 ,$50.00 ,$20.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_113.jpg,40.764475,-73.992212
-19,MAESTRO PARKING LLC,"888 7th Avenue, New York, NY, 10019",56th Street b/t Broadway & 7th Avenue,(212) 586-3665,,"Carnegie Hall,Da Vinci Hotel,New York City Center,Of Good Stock,Marea,Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Broadway Theatre","Service Type: ValetType: RampLocated: IndoorsVehicle Type: All",,$35.00 ,$45.00 ,$50.00 ,$65.00 ,$26.00 ,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_8a47f586f04892104f410a34048d51a5maestro1.jpg,40.764989,-73.98046
-20,EDISON FASTPARK,"307 West 44th Street, New York, NY, 10019",307 West 44th Street b/t 8th & 9th Avenue,(212) 664-9126,,"Theater District,Times Square,Restaurant Row,Shubert Alley,Port Authority Bus Terminal,Hotels","SUV/oversized vehicle parkingElectric chargingBicycle parking",$8.00 ,$16.00 ,$30.00 ,,$48.00 ,$24.00 ,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc173.jpg,40.758954,-73.98935
-21,EDISON FASTPARK,"451 9th Avenue, New York, NY, 10019",451 9th Avenue b/t 35th & 36th Street,(212) 502-4885,,"Madison Square Garden,Theater District,Midtown Hotels,Penn Station,Port Authority","SUV/oversized vehicle parkingElectric chargingBicycle parking",$10.00 ,$17.00 ,$20.00 ,,$42.00 ,$24.00 ,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc250.jpg,40.754509,-73.995944
-22,EDISON FASTPARK,"332 West 44th Street, New York, NY, 10019",332 West 44th Street b/t 8th & 9th Avenue,(212) 757-8375,,"Theater District,Times Square,Restaurant Row,Shubert Alley,Port Authority Bus Terminal,Hotels","SUV/oversized vehicle parkingBicycle parking",,$20.00 ,,,$48.00 ,$24.00 ,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc174.jpg,40.759039,-73.990526
-23,CENTRAL PARKING @ CBS BUILDING,"40 West 53rd Street, New York, NY, 10019",31 West 52nd Street,(800) 836-6666,,"Blakely New York Hotel,75 Rockefeller Plaza,MoMA","Service Type: ValetLocated: IndoorsVehicle Type: All",,$37.00 ,$47.00 ,$57.00 ,$74.60 ,,24/7,http://nycparking.spplus.com/Manhattan-CBS-Building-31-West-52nd-Street.html,40.761123,-73.978012
-24,CENTRAL PARKING,"101 West 53rd Street, New York, NY, 10019",101 West 53rd Street,(800) 836-6666,,"Executive Plaza at Rockefeller Center,New York Hilton Midtown Hotel,Warwick New York Hotel,Dream Midtown Hotel,Michelangelo Hotel NYC","Service Type: ValetLocated: IndoorsVehicle Type: All",$10.00 ,$25.00 ,$28.00 ,$40.00 ,$55.00 ,,24/7,http://nycparking.spplus.com/Manhattan-Hilton-Hotel-101-West-53rd-Street.html,40.761822,-73.978702
-25,NYC Parking 311 Corp.,"317 West 50th Street, New York, NY, 10019",West 50th Street b/t 8th and 9th Avenue,(212) 586-9760,(212) 265-6275,"Hampton Inn Manhattan Times Square,Per Se Restaurant,Le Bernardin Restaurant,La Grenouille Restaurant,Gramercy Tavern",Located: Indoors,$6.00 ,$15.00 ,$20.00 ,$27.00 ,$31.00 ,$20.00 ,24/7,http://ipark.com/garages/web18.JPG,40.762808,-73.987253
+1,COLUMBUS CIRCLE PARKING LLC,"330 West 58th Street, New York, NY, 10019",330 West 58th Street,(212) 245-9634,(212) 582-4008,"Hudson Hotel,Per Se,Shops at Columbus Circle,Columbus Circle,Lincoln Center Jazz ,Museum of Arts and Design,Marea,Jean Georges,Da Vinci Hotel,Fordham University","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$15.00,$40.00,$45.00,$55.00,$65.00,$21.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_150.jpg,40.767713,-73.983647
+2,EFFECTIVE PARKING LLC,"435 West 57th Street, New York, NY, 10019",435 West 57th Street,(212) 664-8520,(212) 664-8849,"Hudson Hotel,Museum of Arts and Design,Fordham University,Per Se,Shops at Columbus Circle,The Berenstain Bears Live! ,AMDA,Lincoln Center Jazz ,Rosa Mexicano 62nd St,Columbus Circle","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Cars, Minivans",N/A,$35.00,$40.00,$45.00,$60.00,N/A,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_76.jpg,40.768789,-73.987137
+3,APEX PARKING LLC.,"440 West 57th Street, New York, NY, 10019",440 West 57th Street,(212) 765-7069,(212) 581-8100,"Hudson Hotel,Museum of Arts and Design,Fordham University,Per Se,Shops at Columbus Circle,The Berenstain Bears Live! ,AMDA,St. Clare's,Lincoln Center Jazz ,Columbus Circle","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Vans, Cars, Minivans",$16.00,$35.00,$40.00,$45.00,$60.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_48.jpg,40.768266,-73.987415
+4,1350 SIXTH PARKING LLC,"1350 Sixth Avenue, New York, NY, 10019","47 West 54th St, 62 W 55th Street, South Side, b/t 5th & 6th Avenue",(212) 582-4294,(212) 765-9715,"Benoit,Mus. of Arts & Design,Uncle Jacks Midtown ,Lorna Luft,Micky Donenz,21 Club,TV & Radio,Modern Art,Henri Bendel ,Ben Benson's","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$17.00,$40.00,$50.00,$60.00,$70.00,$27.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_148.jpg,40.762517,-73.977761
+5,COMMAND PARKING LLC.,"1700 Broadway Street, New York, NY, 10019",216 West 54th Street,(212) 664-9042,(212) 664-8526,"Broadway Theatre,Fiddler on the Roof,Sheraton Hotel & Towers,Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Novotel Times Square,Neil Simon Theatre,Jersey Boys","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Cars, Minivans",$13.00,$35.00,$45.00,$55.00,$65.00,$22.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_63.jpg,40.763517,-73.982302
+6,1330 SIXTH PARKING LLC,"57-59 West 53rd Street, New York, NY, 10019","57-59 West 53rd Street or 54th Street, b/t 5th & 6th Avenue",(212) 586-0169,(212) 582-5417,"Mus. of Arts & Design,21 Club,Benoit,TV & Radio,Lorna Luft,Micky Donenz,Ben Benson's,Modern Art,Anthropologie,Uncle Jacks Midtown","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$16.00,$40.00,$50.00,$60.00,$70.00,$26.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_147.jpg,40.76122,-73.977698
+7,815 TENTH PARKING LLC,"815 Tenth Avenue, New York, NY, 10019",511 West 54th Street,(646) 414-4586,(646) 414-4587,"St. Clare's,The Berenstain Bears Live! ,Hudson Hotel,Museum of Arts and Design,Fordham University,Clinton the Musical,Churchill,AMDA,Avenue Q,Gazillion Bubble Show","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$15.00,$30.00,$35.00,$40.00,$50.00,N/A,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_177.jpg,40.767588,-73.990066
+8,REALITY PARKING LLC,"900 Eighth Avenue, New York, NY, 10019",281 West 53rd Street or 280 West 54th Street,(212) 956-2856,(212) 956-2867,"Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Jersey Boys,August Wilson Theatre,Neil Simon Theatre,The Illusionists,Hampton Inn Manhattan Times Square ,Fiddler on the Roof","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$13.00,$35.00,$45.00,$55.00,$65.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_164.jpg,40.764334,-73.984149
+9,MODERN PARKING LLC,"666 Fifth Avenue, New York, NY, 10103",20 West 53rd Street,(212) 581-1154,(212) 307-1737,"Mus. of Arts & Design,21 Club,TV & Radio,Lorna Luft,Micky Donenz,Modern Art,Anthropologie,Benoit,Brasserie Ruhlmann ,La Grenouille","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$20.00,$45.00,$55.00,$65.00,$75.00,$30.00,"SUN-THU 7am-12amFRI-SAT 7am-2am",http://www.iconparkingsystems.com/uploaded_files/facility/images/i_176.jpg,40.760385,-73.976674
+10,PARK-SERV LLC,"140-166 West 53rd Street, New York, NY, 10019","140 West 53rd Street, 139 West 52nd Street",(212) 397-9028,(212) 581-1000,"Ben Benson's,Sheraton Hotel & Towers,Bar Americain,New York City Center,Le Bernardin,Ruth's Chris Steak House,Capital Grille 51st ,Broadway Theatre,Fiddler on the Roof,Of Good Stock","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$15.00,$40.00,$45.00,$55.00,$65.00,$25.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_107.jpg,40.76241,-73.981011
+11,MATINEE 52 LLC,"810 7th Avenue, New York, NY, 10019","207 West 52nd Street, 1676 Broadway",(212) 247-4372,,"Novotel Times Square,Fiddler on the Roof,Sheraton Hotel & Towers,Broadway Theatre,School of Rock - The Musical,Wicked ,Gershwin Theatre,Bar Americain,Le Bernardin,Mamma Mia","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$15.00,$35.00,$50.00,$55.00,$65.00,$21.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_229.jpg,40.762838,-73.982465
+12,CIRCLE PARKING LLC,"200-206 West 52nd Street, New York, NY, 10019","209 West 51st Street, 206 West 52nd Street",(212) 397-9029,(212) 581-3300,"School of Rock - The Musical,Mamma Mia,Winter Garden Theatre,Wicked ,Gershwin Theatre,Le Bernardin,Bar Americain,Circle in the Square,Ruth's Chris Steak House,Novotel Times Square","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Cars, Minivans",$14.00,$35.00,$45.00,$55.00,$65.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_58.jpg,40.762387,-73.982769
+13,CLINTON 53 PARKING LLC,"515 West 52nd Street, New York, NY, 10019",504 West 53rd Street,(212) 956-3218,,"St. Clare's,Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Pietrasanta Restaurant,Hudson Hotel,A Queen for a Day,The Berenstain Bears Live!","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",$15.00,$30.00,$35.00,$40.00,$50.00,$22.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_196.jpg,40.766562,-73.991692
+14,HUDSON VIEW GARAGE LLC,"747 Tenth Avenue, New York, NY, 10019",520 West 51st Street,(212) 974-9608,(212) 245-7888,"St. Clare's,Pietrasanta Restaurant,A Queen for a Day,Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Black Angels Over Tuskegee,Diamond District","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars, Minivans",,$20.00,$35.00,$40.00,$50.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_89.jpg,40.7652,-73.991981
+15,HJ PARKING LLC,"851 Eighth Avenue, New York, NY, 10019",851-859 8th Avenue,(212) 581-8490,(212) 581-4100,"Hampton Inn Manhattan Times Square ,Broadway Parking,The Illusionists,The Palm 50th Street,Jersey Boys,August Wilson Theatre,Neil Simon Theatre,Fun Home,Avenue Q,Gazillion Bubble Show","Service Type: ValetType: ElevatorLocated: IndoorsVehicle Type: Vans, Cars",$14.00,$30.00,$40.00,$50.00,$65.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_140.jpg,40.763428,-73.98595
+16,THEATER 50 PARKING LLC,"307 West 50th Street, New York, NY, 10019",307 West 50th Street,(212) 307-0650,(212) 757-4151,"Broadway Parking,Avenue Q,Gazillion Bubble Show,New World Stages,The Palm 50th Street,Clinton the Musical,Churchill,Hampton Inn Manhattan Times Square ,Hilton Garden Inn Times Square ,Mayfair New York Hotel","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Cars",$14.00,$30.00,$40.00,$50.00,$65.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_222.jpg,40.762684,-73.986628
+17,MERCURY PARKING LLC,"350 West 50th Street, New York, NY, 10019",350 West 50th Street or 335 West 49th Street,(212) 265-5035,,"Clinton the Musical,Churchill,Avenue Q,Gazillion Bubble Show,New World Stages,Broadway Parking,Hampton Inn Manhattan Times Square ,St. Clare's,The Palm 50th Street,Sombrero Restaurant","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Vans, Cars",$14.00,$30.00,$40.00,$50.00,$65.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_207.jpg,40.762895,-73.988075
+18,PRIMARY PARKING LLC,"721-735 10th Avenue, New York, NY, 10019",721 10th Avenue,(212) 245-1268,,"St. Clare's,A Queen for a Day,Pietrasanta Restaurant,Clinton the Musical,Churchill,Black Angels Over Tuskegee,Avenue Q,Gazillion Bubble Show,New World Stages,Becco","Service Type: ValetType: RampLocated: IndoorsVehicle Type: Motorcycles, Vans, Cars, Minivans",,$20.00,$35.00,$45.00,$50.00,$20.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_113.jpg,40.764475,-73.992212
+19,MAESTRO PARKING LLC,"888 7th Avenue, New York, NY, 10019",56th Street b/t Broadway & 7th Avenue,(212) 586-3665,,"Carnegie Hall,Da Vinci Hotel,New York City Center,Of Good Stock,Marea,Therese Raquin,She Loves Me,An Act of God,Emma Hunton,Broadway Theatre","Service Type: ValetType: RampLocated: IndoorsVehicle Type: All",,$35.00,$45.00,$50.00,$65.00,$26.00,24/7,http://www.iconparkingsystems.com/uploaded_files/facility/images/i_8a47f586f04892104f410a34048d51a5maestro1.jpg,40.764989,-73.98046
+20,EDISON FASTPARK,"307 West 44th Street, New York, NY, 10019",307 West 44th Street b/t 8th & 9th Avenue,(212) 664-9126,,"Theater District,Times Square,Restaurant Row,Shubert Alley,Port Authority Bus Terminal,Hotels","SUV/oversized vehicle parkingElectric chargingBicycle parking",$8.00,$16.00,$30.00,,$48.00,$24.00,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc173.jpg,40.758954,-73.98935
+21,EDISON FASTPARK,"451 9th Avenue, New York, NY, 10019",451 9th Avenue b/t 35th & 36th Street,(212) 502-4885,,"Madison Square Garden,Theater District,Midtown Hotels,Penn Station,Port Authority","SUV/oversized vehicle parkingElectric chargingBicycle parking",$10.00,$17.00,$20.00,,$42.00,$24.00,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc250.jpg,40.754509,-73.995944
+22,EDISON FASTPARK,"332 West 44th Street, New York, NY, 10019",332 West 44th Street b/t 8th & 9th Avenue,(212) 757-8375,,"Theater District,Times Square,Restaurant Row,Shubert Alley,Port Authority Bus Terminal,Hotels","SUV/oversized vehicle parkingBicycle parking",,$20.00,,,$48.00,$24.00,24/7,http://www.parkfast.com/Styles/Images/Locations/Loc174.jpg,40.759039,-73.990526
+23,CENTRAL PARKING @ CBS BUILDING,"40 West 53rd Street, New York, NY, 10019",31 West 52nd Street,(800) 836-6666,,"Blakely New York Hotel,75 Rockefeller Plaza,MoMA","Service Type: ValetLocated: IndoorsVehicle Type: All",,$37.00,$47.00,$57.00,$74.60,,24/7,http://nycparking.spplus.com/Manhattan-CBS-Building-31-West-52nd-Street.html,40.761123,-73.978012
+24,CENTRAL PARKING,"101 West 53rd Street, New York, NY, 10019",101 West 53rd Street,(800) 836-6666,,"Executive Plaza at Rockefeller Center,New York Hilton Midtown Hotel,Warwick New York Hotel,Dream Midtown Hotel,Michelangelo Hotel NYC","Service Type: ValetLocated: IndoorsVehicle Type: All",$10.00,$25.00,$28.00,$40.00,$55.00,,24/7,http://nycparking.spplus.com/Manhattan-Hilton-Hotel-101-West-53rd-Street.html,40.761822,-73.978702
+25,NYC PARKING 311 CORP.,"317 West 50th Street, New York, NY, 10019",West 50th Street b/t 8th and 9th Avenue,(212) 586-9760,(212) 265-6275,"Hampton Inn Manhattan Times Square,Per Se Restaurant,Le Bernardin Restaurant,La Grenouille Restaurant,Gramercy Tavern",Located: Indoors,$6.00,$15.00,$20.00,$27.00,$31.00,$20.00,24/7,http://ipark.com/garages/web18.JPG,40.762808,-73.987253
+26,TOWNHOUSE BRIGHT MANAGEMENT,"305-309 West 48th Street, New York, NY, 10019",305-309 West 48th Street b/t 8th and 9th Avenue,(212) 713-1647,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock
+Radio City Music Hall
+The Paley Center","Service Type: ValetLocated: OutdoorsVehicle Type: All",,,,,,,"MON-SAT 8am-12amSUN 10am-8pm",http://nyc.bestparking.com/images/facility_429883.jpg,40.76143,-73.987451
+27,QUIK PARK CROWNE GARAGE,"231 West 48th Street, New York, NY, 10019",230 West 49th Street b/t Broadway and 8th Avenue,(212) 586-0665,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock
+Radio City Music Hall
+The Paley Center","Service Type: ValetLocated: IndoorVehicle Type: All",$13.00,$30.00,,$22.00,$70.00,,24/7,http://nyc.bestparking.com/images/facility_1193002.jpg,40.760588,-73.985905
+28,SP PLUS PARKING SYSTEM,"140 West 51st Street, New York, NY, 10019",140 West 51st Street b/t 6th and 7th Avenue,(212) 541-7418,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatre
+The Paris Theatre
+","Service Type: ValetLocated: IndoorVehicle Type: All",,$32.00,$42.00,$52.00,$58.00,,24/7,"http://nyc.bestparking.com/images/facility_965355.jpg
+",40.761301,-73.98186
+29,GMC Castaway Garage,"225 West 49th Street, New York, NY, 10019",225 West 49th Street b/t Broadway and 8th Avenue,(212) 262-9779,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatre
+The Paris Theatre
+","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$18.00,$26.00,$38.00,$45.00,,24/7,"http://nyc.bestparking.com/images/facility_427301.jpg
+",40.761363,-73.98528
+30,IPARK (IMPERIAL) PARKING,"304 West 49th Street, New York, NY, 10019",304 West 49th Street b/t 8th and 9th Avenue,(917) 684-6738,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatre
+The Paris Theatre
+","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$22.00,$28.00,,$50.00,,24/7,"http://nyc.bestparking.com/images/facility_1452642.jpg
+",40.761747,-73.98733
+31,50TH ST. PARKING CORP.,"331 West 50th Street, New York, NY, 10019",331 West 50th Street b/t 8th and 9th Avenue,(212) 586-9760,,"Hotel Central Park
+Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: OutdoorVehicle Type: All",$5.00,$13.00,$16.00,$27.00,$30.00,,24/7,"http://nyc.bestparking.com/images/facility_982918.jpg
+",40.763003,-73.987514
+32,IPARK (IMPERIAL) PARKING,"311 West 50th Street, New York, NY, 10019",311 West 50th Street b/t 8th and 9th Avenue,(212) 265-6275,,"Hotel Central Park
+Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$6.00,$15.00,$20.00,$27.00,$31.00,,24/7,"http://nyc.bestparking.com/images/facility_1102792.jpg
+",40.762887,-73.986922
+33,QUIK PARK WEST 50TH STREET,"285 West 50th Street, New York, NY, 10019",284 West 51st Street b/t Broadway and 8th Avenue,(212) 445-0011,,"Hotel Central Park
+Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$12.00,$25.00,,$30.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_1305615.jpg
+",40.762247,-73.985968
+34,SP PLUS PARKING SYSTEM,"250 West 50th Street, New York, NY, 10019",250 West 50th Street b/t Broadway and 8th Avenue,(212) 757-1498,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$5.00,$16.00,$21.00,$36.00,$50.00,,24/7,"http://nyc.bestparking.com/images/facility_994675.jpg
+",40.761848,-73.985847
+35,ENTERPRISE 51 PARKING,"680 12th Avenue, New York, NY 10019",680 West 51st Street b/t 12th Avenue and West Side Highway,(212) 265-5376,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: OutdoorVehicle Type: All",$12.00,$15.00,$20.00,$30.00,$45.00,,24/7,"http://nyc.bestparking.com/images/facility_1460735.jpg
+",40.766898,-73.996271
+36,PARK IT OPERATING CORP,"622-630 West 51st Street, New York, NY, 10019",627 West 50th Street b/t 11th Avenue and West Side Highway,(212) 245-5910,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: OutdoorVehicle Type: AllCash Only",,$15.00,$22.00,$31.00,$42.00,,24/7,"http://nyc.bestparking.com/images/facility_1189161.jpg
+",40.767673,-73.995595
+37,SP PLUS PARKING SYSTEM,"31 West 52nd Street, New York, NY, 10019",31 West 52nd Street b/t 5th and 6th Avenue,(212) 397-0949,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: OutdoorVehicle Type: All",,$37.00,$47.00,$57.00,$63.00,,24/7,"http://nyc.bestparking.com/images/facility_1107288.jpg
+",40.760968,-73.978064
+38,52 BROADWAY GARAGE CORP,"233 West 52nd Street, New York, NY, 10019",233 West 52nd Street b/t Broadway and 8th Avenue,(212) 245-2125,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: OutdoorVehicle Type: All",,$15.00,$22.00,,$36.00,,"MON 7am-12amTUE-THU 7am-1amFRI-SAT 7am-2amSUN 11am-12am","http://nyc.bestparking.com/images/facility_851958.jpg
+",40.76303,-73.98394
+39,SP PLUS PARKING SYSTEM,"289 West 52nd Street, New York, NY, 10019",290 West 53rd Street b/t Broadway and 8th Avenue,(212) 245-0068,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: OutdoorVehicle Type: All",$9.00,$20.00,$24.00,$44.00,$50.00,,24/7,"http://nyc.bestparking.com/images/facility_1199914.jpg
+",40.763504,-73.985059
+40,TOWNHOUSE JAY B REALTY CORP,"354-358 West 52nd Street, New York, NY, 10019",349 West 51st Street b/t 8th and 9th Avenue,(212) 246-7392,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: OutdoorVehicle Type: AllCash Only",$40.00,$40.00,$40.00,$40.00,$40.00,,"MON-SAT 8am-12amSUN 8am-8pm","http://nyc.bestparking.com/images/facility_367661.jpg
+",40.764372,-73.987211
+41,IPARK (IMPERIAL) PARKING,"301 West 53rd Street, New York, NY, 10019",301 West 53rd Street b/t 8th and 9th Avenue,(212) 265-1645,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: OutdoorVehicle Type: All",$8.00,$16.00,$22.00,$32.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_1058507.jpg
+",40.76463,-73.984866
+42,CHAMPION 53 PARKING,"159 West 53rd Street, New York, NY, 10019",156 West 54th Street b/t 6th and 7th Avenue,(212) 245-1299,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$23.00,$35.00,$45.00,$49.00,$59.00,,24/7,"http://nyc.bestparking.com/images/facility_1187066.jpg
+",40.762986,-73.981446
+43,BURLINGTON HOUSE GARAGE,"101-141 West 54th Street, New York, NY, 10019",140 West 55th Street b/t 6th and 7th Avenue,(212) 245-8708,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",,$21.00,$23.00,$37.00,$47.00,,24/7,"http://nyc.bestparking.com/images/facility_1347111.jpg
+",40.763179,-73.979811
+44,IPARK (IMPERIAL) PARKING,"129-133 West 54th Street, New York, NY, 10019",129-133 West 54th Street b/t 6th and 7th Avenue,(212) 445-0592,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: OutdoorVehicle Type: All",$10.00,$20.00,$26.00,$33.00,$45.00,,"MON-FRI 6am-12amSAT 8am-12amSUN 8am-8pm","http://nyc.bestparking.com/images/facility_1077575.jpg
+",40.76259,-73.979014
+45,MPG WORTHY PARKING,"511 West 55th Street, New York, NY, 10019",511 West 55th Street b/t 10th and 11th Avenue,(212) 315-2462,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$21.00,$22.00,$28.00,$36.00,,24/7,"http://nyc.bestparking.com/images/facility_1148650.jpg
+",40.76857,-73.989881
+46,RAPID PARK,"411 West 55th Street, New York, NY, 10019",411 West 55th Street b/t 9th and 10th Avenue,(212) 265-7854,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$20.00,$25.00,$28.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_427688.jpg
+",40.767111,-73.987232
+47,IPARK (IMPERIAL) PARKING,"300 West 55th Street, New York, NY, 10019",300 West 55th Street b/t 8th and 9th Avenue,(212) 974-9495,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$9.00,$20.00,$25.00,$32.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_1010039.jpg
+",40.765185,-73.984286
+48,IPARK (IMPERIAL) PARKING,"241 West 55th Street, New York, NY, 10019",241 West 55th Street b/t Broadway and 8th Avenue,(212) 581-3628,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$25.00,$30.00,$35.00,$51.00,,24/7,"http://nyc.bestparking.com/images/facility_1468256.jpg
+",40.765157,-73.982906
+49,CHAMPION PARKING 230,"230 West 55th Street, New York, NY, 10019",230 West 55th Street b/t Broadway and 8th Avenue,(212) 246-7218,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$29.00,$35.00,$45.00,$49.00,,24/7,"http://nyc.bestparking.com/images/facility_900653.jpg
+",40.764748,-73.982728
+50,QUIK PARK WEST 55TH STREET,"77 West 55th Street. New York, NY, 10019",77 West 55th Street b/t 5th and 6th Avenue,(212) 581-4025,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$15.00,$20.00,$20.00,$40.00,$40.00,,"MON-THU 6am-12amFRI 6am-2amSAT 7am-2amSUN 7am-12am","http://nyc.bestparking.com/images/facility_1271791.jpg
+",40.76311,-73.977653
+51,BRICIN PARKING CORP,"65 West 55th Street, New York, NY, 10019",65 West 55th Street b/t 5th and 6th Avenue,(212) 245-2053,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: AllCash Only",$17.00,$17.00,$25.00,$31.00,$37.00,,"MON-FRI 7am-12amSAT 8am-12amSUN 10am-10pm","http://nyc.bestparking.com/images/facility_1271791.jpg
+",40.762846,-73.977199
+52,SP PLUS PARKING SYSTEM,"23-25 West 55th Street, New York, NY, 10019",23-25 West 55th Street b/t 5th and 6th Avenue,(212) 245-9652,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$28.00,$28.00,$38.00,$44.00,$56.00,,24/7,"http://nyc.bestparking.com/images/facility_1199924.jpg
+",40.762278,-73.976104
+53,IMPARK,"33 West 56th Street, New York, NY, 10019",33 West 56th Street b/t 5th and 6th Avenue,,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$32.00,$32.00,$42.00,$50.00,$60.00,,24/7,"http://nyc.bestparking.com/images/facility_1326426.jpg
+",40.763252,-73.976129
+54,SP PLUS PARKING SYSTEM,"51 West 56th Street, New York, NY, 10019",51 West 56th Street b/t 5th and 6th Avenue,(212) 664-8564,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$25.00,$28.00,$40.00,$55.00,,24/7,"http://nyc.bestparking.com/images/facility_1323991.jpg
+",40.763312,-73.976823
+55,CHAMPION PARKING 56TH STREET,"65 West 56th Street, New York, NY, 10019",65 West 56th Street b/t 5th and 6th Avenue,(212) 664-9675,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$8.00,$27.00,$39.00,$45.00,$55.00,,24/7,http://nyc.bestparking.com/images/facility_368238.jpg,40.763635,-73.977271
+56,SP PLUS PARKING SYSTEM,"101 West 56th Street, New York, NY, 10019",101 West 56th Street b/t 6th and 7th Avenue,(212) 246-4645,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$25.00,$25.00,$30.00,$10.00,$24.00,,24/7,http://nyc.bestparking.com/images/facility_1415418.jpg,40.764043,-73.978096
+57,SP PLUS PARKING SYSTEM,"109 West 56th Street, New York, NY, 10019",108 West 56th Street b/t 6th and 7th Avenue,(212) 245-5000,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$30.00,$30.00,$36.00,$44.00,$55.00,,24/7,http://nyc.bestparking.com/images/facility_1196436.jpg,40.763897,-73.978249
+58,SP PLUS PARKING SYSTEM,"175 West 56th Street, New York, NY, 10019",175 West 56th Street b/t 6th and 7th Avenue,(212) 459-8946,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$25.00,$29.00,$36.00,$54.00,,24/7,http://nyc.bestparking.com/images/facility_1199957.jpg,40.764808,-73.980401
+59,GMC CITY SPIRE GARAGE,"156 West 56th Street, New York, NY, 10019",156 West 56th Street b/t 6th and 7th Avenue,(212) 265-0841,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$12.00,$25.00,$28.00,$37.00,$55.00,,24/7,http://nyc.bestparking.com/images/facility_851982.jpg,40.764292,-73.979772
+60,QUIK PARK BROADWAY GARAGE,"235 West 56th Street, New York, NY, 10019",235 West 56th Street b/t Broadway and 8th Avenue,(212) 974-6147,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$25.00,$25.00,$25.00,$45.00,,24/7,"http://nyc.bestparking.com/images/facility_1269177.jpg
+",40.765977,-73.982583
+61,QUIK PARK WEST 56TH STREET,"328 West 56th Street, New York, NY, 10019",328 West 56th Street b/t 8th and 9th Avenue,(212) 586-1021,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$25.00,$25.00,$25.00,$45.00,,24/7,http://nyc.bestparking.com/images/facility_1234691.jpg,40.766635,-73.984802
+62,PARK IT 56-57 HOLDING/OPERATING,"409 West 56th Street, New York, NY, 10019",408 West 57th Street b/t 9th and 10th Avenue,(212) 586-9182,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$21.00,$27.00,$29.00,$43.00,,24/7,"http://nyc.bestparking.com/images/facility_1257438.jpg
+",40.76753,-73.986853
+63,"MTP 57, LLC","601 West 57th Street, New York, NY, 10019",601 West 57th Street b/t 11th Avenue and West Side Highway,(888) 818-7275 ,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$30.00,$30.00,$30.00,$47.00,,24/7,http://nyc.bestparking.com/images/facility_1205750.jpg,40.770851,-73.991732
+64,CHAMPION PARKING 57,"320 West 57th Street, New York, NY, 10019",321 West 56th Street b/t 8th and 9th Avenue,(212) 246-8461,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$16.00,$31.00,$39.00,$45.00,$49.00,,24/7,http://nyc.bestparking.com/images/facility_1093313.jpg,40.766801,-73.984127
+65,LAZ Parking,"9 West 57th Street, New York, NY, 10019",9 West 57th Street b/t 5th and 6th Avenue ,(212) 935-4527,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$9.00,$30.00,$39.00,$50.00,$64.00,,24/7,http://nyc.bestparking.com/images/facility_1330550.jpg,40.763826,-73.974938
+66,CHAMPION 58,"33 West 58th Street, New York, NY, 10019",33 West 58th Street b/t 5th and 6th Avenue,(212) 223-0056,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$9.00,$29.00,$39.00,$49.00,$61.00,,24/7,http://nyc.bestparking.com/images/facility_1059262.jpg,40.764785,-73.975709
+67,SP PLUS PARKING SYSTEM,"58 West 58th Street, New York, NY, 10019",58 West 58th Street b/t 5th and 6th Avenue,(212) 593-3867,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$11.00,$30.00,$40.00,$50.00,$60.00,,24/7,http://nyc.bestparking.com/images/facility_1202746.jpg,40.764555,-73.9763
+68,ENTERPRISE 58 EAST PARKING,"105 West 58th Street, New York, NY, 10019",105 West 58th Street b/t 6th and 7th Avenue,(212) 956-4430,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$26.00,$35.00,$40.00,$51.00,,24/7,"http://nyc.bestparking.com/images/facility_1185862.jpg
+",40.765404,-73.976905
+69,QUIK PARK CPS,"125 West 58th Street, New York, NY, 10019",125 West 58th Street b/t 6th and 7th Avenue,(212) 977-7422,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$30.00,$30.00,$40.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_1275681.jpg
+",40.765601,-73.977539
+70,SP PLUS PARKING SYSTEM,"333 West 58th Street, New York, NY, 10019",334 West 60th Street b/t 8th and 9th Avenue,(212) 823-6199,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$26.00,$26.00,$35.00,$45.00,$60.00,,24/7,"http://nyc.bestparking.com/images/facility_1105005.jpg
+",40.767825,-73.983309
+71,SP PLUS PARKING SYSTEM,"345 West 58th Street, New York, NY, 10019",24 West 60th Street b/t 8th and 9th Avenue,(212) 582-7110,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$10.00,$26.00,$30.00,$40.00,$55.00,,24/7,"http://nyc.bestparking.com/images/facility_1105005.jpg
+",40.768743,-73.984502
+72,CENTRAL PARKING,"838-52 11th Avenue, New York, NY, 10019",838-52 11th Avenue b/t 57 and 58th Street,(212) 445-0172,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$28.00,$28.00,$32.00,$45.00,$55.00,,24/7,"http://nyc.bestparking.com/images/facility_1137953.jpg
+",40.770558,-73.991191
+73,ENTERPRISE 60TH STREET PARKING,"290 West 60th Street, New York, NY, 10019",290 West 60th Street b/t Amsterdam and West End Avenue,(212) 564-3199,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: All",$15.00,$15.00,$20.00,$27.00,$40.00,,24/7,"http://nyc.bestparking.com/images/facility_1307111.jpg
+",40.772197,-73.989883
+74,"SESSANTA PARKING CO., LLC","229 West 60th Street, New York, NY, 10019",229 West 60th Street b/t Amsterdam and West End Avenue,(212) 204-0060,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$12.00,$12.00,$15.00,$19.00,$35.00,,24/7,"http://nyc.bestparking.com/images/facility_1342356.jpg
+",40.771609,-73.98845
+75,SP PLUS PARKING SYSTEM,"515 West 59th Street, New York, NY, 10019",515 West 59th Street b/t 10th and West End Avenue,(212) 957-3692,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours
+Gershwith Theater","Service Type: ValetLocated: IndoorVehicle Type: All",$14.00,$14.00,$17.00,$20.00,$30.00,,24/7,http://nyc.bestparking.com/images/facility_1171649.jpg,40.77111,-73.988274
+76,CONCERTO GARAGE CORP.,"513 West 59th Street, New York, NY, 10019",513 West 59th Street b/t 10th and West End Avenue,(212) 246-5769,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$14.00,$14.00,$17.00,$19.00,$20.00,,24/7,http://nyc.bestparking.com/images/facility_884653.jpg,40.77066,-73.988143
+77,ALLIE GARAGE CORP.,"425 West 59th Street, New York, NY, 10019",425 West 59th Street b/t Columbus and 10th Avenue,(212) 246-7220,,"Gray Line New York	
+Big Bus Welcome Center
+Top of the Rock","Service Type: ValetLocated: IndoorVehicle Type: AllCash Only",$9.00,$9.00,$20.00,$22.00,$26.00,,24/7,"http://nyc.bestparking.com/images/facility_813398.jpg
+",40.770135,-73.985852
+78,1 COLUMBUS PLACE GARAGE ,"400 West 59th Street, New York, NY, 10019",431 West 58th Street b/t 9th and 10th Avenue,(212) 246-1096,,"Radio City Music Hall
+The Paley Center
+Saint Thomas Church
+August Wilson Theatr","Service Type: ValetLocated: IndoorVehicle Type: All",$15.00,$15.00,$20.00,$25.00,$33.00,,24/7,http://nyc.bestparking.com/images/facility_960635.jpg,40.769359,-73.985793
+79,IMPARK 210 CENTRAL PARK SOUTH,"210 Central Park South, New York, NY, 10019",210 Central Park South b/t 7th and Broadway,(212) 245-5400,,"Central Bike Tours
+Gershwith Theater
+Pedicab Tours
+Time Warner Center","Service Type: ValetLocated: IndoorVehicle Type: All",$28.00,$28.00,$35.00,$42.00,$52.00,,"MON-THU 7am-1amFRI-SAT 7am-2amSUN 7am-1am",http://nyc.bestparking.com/images/facility_1237770.jpg,40.76697,-73.979985
+80,GMC 200 CENTRAL PARK SOUTH ,"200 Central Park South, New York, NY, 10019",205 West 58th Street b/t 7th and Broadway,(212) 265-1078,,"The Paris Theatre
+Hotel Central Park
+Central Bike Tours","Service Type: ValetLocated: IndoorVehicle Type: All",$28.00,$28.00,$35.00,$42.00,$52.00,,24/7,"http://nyc.bestparking.com/images/facility_1312902.jpg
+",40.76668,-73.979804
