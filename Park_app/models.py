@@ -11,7 +11,7 @@ from django.db import models
 
 
 class ParkInfo(models.Model):
-    id = models.IntegerField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='ID', primary_key=True)  # Field name made lowercase.
     name = models.TextField(db_column='Name', blank=True, null=True)  # Field name made lowercase.
     address = models.TextField(db_column='Address', blank=True, null=True)  # Field name made lowercase.
     entrance = models.TextField(db_column='Entrance', blank=True, null=True)  # Field name made lowercase.

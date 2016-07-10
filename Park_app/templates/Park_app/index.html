@@ -18,10 +18,9 @@
 	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" > </script>
 	
 	 <div id="locationSearchContainer">
-		<input type="search" placeholder="Where do you want to Park?" id="locationSearch"/>
+		<input type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
 		<button id="locationSearchButton">Go </button>
 		<button id="findMe">My Location </button>
-		<button id="aboutus">About Us </button>
 	</div>
 
 	  <style>
@@ -145,7 +144,7 @@
 				outline: 0;
 			}
 
-		button#locationSearchButton, button#findMe, button#aboutus {
+		button#locationSearchButton, button#findMe{
 			background: #249ad9;
 			border: none;
 			border-radius: 3px;
@@ -154,7 +153,7 @@
 			float: left;
 			font-size: 1.2em;
 			height: 50px;
-			line-height: 50px;
+			line-height: 35px;
 			margin: 0px 0 0 0;
 			padding: 0 20px;
 			font-family: 'Open Sans';
@@ -179,15 +178,6 @@
 				background: #888;
 			}
 
-		button#aboutus {
-			background: #666;
-			margin-left: 10px;
-			box-shadow: 0 0 20px #666666;
-		}
-
-			button#aboutus:hover {
-				background: #888;
-			}
 
 		#ParkZone-logo-container {
 			position: absolute;
@@ -207,7 +197,41 @@
 				width: 240px;
 				opacity:0.6;
 			}
+		.labels {
+			width:40px;
+			height:30px;
+			position:absolute;
+			z-index:9;
+			background: #249ad9;
+			border: none;
+			border-radius: 3px;
+			box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+			color: #fff;
+			font-size: 1.2em;
+			line-height: 30px;
+			padding-left: 3px;
+			font-family: 'Open Sans';
+			cursor:pointer;
 
+		}
+		.clicked {
+ 			 background: green;
+		  }
+
+		.listClicked{
+
+		 	background: #00ff00;
+
+		 }
+		 .listClicked:hover{
+
+		 	background: #00ff00;
+		 
+		 }
+
+		td {
+    		padding: 5px;
+		}
 		
   </style>
   <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
@@ -217,24 +241,46 @@
 <body>
 <div id="dataContainer"  style= "overflow :scroll; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
-	<div class="parkingData">
+	<div class="parkingData" id="parkingData{{i.id}}">
 		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
 		<hr width="70%" align="left"  style="margin-bottom:1em ;margin-top:0.7em " >
 		<p><b>Address:</b>&nbsp;&nbsp;{{i.address}} </p>
 		<p><b>Phone: </b>&nbsp;&nbsp;{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
-		<p> {{i.half_hour }} 	&nbsp; {{i.one_hour}} &nbsp; {{i.two_hour}} &nbsp; {{i.ten_hours}} &nbsp; {{i.number_24hours}} </p>
+		<table class="table-responsive" style="width:75%">
+			  <tr class="success">
+			   <th>Half Hour </th> 
+			   <th>One Hour  </th> 
+			   <th>Two Hours </th>
+			   <th>Ten Hours </th>
+			   <th>24hours   </th>
+			   </tr>
+			  <tr>
+			   <td style="padding-left:8px;font-size: 1.4em;">{{i.half_hour }} </td>	
+			   <td style="padding-left:8px;font-size: 1.4em;">{{i.one_hour}} </td>
+			   <td style="padding-left:8px;font-size: 1.4em;">{{i.two_hours}} </td>
+			   <td style="padding-left:8px;font-size: 1.4em;">{{i.ten_hours}} </td>
+			   <td style="padding-left:8px;font-size: 1.4em;">{{i.number_24hours}} </td>
+			  </tr>
+		 </table>
 		<div style=" position: absolute;  right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
 		</div>
 		<div class="dataExpand" style="display:none; width: 50%" >
            <p> {{i.nearby_attractions}}</p>
 
         </div>
+      
 	</div>		
 	{% endfor %}	
 </div>
 
- <div id="map"></div>
- 
+<div id="map"></div>
+
+{% for i in parkZones %}
+<div class="labels"; id= 'label{{i.id}}'>
+ <p>{{i.one_hour }}</p>	
+</div>
+{% endfor %}	
+
 <div class="control tilt">
   <button title="Tilt" class="dec">&#8601;</button>
   <button title="Tilt"  class="inc">&#8599;</button>
@@ -255,6 +301,7 @@
 	</div>
 
 
+
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
@@ -262,15 +309,38 @@
 
 <script>
 
+
 $('.parkingData').click(function(){
+    
+    $('.parkingData').removeClass('listClicked');
+    $(".parkingData").find('.dataExpand').hide();
     $(this).find('.dataExpand').toggle("fast");
+    $(this).addClass("listClicked");
+    $('.labels').removeClass('clicked');
+    $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
+    flyTo($(this).attr('id').split('parkingData')[1]);
+    console.log($(this).attr('id').split('parkingData')[1]);
+
 });
 
+
+	$('.labels').click(function(){
+	  $('.labels').removeClass('clicked');
+	  $(this).addClass('clicked');
+	  // $('#parkingData'+ $(this).attr('id').split('label')[1]).scrollTo(); 
+	  $('.parkingData').removeClass('listClicked');
+	  $('#parkingData'+ $(this).attr('id').split('label')[1]).addClass("listClicked");
+	  $(".parkingData").find('.dataExpand').hide();
+	  $('#parkingData'+ $(this).attr('id').split('label')[1]).find('.dataExpand').toggle("fast");
+	  $('#dataContainer').animate({scrollTop:($('#dataContainer').scrollTop() + $('#parkingData'+ $(this).attr('id').split('label')[1]).position().top - $('#dataContainer').height()/2 + $('#parkingData'+ $(this).attr('id').split('label')[1]).height()/2)},1000);
+
+			
+	});
 
     $("#findMe").click(function(){
         $("#dataContainer").show("slow");
         $(".parkingData").show("slow");
-        osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
+        osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
     });
 
 
@@ -279,34 +349,36 @@ $("#locationSearchButton").click(function(){
        $("#locationSearch").trigger("geocode");
     });
 
-  var map = new GLMap('map', {
-    position: { latitude:40.763554, longitude:-73.981703 },
-    zoom: 16,
-    minZoom: 12,
-    maxZoom: 22,
-    state: true // stores map position/rotation in url
-  });
+  // var map = new GLMap('map', {
+  //   position: { latitude:40.763554, longitude:-73.981703 },
+  //   zoom: 16,
+  //   minZoom: 12,
+  //   maxZoom: 22,
+  //   state: true // stores map position/rotation in url
+  // });
  
 
  
 
   var osmb = new OSMBuildings({
     baseURL: './static/images/',
+    position: { latitude:40.763664, longitude:-73.981613 },
     minZoom: 15,
     maxZoom: 22,
-    highlightColor:'#B2FF33',
+    state: true,
+    highlightColor:'blue',
     //effects: ['shadows'],
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
-  }).addTo(map);
+  }).appendTo(map);
 
-    osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20 , color: 'red'});
-    osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
-    // osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
-    osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
-    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is28",scale : 20, elevation :0, rotation : 0 , color: 'blue'});
-    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.953013,latitude: 40.749965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
-    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.963013,latitude: 40.739965},{id: "is30",scale : 20, elevation :0, rotation : 0 , color: 'yellow'});
-    osmb.addOBJ('/static/images/parkzone.obj', {longitude: -73.973013,latitude: 40.729965},{id: "is31",scale : 20, elevation :0, rotation : 0 , color: 'white'});
+    // osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20 , color: 'red'});
+    // osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
+    // // osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
+    // osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
+    // osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is28",scale : 20, elevation :0, rotation : 30 , color: 'blue'});
+    osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
+    osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
+    osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.981613,latitude: 40.763664},{id: "is31",scale :50, elevation :0, rotation : 0 });
 
 
     
@@ -322,15 +394,77 @@ $("#locationSearchButton").click(function(){
 
 
   //***************************************************************************
+function flyTo(id){
+	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
+	 console.log()
+	 var valuesFlyTo   = {latitude: dynamicCor[id].lat, longitude: dynamicCor[id].lon, rotation: 30, zoom: 18, tilt: 35};
+	 var tweenFly = new TWEEN.Tween(valuesFlyFrom)
+    	.to(valuesFlyTo, 3000)
+   		.onUpdate(function() {
+        // here we call the functions to update the map state
+        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
+        	osmb.setRotation(this.rotation);
+        	osmb.setZoom(this.zoom);
+        	osmb.setTilt(this.tilt);
+    	});
+				tweenFly.start();
+				//tween.repeat(Infinity);
+	};
+		animate();
+		function animate(time) {
+    		requestAnimationFrame(animate);
+    		TWEEN.update(time);
+		}
+
+
+
+
+
+
+
+
+
+  //***************************************************************************
+
+
+	
+		var dynamicCor = [];
+		var dynamicPos = [];
+
+		{% for z in parkZones %}
+	  		var pos = osmb.project({{z.latitude}}, {{z.longitude}}, 1);
+	  		var cor = {lat:{{z.latitude}},lon:{{z.longitude}}};
+	  		console.log(pos);
+	  		dynamicCor[{{z.id}}]=cor;
+	  		dynamicPos[{{z.id}}]=pos;
+  		{% endfor %}
+		//console.log(dynamicCor);
+
+	 
+	 	//console.log(dynamicPos);
+  		
+		osmb.on('change', function() {
+	    	for (i=1;i<=dynamicPos.length;i++){
+		    	if (document.getElementById('label'+ i)!= null){
+		    		dynamicPos[i]= osmb.project(dynamicCor[i].lat, dynamicCor[i].lon, 1);
+					document.getElementById('label'+ i).style.left = Math.round(dynamicPos[i].x) + 'px';
+				    document.getElementById('label'+ i).style.top = Math.round(dynamicPos[i].y) + 'px';
+			    	 console.log(document.getElementById('label'+i));
+			  	}
+	  		}
+		});
+			
+
+
+  //***************************************************************************		
 
   osmb.on('pointermove', function(e) {
-    var id = osmb.getTarget(e.x, e.y, function(id) {
+    var id = osmb.getTarget(e.detail.x, e.detail.y, function(id) {
       if (id) {
         document.body.style.cursor = 'pointer';
-        osmb.highlight(id, '#B2FF33');
-       
+        //osmb.highlight(id, 'blue');
+         osmb.highlight(id, 'blue');
    
-
       } else {
         document.body.style.cursor = 'default';
         osmb.highlight(null);
@@ -339,32 +473,34 @@ $("#locationSearchButton").click(function(){
   });
   //***************************************************************************
 
-  var controlButtons = document.querySelectorAll('.control button');
 
-  for (var i = 0, il = controlButtons.length; i < il; i++) {
-    controlButtons[i].addEventListener('click', function(e) {
-      var button = this;
-      var parentClassList = button.parentNode.classList;
-      var direction = button.classList.contains('inc') ? 1 : -1;
-      var increment;
-      var property;
+var controlButtons = document.querySelectorAll('.control button');
 
-      if (parentClassList.contains('tilt')) {
-        property = 'Tilt';
-        increment = direction*10;
-      }
-      if (parentClassList.contains('rotation')) {
-        property = 'Rotation';
-        increment = direction*10;
-      }
-      if (parentClassList.contains('zoom')) {
-        property = 'Zoom';
-        increment = direction*1;
-      }
-      if (property) {
-        map['set'+ property](map['get'+ property]()+increment);
-      }
-    });
+for (var i = 0; i < controlButtons.length; i++) {
+  controlButtons[i].addEventListener('click', function(e) {
+    var button = this;
+    var parentClassList = button.parentNode.classList;
+    var direction = button.classList.contains('inc') ? 1 : -1;
+    var increment;
+    var property;
+
+    if (parentClassList.contains('tilt')) {
+      property = 'Tilt';
+      increment = direction*10;
+    }
+    if (parentClassList.contains('rotation')) {
+      property = 'Rotation';
+      increment = direction*10;
+    }
+    if (parentClassList.contains('zoom')) {
+      property = 'Zoom';
+      increment = direction*1;
+    }
+    if (property) {
+      osmb['set'+ property](osmb['get'+ property]()+increment);
+    }
+  });
+
 //*****************************************************
 
 var valuesFrom = {latitude: 40.710425, longitude: -74.014572, rotation: 0, zoom: 15.5, tilt: 45},
@@ -381,10 +517,10 @@ function spin(){
     	.to(values1, animationTime)
    		.onUpdate(function() {
         // here we call the functions to update the map state
-        	map.setPosition({ latitude: this.latitude+Math.floor(Math.random() * 0.09)  -0.01, longitude: this.longitude });
-        	map.setRotation(this.rotation);
-        	map.setZoom(this.zoom);
-        	map.setTilt(this.tilt);
+        	osmb.setPosition({ latitude: this.latitude+Math.floor(Math.random() * 0.09)  -0.01, longitude: this.longitude });
+        	osmb.setRotation(this.rotation);
+        	osmb.setZoom(this.zoom);
+        	osmb.setTilt(this.tilt);
     	});
 				tween.start();
 				tween.repeat(Infinity);
@@ -405,8 +541,8 @@ function spin(){
 	
 		}); 
 			
-		var searchPositionFrom =  {x: 711.5 , y: 348.5, width: 500};
-  		var searchpositionTo = {x: 370 , y: 40 ,width: 390 };
+		var searchPositionFrom =  {x: 711.5 , y: 348.5, width: 500, height:50};
+  		var searchpositionTo = {x: 370 , y: 40 ,width: 390,height:35 };
   		//var currentPosition = searchPositionFrom ;
 
 		function changeSearchLocation(){
@@ -417,6 +553,9 @@ function spin(){
         		locationSearchContainer.style.left = ( this.x ) + 'px';
         		locationSearchContainer.style.top = ( this.y ) + 'px';
         		locationSearch.style.width = (this.width ) + 'px';
+        		locationSearch.style.height = (this.height ) + 'px';
+        		locationSearchButton.style.height = (this.height ) + 'px';
+        		findMe.style.height = (this.height ) + 'px';
 
         	//}
     	});
@@ -460,19 +599,38 @@ function spin(){
 				//tweenSearchPosition.onComplete(TWEEN.Tween(tween.stop()));
 			
 		
+		    	// var R = 6371e3; // metres
+			    // var φ1 = lat1.toRadians();
+			    // var φ2 = lat2.toRadians();
+			    // var Δφ = (lat2-lat1).toRadians();
+			    // var Δλ = (lon2-lon1).toRadians();
 
-			var valuesFromPosition = {latitude: this.map.getPosition.latitude, longitude: this.map.getPosition.longitude, rotation: map.getRotation(), zoom: map.getZoom(), tilt: map.getTilt()};
-			var valuesToPosition = {latitude: positionLatitude, longitude:positionLongitude, rotation: map.getRotation(), zoom: map.getZoom(), tilt: map.getTilt()};
+			    // var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+			    //         Math.cos(φ1) * Math.cos(φ2) *
+			    //         Math.sin(Δλ/2) * Math.sin(Δλ/2);
+			    // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+			    // var d = R * c;
+
+
+
+
+
+
+
+
+			var valuesFromPosition = {latitude: this.osmb.getPosition.latitude, longitude: this.osmb.getPosition.longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
+			var valuesToPosition = {latitude: positionLatitude, longitude:positionLongitude, rotation: 30, zoom: 15, tilt: 0};
 
 			
 	 		 var tweenPosition = new TWEEN.Tween(valuesFromPosition)
     			.to(valuesToPosition, 900)
    				.onUpdate(function() {
         		// here we call the functions to update the map state
-        		map.setPosition({ latitude: this.latitude, longitude: this.longitude });
-        		map.setRotation(this.rotation);
-        		map.setZoom(this.zoom);
-        		map.setTilt(this.tilt);
+        		osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
+        		osmb.setRotation(this.rotation);
+        		osmb.setZoom(this.zoom);
+        		osmb.setTilt(this.tilt);
     	});
 
 				tweenPosition.start();
