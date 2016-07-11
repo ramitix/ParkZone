@@ -319,7 +319,7 @@ $('.parkingData').click(function(){
     $('.labels').removeClass('clicked');
     $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
     flyTo($(this).attr('id').split('parkingData')[1]);
-    console.log($(this).attr('id').split('parkingData')[1]);
+   
 
 });
 
@@ -390,14 +390,16 @@ $("#locationSearchButton").click(function(){
     }
   );
 
-  //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
+  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
 
 
   //***************************************************************************
+
+
+
 function flyTo(id){
 	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
-	 console.log()
-	 var valuesFlyTo   = {latitude: dynamicCor[id].lat, longitude: dynamicCor[id].lon, rotation: 30, zoom: 18, tilt: 35};
+	 var valuesFlyTo   = {latitude: dynamicCor[id].lat, longitude: dynamicCor[id].lon, rotation: Math.floor(Math.random() * (180 - 10)) + 10, zoom: 18, tilt: Math.floor(Math.random() * (45 - 10)) + 1};
 	 var tweenFly = new TWEEN.Tween(valuesFlyFrom)
     	.to(valuesFlyTo, 3000)
    		.onUpdate(function() {
@@ -419,11 +421,6 @@ function flyTo(id){
 
 
 
-
-
-
-
-
   //***************************************************************************
 
 
@@ -434,14 +431,13 @@ function flyTo(id){
 		{% for z in parkZones %}
 	  		var pos = osmb.project({{z.latitude}}, {{z.longitude}}, 1);
 	  		var cor = {lat:{{z.latitude}},lon:{{z.longitude}}};
-	  		console.log(pos);
+	  		
 	  		dynamicCor[{{z.id}}]=cor;
 	  		dynamicPos[{{z.id}}]=pos;
   		{% endfor %}
-		//console.log(dynamicCor);
+	
 
 	 
-	 	//console.log(dynamicPos);
   		
 		osmb.on('change', function() {
 	    	for (i=1;i<=dynamicPos.length;i++){
@@ -449,7 +445,7 @@ function flyTo(id){
 		    		dynamicPos[i]= osmb.project(dynamicCor[i].lat, dynamicCor[i].lon, 1);
 					document.getElementById('label'+ i).style.left = Math.round(dynamicPos[i].x) + 'px';
 				    document.getElementById('label'+ i).style.top = Math.round(dynamicPos[i].y) + 'px';
-			    	 console.log(document.getElementById('label'+i));
+			    	
 			  	}
 	  		}
 		});
