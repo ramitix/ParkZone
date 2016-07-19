@@ -341,6 +341,7 @@ $('.parkingData').click(function(){
         $("#dataContainer").show("slow");
         $(".parkingData").show("slow");
         osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
+        osmb.addGeoJson('./static/images/map.geojson');
     });
 
 
