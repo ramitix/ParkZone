@@ -15,12 +15,21 @@
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
  	<!-- <script src="{% static 'js/GLmap.js' %}"></script> -->
  	<script src="{% static 'js/d3.js' %}"></script>
+ 	<script src="{% static 'js/turf.min.js' %}"></script>
+ 	<script src="{% static 'js/modernizr.js' %}"></script>
+ 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" > </script>
+	<script src="{% static 'js/main.js' %}"></script>
+	
 	
 	 <div id="locationSearchContainer">
 		<input type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
-		<button id="locationSearchButton">Go </button>
-		<button id="findMe">My Location </button>
+		<button id="locationSearchButton"> 
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</button>
+		<button id="findMe" class="btn btn-default btn-lg">
+				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+		</button>
 	</div>
 
 	  <style>
@@ -36,6 +45,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      padding-top: 50px;
     }
     .parkingData {
       position: relative;
@@ -59,26 +69,27 @@
 	}
 
 	.parkingData:hover {
-			background: #28aff8;
+			background: #666;
 			color: #fff;
 		}
 
     .control {
       position: absolute;
       right: 10px;
-      z-index: 1000;
+      z-index: 999;
+
     }
 
     .control.tilt {
-      top: 5px;
+      top: 70px;
     }
 
     .control.rotation {
-      top: 40px;
+      top: 105px;
     }
 
     .control.zoom {
-      top: 75px;
+      top: 140px;
     }
 
     .control.zoom button{
@@ -91,7 +102,7 @@
       margin: 5px 0 0 0;
       border: 1px solid #999999;
       background: #ffffff;
-      opacity: 0.6;
+      opacity: 0.8;
       border-radius: 5px;
       box-shadow: 0 0 5px #666666;
       font-weight: bold;
@@ -220,18 +231,210 @@
 
 		.listClicked{
 
-		 	background: #00ff00;
+		 	background: #28aff8;
+		 	color:#fff;
 
 		 }
 		 .listClicked:hover{
 
-		 	background: #00ff00;
+		 	background: #666;
 		 
 		 }
+
+		 .overlay {
+		    position: absolute;
+		    top: 122px;
+		    right: 10px;
+		}
+
+		.overlay button {
+		    font:1.2em 'Open Sans';
+		    background-color: red;
+		    color: #fff;
+		    display: inline-block;
+		    margin: 0;
+		    padding: 7px 6px;
+		    border: none;
+		    cursor: pointer;
+		    border-radius: 3px;
+		}
+
+		.overlay button:hover {
+		    background-color:#4ea0da;
+		}
 
 		td {
     		padding: 5px;
 		}
+
+		header {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  height: 50px;
+		  width: 100%;
+		  background: #28aff8;
+		  z-index: 1000;
+		  /* Force Hardware Acceleration in WebKit */
+		  -webkit-transform: translateZ(0);
+		  -webkit-backface-visibility: hidden;
+		  -webkit-transition-property: -webkit-transform;
+		  -moz-transition-property: -moz-transform;
+		  transition-property: transform;
+		  -webkit-transition-duration: 0.4s;
+		  -moz-transition-duration: 0.4s;
+		  transition-duration: 0.4s;
+		}
+
+		header.is-fixed {
+		  position: fixed;
+		}
+
+		@media only screen and (min-width: 768px) {
+		  header {
+		    height: 70px;
+		  }
+		}
+
+
+
+		#cd-logo {
+		  display: block;
+		  float: left;
+		  margin: 8px 0 0 20px;
+		}
+		#cd-logo img {
+		  display: block;
+		}
+		@media only screen and (min-width: 768px) {
+		  #cd-logo {
+		    margin: 5px 0 0 30px;
+		  }
+		}
+
+		#cd-top-nav {
+		  position: absolute;
+		  top: 0;
+		  right: 120px;
+		  height: 100%;
+		  display: none;
+		}
+		#cd-top-nav ul {
+		  height: 100%;
+		  padding-top: 18px;
+		}
+		#cd-top-nav li {
+		  display: inline-block;
+		  margin-right: 1em;
+		}
+		#cd-top-nav a {
+		  display: inline-block;
+		  padding: .5em;
+		  color: #FFF;
+		  text-transform: uppercase;
+		  font-weight: 600;
+		}
+		#cd-top-nav a.current {
+		  background-color: #28aff8;
+		}
+		.no-touch #cd-top-nav a:hover {
+		  color: rgba(255, 255, 255, 0.7);
+		}
+		@media only screen and (min-width: 768px) {
+		  #cd-top-nav {
+		    display: block;
+		  }
+		}
+
+		#cd-menu-trigger {
+		  position: absolute;
+		  right: 0;
+		  top: 0;
+		  height: 100%;
+		  width: 50px;
+		  background-color: #0798e6;
+		}
+		#cd-menu-trigger .cd-menu-text {
+		  height: 100%;
+		  text-transform: uppercase;
+		  color: #FFF;
+		  font-weight: 600;
+		  display: none;
+		}
+		#cd-menu-trigger .cd-menu-icon {
+		  /* this span is the central line in the menu menu */
+		  display: inline-block;
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;
+		  bottom: auto;
+		  right: auto;
+		  -webkit-transform: translateX(-50%) translateY(-50%);
+		  -moz-transform: translateX(-50%) translateY(-50%);
+		  -ms-transform: translateX(-50%) translateY(-50%);
+		  -o-transform: translateX(-50%) translateY(-50%);
+		  transform: translateX(-50%) translateY(-50%);
+		  width: 18px;
+		  height: 2px;
+		  background-color: #FFF;
+		  /* these are the upper and lower lines in the menu menu */
+		}
+		#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
+		  content: '';
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  background-color: inherit;
+		  left: 0;
+		}
+		#cd-menu-trigger .cd-menu-icon::before {
+		  bottom: 5px;
+		}
+		#cd-menu-trigger .cd-menu-icon::after {
+		  top: 5px;
+		}
+		#cd-menu-trigger.is-clicked .cd-menu-icon {
+		  background-color: #0798e6;
+		}
+		#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+		  background-color: white;
+		}
+		#cd-menu-trigger.is-clicked .cd-menu-icon::before {
+		  bottom: 0;
+		  -webkit-transform: rotate(45deg);
+		  -moz-transform: rotate(45deg);
+		  -ms-transform: rotate(45deg);
+		  -o-transform: rotate(45deg);
+		  transform: rotate(45deg);
+		}
+		#cd-menu-trigger.is-clicked .cd-menu-icon::after {
+		  top: 0;
+		  -webkit-transform: rotate(-45deg);
+		  -moz-transform: rotate(-45deg);
+		  -ms-transform: rotate(-45deg);
+		  -o-transform: rotate(-45deg);
+		  transform: rotate(-45deg);
+		}
+		@media only screen and (min-width: 768px) {
+		  #cd-menu-trigger {
+		    width: 110px;
+		    padding-left: 1.25em;
+		  }
+		  #cd-menu-trigger .cd-menu-text {
+		    display: inline-block;
+		    line-height: 70px;
+		  }
+		  #cd-menu-trigger .cd-menu-icon {
+		    left: auto;
+		    right: 1.25em;
+		    -webkit-transform: translateX(0);
+		    -moz-transform: translateX(0);
+		    -ms-transform: translateX(0);
+		    -o-transform: translateX(0);
+		    transform: translateX(0);
+		  }
+		}
+
 		
   </style>
   <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
@@ -239,6 +442,20 @@
 
 </head>
 <body>
+	<header>
+		<a id="cd-logo" href="#0""><img src="/static/images/ParkZone2.png" width="20%" alt="Homepage" margin-top="0px"></a>
+		
+		<nav id="cd-top-nav">
+			<ul>
+				<li><a href="#0">HOW IT WORKS</a></li>
+				<li><a href="#0">ABout US</a></li>
+			</ul>
+		</nav>
+		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+	
+	</header>
+
+
 <div id="dataContainer"  style= "overflow :scroll; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
 	<div class="parkingData" id="parkingData{{i.id}}">
@@ -265,6 +482,9 @@
 		<div style=" position: absolute;  right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
 		</div>
 		<div class="dataExpand" style="display:none; width: 50%" >
+			<div class='overlay'>
+    			<button id='GetDirections'>Get Directions</button>
+			</div>
            <p> {{i.nearby_attractions}}</p>
 
         </div>
@@ -303,7 +523,7 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+   
     <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
 
 
@@ -340,8 +560,12 @@ $('.parkingData').click(function(){
     $("#findMe").click(function(){
         $("#dataContainer").show("slow");
         $(".parkingData").show("slow");
+<<<<<<< Updated upstream
         osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
         osmb.addGeoJson('./static/images/map.geojson');
+=======
+        osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965 + Math.floor(Math.random() * (0.09 - 0.01)) + 0.01},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
+>>>>>>> Stashed changes
     });
 
 
@@ -376,9 +600,9 @@ $("#locationSearchButton").click(function(){
     // osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
     // // osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
     // osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
-    // osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is28",scale : 20, elevation :0, rotation : 30 , color: 'blue'});
-    osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
+    osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755365},{id: "is28",scale : 20, elevation :0, rotation : 30 , color: 'blue'});
     osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
+      osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
     osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.981613,latitude: 40.763664},{id: "is31",scale :50, elevation :0, rotation : 0 });
 
 
@@ -391,12 +615,14 @@ $("#locationSearchButton").click(function(){
     }
   );
 
-  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
+  //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
 
 
-  //***************************************************************************
+ 
+			
 
 
+ //***************************************************************************
 
 function flyTo(id){
 	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
@@ -497,6 +723,7 @@ for (var i = 0; i < controlButtons.length; i++) {
       osmb['set'+ property](osmb['get'+ property]()+increment);
     }
   });
+  };
 
 //*****************************************************
 
@@ -514,7 +741,7 @@ function spin(){
     	.to(values1, animationTime)
    		.onUpdate(function() {
         // here we call the functions to update the map state
-        	osmb.setPosition({ latitude: this.latitude+Math.floor(Math.random() * 0.09)  -0.01, longitude: this.longitude });
+        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
         	osmb.setRotation(this.rotation);
         	osmb.setZoom(this.zoom);
         	osmb.setTilt(this.tilt);
@@ -528,17 +755,18 @@ function spin(){
     		TWEEN.update(time);
 		}
 
-};
+
 //*****************************************************************
  		var locationSearchButton = document.getElementById("locationSearchButton");
 		locationSearchButton.addEventListener("click", function(event) {
 			event.preventDefault();
 			changeLocation(locationSearch.value);
 			changeSearchLocation();
+			// geo();
 	
 		}); 
 			
-		var searchPositionFrom =  {x: 711.5 , y: 348.5, width: 500, height:50};
+		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
   		var searchpositionTo = {x: 370 , y: 40 ,width: 390,height:35 };
   		//var currentPosition = searchPositionFrom ;
 
@@ -561,7 +789,7 @@ function spin(){
 	
 		
 			
-				
+
 			
 
 		}
@@ -573,11 +801,13 @@ function spin(){
 			d3.json(url + location, function(error, response) {
 				if (error) return console.warn(error);
 				
+				
 				if (response && response[0] && response[0].lat && response[0].lon) {
 					var position = {
 						coords: {
 							latitude: response[0].lat,
 							longitude: response[0].lon
+
 						}
 
 					};
@@ -592,49 +822,110 @@ function spin(){
 			var positionLongitude = position.coords.longitude;
 
 						
-				//tween.stop();
-				//tweenSearchPosition.onComplete(TWEEN.Tween(tween.stop()));
-			
-		
-		    	// var R = 6371e3; // metres
-			    // var φ1 = lat1.toRadians();
-			    // var φ2 = lat2.toRadians();
-			    // var Δφ = (lat2-lat1).toRadians();
-			    // var Δλ = (lon2-lon1).toRadians();
+			//there is some error in longitude incerement got to look into it
 
-			    // var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-			    //         Math.cos(φ1) * Math.cos(φ2) *
-			    //         Math.sin(Δλ/2) * Math.sin(Δλ/2);
-			    // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-			    // var d = R * c;
-
-
-
-
-
-
-
-
-			var valuesFromPosition = {latitude: this.osmb.getPosition.latitude, longitude: this.osmb.getPosition.longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
-			var valuesToPosition = {latitude: positionLatitude, longitude:positionLongitude, rotation: 30, zoom: 15, tilt: 0};
+			var valuesFromPosition = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition.longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
+			var valuesToPosition = {latitude: positionLatitude, longitude: positionLongitude, rotation: 30, zoom: 15, tilt: 0};
 
 			
-	 		 var tweenPosition = new TWEEN.Tween(valuesFromPosition)
-    			.to(valuesToPosition, 900)
-   				.onUpdate(function() {
-        		// here we call the functions to update the map state
-        		osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
-        		osmb.setRotation(this.rotation);
-        		osmb.setZoom(this.zoom);
-        		osmb.setTilt(this.tilt);
+
+	 var tweenPosition = new TWEEN.Tween(valuesFromPosition)
+    	.to(valuesToPosition, 900)
+   		.onUpdate(function() {
+        // here we call the functions to update the map state
+       // console.log(positionLongitude);
+      //  console.log(this.longitude);
+        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
+        	osmb.setRotation(this.rotation);
+        	osmb.setZoom(this.zoom);
+        	osmb.setTilt(this.tilt);
     	});
-
 				tweenPosition.start();
+			
+	};
+		requestAnimationFrame(animate);
 
-
-				
+		function animate(time) {
+		    requestAnimationFrame(animate);
+		    TWEEN.update(time);
 		}
+
+	// ******************************************************************
+		var test= "http://router.project-osrm.org/route/v1/driving/-73.983647,40.767713;-73.987137,40.768789?geometries=geojson&steps=true";
+		
+		d3.json(test, function(error, response) {
+			if (error) return console.warn(error);
+			console.log(response);
+			var linestring1 = turf.lineString(response.routes[0].geometry.coordinates);
+					console.log(linestring1);
+					lines(linestring1);
+		});
+	
+
+		function lines(linestring){
+		var linestring2 = linestring;
+
+
+		//Set the unit measure and calculate the buffer using Turf.js ....
+		var unit = 'meters';
+		var buffered = turf.buffer(linestring2, 2, unit);
+		var result = turf.featureCollection([buffered]);
+
+		//Convert to string the buffered json ....
+		var my_json = JSON.parse(JSON.stringify(result));
+
+		//Create an empty Polygon json to put in OSM Building map ....
+		var geojson_route = {
+		type: 'FeatureCollection',
+		features: [{
+		type: 'Feature',
+		properties: {
+		color: '#00FF00',
+		roofColor: '#99ff99',
+		height: 0,
+		minHeight: 0
+		},
+		geometry: {
+		type: 'Polygon',
+		coordinates: [
+		[
+		]
+		]
+		}
+		}]
+		};
+
+		//Add the coordinates at the Polygon json bringing them from the buffered json ....
+		for (var i = 0; i < my_json.features[0].geometry.coordinates[0].length; i++) {
+		  geojson_route.features[0].geometry.coordinates[0][i] = my_json.features[0].geometry.coordinates[0][i];
+		}
+
+		//Add the Polygon json to the map ....
+		osmb.addGeoJSON(geojson_route);	
+		}	
+	//****************************************************			
+		var options = {
+		  enableHighAccuracy: true,
+		  timeout: 5000,
+		  maximumAge: 0
+		};
+
+		function success(pos) {
+		  var crd = pos.coords;
+
+		  console.log('Your current position is:');
+		  console.log('Latitude : ' + crd.latitude);
+		  console.log('Longitude: ' + crd.longitude);
+		  console.log('More or less ' + crd.accuracy + ' meters.');
+		};
+
+		function error(err) {
+		  console.warn('ERROR(' + err.code + '): ' + err.message);
+		};
+
+		navigator.geolocation.getCurrentPosition(success, error, options);
+
+
 
 </script>
 
