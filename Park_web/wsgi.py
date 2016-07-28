@@ -22,8 +22,4 @@ from whitenoise.django import DjangoWhiteNoise
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
 
-#from whitenoise.django import DjangoWhiteNoise (I comment it to run on windows)
-
-application = get_wsgi_application()
-#application = DjangoWhiteNoise(application)  (I comment it to run on windows)
 
