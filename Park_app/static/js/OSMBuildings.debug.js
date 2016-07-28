@@ -2770,7 +2770,6 @@ var APP, GL; // TODO: make them local references
  */
 
 // TODO: check minZoom, maxZoom, attribution for duplicate meaning
-// <a href="http://osmbuildings.org">© OSM Buildings</a>'
 
 var OSMBuildings = function(options) {
   APP = this; // refers to 'this'. Should make other globals obsolete.
@@ -2823,8 +2822,8 @@ var OSMBuildings = function(options) {
   }
 };
 
-OSMBuildings.VERSION = '3.0.0';
-OSMBuildings.ATTRIBUTION = '<a href="http://osmbuildings.org">© OSM Buildings</a>';
+OSMBuildings.VERSION = '3.1.0';
+OSMBuildings.ATTRIBUTION = '<a href="https://osmbuildings.org/">© OSM Buildings</a>';
 
 OSMBuildings.prototype = {
 
@@ -3012,7 +3011,6 @@ OSMBuildings.prototype = {
    * @param {String} [options.id] - An identifier for the object. This is used for getting info about the object later
    * @param {String} [options.color] - A color to apply to the model
    * @param {Boolean} [options.fadeIn=true] - Fade the geojson features into view; if `false`, then display immediately.
-   * @param {OSMBuildings~modifierFunction} [options.modifier] - A function that will get called on each feature, for modification before rendering
    */
   addGeoJSON: function(url, options) {
     return new mesh.GeoJSON(url, options);
@@ -3026,7 +3024,7 @@ OSMBuildings.prototype = {
    * @param {Integer} [options.fixedZoom=15]
    * @param {Object} [options.bounds] - Currently not used
    * @param {String} [options.color] - A color to apply to all features on this layer
-   * @param {OSMBuildings~modifierFunction} [options.modifier] - A function that will get called on each feature, for modification before rendering
+   * @param {OSMBuildings~modifierFunction} [options.modifier] - DISCONTINUED. Use 'loadfeature' event instead.
    * @param {Integer} [options.minZoom=14.5] - The minimum zoom level to show features from this layer
    * @param {Integer} [options.maxZoom] - The maxiumum zoom level to show features from this layer
    * @param {Boolean} [options.fadeIn=true] - Fade the geojson features into view; if `false`, then display immediately.
@@ -3045,7 +3043,7 @@ OSMBuildings.prototype = {
    * @param {Integer} [options.fixedZoom]
    * @param {Object} [options.bounds] - Currently not used
    * @param {String} [options.color] - A color to apply to all features on this layer
-   * @param {OSMBuildings~modifierFunction} [options.modifier] - A function that will get called on each feature, for modification before rendering
+   * @param {OSMBuildings~modifierFunction} [options.modifier] - DISCONTINUED. Use 'loadfeature' event instead.
    * @param {Integer} [options.minZoom] - The minimum zoom level to show features from this layer
    * @param {Integer} [options.maxZoom] - The maxiumum zoom level to show features from this layer
    */
@@ -3882,21 +3880,13 @@ var Request = {};
 
 (function() {
 
-  var queue = {};
-
   function load(url, callback) {
-    if (queue[url]) {
-      return queue[url];
-    }
-
     var req = new XMLHttpRequest();
 
     req.onreadystatechange = function() {
       if (req.readyState !== 4) {
         return;
       }
-
-      delete queue[url];
 
       if (!req.status || req.status<200 || req.status>299) {
         return;
@@ -3905,16 +3895,12 @@ var Request = {};
       callback(req);
     };
 
-    queue[url] = req;
     req.open('GET', url);
     req.send(null);
 
     return {
       abort: function() {
-        if (queue[url]) {
-          req.abort();
-          delete queue[url];
-        }
+        req.abort();
       }
     };
   }
@@ -3951,16 +3937,7 @@ var Request = {};
     });
   };
 
-  Request.abortAll = function() {
-    for (var url in queue) {
-      queue[url].abort();
-    }
-    queue = {};
-  };
-
-  Request.destroy = function() {
-    this.abortAll();
-  };
+  Request.destroy = function() {};
 
 }());
 
@@ -4020,7 +3997,7 @@ var Grid = function(source, tileClass, options) {
   this.bounds = options.bounds;
   this.fixedZoom = options.fixedZoom;
 
-  this.tileOptions = { color:options.color, modifier:options.modifier };
+  this.tileOptions = { color:options.color };
 
   this.minZoom = parseFloat(options.minZoom) || APP.minZoom;
   this.maxZoom = parseFloat(options.maxZoom) || APP.maxZoom;
@@ -4458,7 +4435,6 @@ mesh.GeoJSON = (function() {
     this.forcedId = options.id;
     // no Color.toArray() needed as Triangulation does it internally
     this.forcedColor = options.color;
-    this.modifier = options.modifier;
 
     this.replace      = !!options.replace;
     this.scale        = options.scale     || 1;
@@ -4502,7 +4478,7 @@ mesh.GeoJSON = (function() {
 
       var
         resPickingColors = [],
-        position = Triangulate.getPosition(collection.features[0].geometry),
+        position = this.getOrigin(collection.features[0].geometry),
         feature, id, properties,
         vertexCountBefore, vertexCount, pickingColor,
         startIndex = 0,
@@ -4514,13 +4490,15 @@ mesh.GeoJSON = (function() {
       var process = function() {
         for (var i = startIndex; i < endIndex; i++) {
           feature = collection.features[i];
+
+          /**
+           * Fired when a 3d object has been loaded
+           * @event OSMBuildings#loadfeature
+           */
+          APP.emit('loadfeature', feature);
+          
           properties = feature.properties;
           id = this.forcedId || properties.relationId || feature.id || properties.id;
-
-          //let user-defined hook modify the entity properties
-          if (this.modifier) {
-            this.modifier(id, properties);
-          }
 
           vertexCountBefore = res.vertices.length;
 
@@ -4534,12 +4512,6 @@ mesh.GeoJSON = (function() {
           }
 
           this.items.push({ id:id, vertexCount:vertexCount, data:properties.data });
-
-          /**
-           * Fired when a 3d object has been loaded
-           * @event OSMBuildings#loadfeature
-           */
-          APP.emit('loadfeature', feature);
         }
 
         if (endIndex === numFeatures) {
@@ -4620,6 +4592,25 @@ mesh.GeoJSON = (function() {
       matrix.translate( dLon*metersPerDegreeLongitude, -dLat*METERS_PER_DEGREE_LATITUDE, 0);
 
       return matrix;
+    },
+
+    getOrigin: function(geometry) {
+      var coordinates = geometry.coordinates;
+      switch (geometry.type) {
+        case 'Point':
+          return coordinates;
+
+        case 'MultiPoint':
+        case 'LineString':
+          return coordinates[0];
+
+        case 'MultiLineString':
+        case 'Polygon':
+          return coordinates[0][0];
+
+        case 'MultiPolygon':
+          return coordinates[0][0][0];
+      }
     },
 
     destroy: function() {
@@ -5059,6 +5050,12 @@ mesh.OBJ = (function() {
       for (var i = 0, il = items.length; i < il; i++) {
         feature = items[i];
 
+        /**
+         * Fired when a 3d object has been loaded
+         * @event OSMBuildings#loadfeature
+         */
+        APP.emit('loadfeature', feature);
+
         [].push.apply(this.data.vertices,  feature.vertices);
         [].push.apply(this.data.normals,   feature.normals);
         [].push.apply(this.data.texCoords, feature.texCoords);
@@ -5074,8 +5071,6 @@ mesh.OBJ = (function() {
         }
 
         this.items.push({ id:id, vertexCount:feature.vertices.length/3, data:feature.data });
-
-        APP.emit('loadfeature', feature);
       }
     },
 

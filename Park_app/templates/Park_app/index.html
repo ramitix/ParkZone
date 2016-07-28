@@ -10,10 +10,8 @@
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
  	<link rel="stylesheet" href="{% static 'css/OSMBuildings.css' %}">
  	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
- 	<!-- <link rel="stylesheet" href="{% static 'css/GLmap.css' %}"> -->
  	<script src="{% static 'js/tween.js' %}"></script>
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
- 	<!-- <script src="{% static 'js/GLmap.js' %}"></script> -->
  	<script src="{% static 'js/d3.js' %}"></script>
  	<script src="{% static 'js/turf.min.js' %}"></script>
  	<script src="{% static 'js/modernizr.js' %}"></script>
@@ -51,7 +49,7 @@
       position: relative;
       width: 450px;
       left: 20px;
-      top: 70px;
+      top: 120px;
       z-index: 1000;
 	  background: #fff;
 	  border: solid #fff;
@@ -75,13 +73,16 @@
 
     .control {
       position: absolute;
-      right: 10px;
+      right: 0px;
       z-index: 999;
 
     }
 
     .control.tilt {
       top: 70px;
+    }
+    .control.tilt  button.dec {
+      border-radius: 5px 0 0 0;
     }
 
     .control.rotation {
@@ -90,23 +91,30 @@
 
     .control.zoom {
       top: 140px;
+      border-radius: 8px;
+    }
+    .control.zoom  button.dec {
+      border-radius: 0 0 0 5px;
     }
 
     .control.zoom button{
       font-weight: normal;
+     
     }
 
+
     .control button {
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       margin: 5px 0 0 0;
-      border: 1px solid #999999;
-      background: #ffffff;
-      opacity: 0.8;
-      border-radius: 5px;
-      box-shadow: 0 0 5px #666666;
+      border: none;
+      background: #666;
+      color: #fff;
+      opacity: 0.9;
       font-weight: bold;
       text-align: center;
+      float:left;
+      font-size: 1.2em;
     }
 
     .control button:hover {
@@ -114,326 +122,343 @@
       cursor: pointer;
     }
 
-		#locationSearchContainer {
-			top: 50%; 
-			left: 50%;
-			position: absolute;
-			z-index: 100;
-			opacity:0.95;
-			margin: -25px 0 0 -350px;
-			font-family: 'Open Sans';
-			
+	#locationSearchContainer {
+		top: 50%; 
+		left: 50%;
+		position: absolute;
+		z-index: 1001;
+		opacity:0.95;
+		margin: -25px 0 0 -350px;
+		font-family: 'Open Sans';
+		
+	}
+
+	input#locationSearch {
+		background: #fff;
+		border: solid #ccc;
+		border-width: 1px 0 1px 1px;
+		border-radius: 3px 0 0 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #222;
+		font-size: 1.4em;
+		float: left;
+		height: 50px;
+		margin: 0 0 0 0px;
+		padding: 0 15px;
+		width: 500px;
+		box-shadow: 0 0 20px #666666;
+		font-family: 'Open Sans';
+		
+	}
+
+	input#locationSearch:focus {
+		outline: 0;
+	}
+
+	button:hover {
+		cursor: pointer;
+	}
+
+		button:focus {
+			outline: 0;
 		}
 
-		input#locationSearch {
-			background: #fff;
-			border: solid #ccc;
-			border-width: 1px 0 1px 1px;
-			border-radius: 3px 0 0 3px;
-			box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-			color: #222;
-			font-size: 1.4em;
-			float: left;
-			height: 50px;
-			margin: 0 0 0 0px;
-			padding: 0 15px;
-			width: 500px;
-			box-shadow: 0 0 20px #666666;
-			font-family: 'Open Sans';
-			
-		}
+	button#locationSearchButton, button#findMe{
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		float: left;
+		font-size: 1.3em;
+		height: 50px;
+		line-height: 35px;
+		margin: 0px 0 0 0;
+		padding: 0 20px;
+		font-family: 'Open Sans';
+	}
 
-			input#locationSearch:focus {
-				outline: 0;
-			}
+	button#locationSearchButton {
+		border-radius: 0 3px 3px 0;
+		box-shadow: 0 0 20px #666666;
+	}
 
-		button:hover {
-			cursor: pointer;
-		}
+	button#locationSearchButton:hover {
+		background: #28aff8;
+	}
 
-			button:focus {
-				outline: 0;
-			}
+	button#findMe {
+		background: #666;
+		margin-left: 10px;
+		box-shadow: 0 0 20px #666666;
+	}
 
-		button#locationSearchButton, button#findMe{
-			background: #249ad9;
-			border: none;
-			border-radius: 3px;
-			box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-			color: #fff;
-			float: left;
-			font-size: 1.2em;
-			height: 50px;
-			line-height: 35px;
-			margin: 0px 0 0 0;
-			padding: 0 20px;
-			font-family: 'Open Sans';
-		}
-
-		button#locationSearchButton {
-			border-radius: 0 3px 3px 0;
-			box-shadow: 0 0 20px #666666;
-		}
-
-			button#locationSearchButton:hover {
-				background: #28aff8;
-			}
-
-		button#findMe {
-			background: #666;
-			margin-left: 10px;
-			box-shadow: 0 0 20px #666666;
-		}
-
-			button#findMe:hover {
-				background: #888;
-			}
+	button#findMe:hover {
+		background: #888;
+	}
 
 
-		#ParkZone-logo-container {
-			position: absolute;
-			bottom: 25px;
-			right: 0px;
-			z-index: 9998;
-		}
+	#ParkZone-logo-container {
+		position: absolute;
+		bottom: 25px;
+		right: 0px;
+		z-index: 9998;
+	}
 
-			#ParkZone-logo-container a {
-				background: url("static/images/ParkZone_logo_white.png");
-				background-size: 90%;
-				background-repeat:no-repeat;
-				display: block;
-				height: 90px;
-				overflow: hidden;
-				text-indent: -9999em;
-				width: 240px;
-				opacity:0.6;
-			}
-		.labels {
-			width:40px;
-			height:30px;
-			position:absolute;
-			z-index:9;
-			background: #249ad9;
-			border: none;
-			border-radius: 3px;
-			box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-			color: #fff;
-			font-size: 1.2em;
-			line-height: 30px;
-			padding-left: 3px;
-			font-family: 'Open Sans';
-			cursor:pointer;
+	#ParkZone-logo-container a {
+		background: url("static/images/ParkZone_logo_white.png");
+		background-size: 90%;
+		background-repeat:no-repeat;
+		display: block;
+		height: 90px;
+		overflow: hidden;
+		text-indent: -9999em;
+		width: 240px;
+		opacity:0.6;
+	}
+	.labels {
+		width:40px;
+		height:30px;
+		position:absolute;
+		z-index:9;
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		font-size: 1.2em;
+		line-height: 30px;
+		padding-left: 3px;
+		font-family: 'Open Sans';
+		cursor:pointer;
 
-		}
-		.clicked {
- 			 background: green;
-		  }
+	}
+	.labelsTip {
+		width:20px;
+		height:20px;
+		position:absolute;
+		z-index:9;
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		font-size: 1.2em;
+		line-height: 30px;
+		padding-left: 3px;
+		font-family: 'Open Sans';
+		cursor:pointer;
 
-		.listClicked{
+	}
+	.clicked {
+			 background: green;
+	  }
 
-		 	background: #28aff8;
-		 	color:#fff;
+	.listClicked{
 
-		 }
-		 .listClicked:hover{
+	 	background: #28aff8;
+	 	color:#fff;
 
-		 	background: #666;
-		 
-		 }
+	 }
+	 .listClicked:hover{
 
-		 .overlay {
-		    position: absolute;
-		    top: 122px;
-		    right: 10px;
-		}
+	 	background: #666;
+	 
+	 }
 
-		.overlay button {
-		    font:1.2em 'Open Sans';
-		    background-color: red;
-		    color: #fff;
-		    display: inline-block;
-		    margin: 0;
-		    padding: 7px 6px;
-		    border: none;
-		    cursor: pointer;
-		    border-radius: 3px;
-		}
+	 .overlay {
+	    position: absolute;
+	    top: 122px;
+	    right: 10px;
+	}
 
-		.overlay button:hover {
-		    background-color:#4ea0da;
-		}
+	.overlay button {
+	    font:1.2em 'Open Sans';
+	    background-color: red;
+	    color: #fff;
+	    display: inline-block;
+	    margin: 0;
+	    padding: 7px 6px;
+	    border: none;
+	    cursor: pointer;
+	    border-radius: 3px;
+	}
 
-		td {
-    		padding: 5px;
-		}
+	.overlay button:hover {
+	    background-color:#4ea0da;
+	}
 
-		header {
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  height: 50px;
-		  width: 100%;
-		  background: #28aff8;
-		  z-index: 1000;
-		  /* Force Hardware Acceleration in WebKit */
-		  -webkit-transform: translateZ(0);
-		  -webkit-backface-visibility: hidden;
-		  -webkit-transition-property: -webkit-transform;
-		  -moz-transition-property: -moz-transform;
-		  transition-property: transform;
-		  -webkit-transition-duration: 0.4s;
-		  -moz-transition-duration: 0.4s;
-		  transition-duration: 0.4s;
-		}
+	td {
+		padding: 5px;
+	}
 
-		header.is-fixed {
-		  position: fixed;
-		}
+	header {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 50px;
+	  width: 100%;
+	  background: #28aff8;
+	  z-index: 1000;
+	  /* Force Hardware Acceleration in WebKit */
+	  -webkit-transform: translateZ(0);
+	  -webkit-backface-visibility: hidden;
+	  -webkit-transition-property: -webkit-transform;
+	  -moz-transition-property: -moz-transform;
+	  transition-property: transform;
+	  -webkit-transition-duration: 0.4s;
+	  -moz-transition-duration: 0.4s;
+	  transition-duration: 0.4s;
+	}
 
-		@media only screen and (min-width: 768px) {
-		  header {
-		    height: 70px;
-		  }
-		}
+	header.is-fixed {
+	  position: fixed;
+	}
+
+	@media only screen and (min-width: 768px) {
+	  header {
+	    height: 70px;
+	  }
+	}
 
 
 
-		#cd-logo {
-		  display: block;
-		  float: left;
-		  margin: 8px 0 0 20px;
-		}
-		#cd-logo img {
-		  display: block;
-		}
-		@media only screen and (min-width: 768px) {
-		  #cd-logo {
-		    margin: 5px 0 0 30px;
-		  }
-		}
+	#cd-logo {
+	  display: block;
+	  float: left;
+	  margin: 8px 0 0 20px;
+	}
+	#cd-logo img {
+	  display: block;
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-logo {
+	    margin: 5px 0 0 30px;
+	  }
+	}
 
-		#cd-top-nav {
-		  position: absolute;
-		  top: 0;
-		  right: 120px;
-		  height: 100%;
-		  display: none;
-		}
-		#cd-top-nav ul {
-		  height: 100%;
-		  padding-top: 18px;
-		}
-		#cd-top-nav li {
-		  display: inline-block;
-		  margin-right: 1em;
-		}
-		#cd-top-nav a {
-		  display: inline-block;
-		  padding: .5em;
-		  color: #FFF;
-		  text-transform: uppercase;
-		  font-weight: 600;
-		}
-		#cd-top-nav a.current {
-		  background-color: #28aff8;
-		}
-		.no-touch #cd-top-nav a:hover {
-		  color: rgba(255, 255, 255, 0.7);
-		}
-		@media only screen and (min-width: 768px) {
-		  #cd-top-nav {
-		    display: block;
-		  }
-		}
+	#cd-top-nav {
+	  position: absolute;
+	  top: 0;
+	  right: 120px;
+	  height: 100%;
+	  display: none;
+	}
+	#cd-top-nav ul {
+	  height: 100%;
+	  padding-top: 18px;
+	}
+	#cd-top-nav li {
+	  display: inline-block;
+	  margin-right: 1em;
+	}
+	#cd-top-nav a {
+	  display: inline-block;
+	  padding: .5em;
+	  color: #FFF;
+	  text-transform: uppercase;
+	  font-weight: 600;
+	}
+	#cd-top-nav a.current {
+	  background-color: #28aff8;
+	}
+	.no-touch #cd-top-nav a:hover {
+	  color: rgba(255, 255, 255, 0.7);
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-top-nav {
+	    display: block;
+	  }
+	}
 
-		#cd-menu-trigger {
-		  position: absolute;
-		  right: 0;
-		  top: 0;
-		  height: 100%;
-		  width: 50px;
-		  background-color: #0798e6;
-		}
-		#cd-menu-trigger .cd-menu-text {
-		  height: 100%;
-		  text-transform: uppercase;
-		  color: #FFF;
-		  font-weight: 600;
-		  display: none;
-		}
-		#cd-menu-trigger .cd-menu-icon {
-		  /* this span is the central line in the menu menu */
-		  display: inline-block;
-		  position: absolute;
-		  left: 50%;
-		  top: 50%;
-		  bottom: auto;
-		  right: auto;
-		  -webkit-transform: translateX(-50%) translateY(-50%);
-		  -moz-transform: translateX(-50%) translateY(-50%);
-		  -ms-transform: translateX(-50%) translateY(-50%);
-		  -o-transform: translateX(-50%) translateY(-50%);
-		  transform: translateX(-50%) translateY(-50%);
-		  width: 18px;
-		  height: 2px;
-		  background-color: #FFF;
-		  /* these are the upper and lower lines in the menu menu */
-		}
-		#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
-		  content: '';
-		  width: 100%;
-		  height: 100%;
-		  position: absolute;
-		  background-color: inherit;
-		  left: 0;
-		}
-		#cd-menu-trigger .cd-menu-icon::before {
-		  bottom: 5px;
-		}
-		#cd-menu-trigger .cd-menu-icon::after {
-		  top: 5px;
-		}
-		#cd-menu-trigger.is-clicked .cd-menu-icon {
-		  background-color: #0798e6;
-		}
-		#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
-		  background-color: white;
-		}
-		#cd-menu-trigger.is-clicked .cd-menu-icon::before {
-		  bottom: 0;
-		  -webkit-transform: rotate(45deg);
-		  -moz-transform: rotate(45deg);
-		  -ms-transform: rotate(45deg);
-		  -o-transform: rotate(45deg);
-		  transform: rotate(45deg);
-		}
-		#cd-menu-trigger.is-clicked .cd-menu-icon::after {
-		  top: 0;
-		  -webkit-transform: rotate(-45deg);
-		  -moz-transform: rotate(-45deg);
-		  -ms-transform: rotate(-45deg);
-		  -o-transform: rotate(-45deg);
-		  transform: rotate(-45deg);
-		}
-		@media only screen and (min-width: 768px) {
-		  #cd-menu-trigger {
-		    width: 110px;
-		    padding-left: 1.25em;
-		  }
-		  #cd-menu-trigger .cd-menu-text {
-		    display: inline-block;
-		    line-height: 70px;
-		  }
-		  #cd-menu-trigger .cd-menu-icon {
-		    left: auto;
-		    right: 1.25em;
-		    -webkit-transform: translateX(0);
-		    -moz-transform: translateX(0);
-		    -ms-transform: translateX(0);
-		    -o-transform: translateX(0);
-		    transform: translateX(0);
-		  }
-		}
+	#cd-menu-trigger {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  height: 100%;
+	  width: 50px;
+	  background-color: #0798e6;
+	}
+	#cd-menu-trigger .cd-menu-text {
+	  height: 100%;
+	  text-transform: uppercase;
+	  color: #FFF;
+	  font-weight: 600;
+	  display: none;
+	}
+	#cd-menu-trigger .cd-menu-icon {
+	  /* this span is the central line in the menu menu */
+	  display: inline-block;
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  bottom: auto;
+	  right: auto;
+	  -webkit-transform: translateX(-50%) translateY(-50%);
+	  -moz-transform: translateX(-50%) translateY(-50%);
+	  -ms-transform: translateX(-50%) translateY(-50%);
+	  -o-transform: translateX(-50%) translateY(-50%);
+	  transform: translateX(-50%) translateY(-50%);
+	  width: 18px;
+	  height: 2px;
+	  background-color: #FFF;
+	  /* these are the upper and lower lines in the menu menu */
+	}
+	#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
+	  content: '';
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  background-color: inherit;
+	  left: 0;
+	}
+	#cd-menu-trigger .cd-menu-icon::before {
+	  bottom: 5px;
+	}
+	#cd-menu-trigger .cd-menu-icon::after {
+	  top: 5px;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon {
+	  background-color: #0798e6;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+	  background-color: white;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::before {
+	  bottom: 0;
+	  -webkit-transform: rotate(45deg);
+	  -moz-transform: rotate(45deg);
+	  -ms-transform: rotate(45deg);
+	  -o-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::after {
+	  top: 0;
+	  -webkit-transform: rotate(-45deg);
+	  -moz-transform: rotate(-45deg);
+	  -ms-transform: rotate(-45deg);
+	  -o-transform: rotate(-45deg);
+	  transform: rotate(-45deg);
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-menu-trigger {
+	    width: 110px;
+	    padding-left: 1.25em;
+	  }
+	  #cd-menu-trigger .cd-menu-text {
+	    display: inline-block;
+	    line-height: 70px;
+	  }
+	  #cd-menu-trigger .cd-menu-icon {
+	    left: auto;
+	    right: 1.25em;
+	    -webkit-transform: translateX(0);
+	    -moz-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	    -o-transform: translateX(0);
+	    transform: translateX(0);
+	  }
+	}
 
 		
   </style>
@@ -558,14 +583,11 @@ $('.parkingData').click(function(){
 	});
 
     $("#findMe").click(function(){
-        $("#dataContainer").show("slow");
-        $(".parkingData").show("slow");
-<<<<<<< Updated upstream
-        osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
-        osmb.addGeoJson('./static/images/map.geojson');
-=======
-        osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965 + Math.floor(Math.random() * (0.09 - 0.01)) + 0.01},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
->>>>>>> Stashed changes
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+
+       
+
     });
 
 
@@ -588,7 +610,10 @@ $("#locationSearchButton").click(function(){
   var osmb = new OSMBuildings({
     baseURL: './static/images/',
     position: { latitude:40.763664, longitude:-73.981613 },
-    minZoom: 15,
+    zoom:15,
+    tilt:35,
+    rotation:30,
+    minZoom: 14,
     maxZoom: 22,
     state: true,
     highlightColor:'blue',
@@ -596,14 +621,11 @@ $("#locationSearchButton").click(function(){
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).appendTo(map);
 
-    // osmb.addOBJ('./static/images/sign/digital_x_free_no_parking_sign.obj', {longitude: -73.981613,latitude: 40.763664},{id: "i22",scale : 1, elevation :-10, rotation : 20 , color: 'red'});
-    // osmb.addOBJ('./static/images/Sign1.obj', {longitude: -73.983513,latitude: 40.763865},{id: "is24",scale : 50, elevation :0, rotation : 120});
-    // // osmb.addOBJ('./static/images/parkzone.obj', {longitude: -73.983913,latitude: 40.764965},{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'red'});
-    // osmb.addOBJ('./static/images/post.obj', {longitude: -73.985813,latitude: 40.761965},{id: "is27",scale : 1, elevation :0, rotation : 60});
     osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755365},{id: "is28",scale : 20, elevation :0, rotation : 30 , color: 'blue'});
     osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
       osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
     osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.981613,latitude: 40.763664},{id: "is31",scale :50, elevation :0, rotation : 0 });
+     osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965 },{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'yellow'});
 
 
     
@@ -615,11 +637,18 @@ $("#locationSearchButton").click(function(){
     }
   );
 
+  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
   //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
 
-
  
-			
+function plotMarker(){
+	{% for z in parkZones %}
+  		var cor = {lat:{{z.latitude}},lon:{{z.longitude}}};
+  		
+  		osmb.addOBJ('./static/images/parkzone1.obj', {longitude: cor.lan,latitude: cor.lat },{id: "is{{z.id}}" ,scale : 20, elevation :0, rotation : 0 , color: 'red'});
+	{% endfor %}
+
+}			
 
 
  //***************************************************************************
@@ -637,6 +666,32 @@ function flyTo(id){
         	osmb.setTilt(this.tilt);
     	});
 				tweenFly.start();
+				//tween.repeat(Infinity);
+	};
+		animate();
+		function animate(time) {
+    		requestAnimationFrame(animate);
+    		TWEEN.update(time);
+		}
+
+
+
+
+  //***************************************************************************
+
+function flyToYourLocation(lat,lon){
+	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
+	 var valuesFlyTo   = {latitude: lat, longitude: lon, rotation: 30, zoom: 16, tilt: 35};
+	 var tweenFlyToYourLocation = new TWEEN.Tween(valuesFlyFrom)
+    	.to(valuesFlyTo, 3000)
+   		.onUpdate(function() {
+        // here we call the functions to update the map state
+        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
+        	osmb.setRotation(this.rotation);
+        	osmb.setZoom(this.zoom);
+        	osmb.setTilt(this.tilt);
+    	});
+				tweenFlyToYourLocation.start();
 				//tween.repeat(Infinity);
 	};
 		animate();
@@ -672,8 +727,8 @@ function flyTo(id){
 		    		dynamicPos[i]= osmb.project(dynamicCor[i].lat, dynamicCor[i].lon, 1);
 					document.getElementById('label'+ i).style.left = Math.round(dynamicPos[i].x) + 'px';
 				    document.getElementById('label'+ i).style.top = Math.round(dynamicPos[i].y) + 'px';
-			    	
 			  	}
+
 	  		}
 		});
 			
@@ -685,7 +740,6 @@ function flyTo(id){
     var id = osmb.getTarget(e.detail.x, e.detail.y, function(id) {
       if (id) {
         document.body.style.cursor = 'pointer';
-        //osmb.highlight(id, 'blue');
          osmb.highlight(id, 'blue');
    
       } else {
@@ -762,12 +816,17 @@ function spin(){
 			event.preventDefault();
 			changeLocation(locationSearch.value);
 			changeSearchLocation();
-			// geo();
+			$("#dataContainer").show("slow");
+        	$(".parkingData").show("slow");
+        	$(".parkingData").show("slow");
+        	plotMarker();
+        	osmb.setStyle( { color: 'rgb(220, 210, 200)' } );
+			
 	
 		}); 
 			
 		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
-  		var searchpositionTo = {x: 370 , y: 40 ,width: 390,height:35 };
+  		var searchpositionTo = {x: 370.5 , y: 100 ,width: 350,height:35 };
   		//var currentPosition = searchPositionFrom ;
 
 		function changeSearchLocation(){
@@ -851,7 +910,7 @@ function spin(){
 		}
 
 	// ******************************************************************
-		var test= "http://router.project-osrm.org/route/v1/driving/-73.983647,40.767713;-73.987137,40.768789?geometries=geojson&steps=true";
+		var test= "http://router.project-osrm.org/route/v1/driving/-73.963737,40.808213;-73.950906,40.820588?geometries=geojson&steps=true";
 		
 		d3.json(test, function(error, response) {
 			if (error) return console.warn(error);
@@ -917,13 +976,15 @@ function spin(){
 		  console.log('Latitude : ' + crd.latitude);
 		  console.log('Longitude: ' + crd.longitude);
 		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
+		  flyToYourLocation(crd.latitude,crd.longitude);
 		};
 
 		function error(err) {
 		  console.warn('ERROR(' + err.code + '): ' + err.message);
 		};
 
-		navigator.geolocation.getCurrentPosition(success, error, options);
+		// navigator.geolocation.getCurrentPosition(success, error, options);
 
 
 
