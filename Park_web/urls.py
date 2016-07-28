@@ -22,4 +22,4 @@ from Park_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('Park_app.urls')),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
