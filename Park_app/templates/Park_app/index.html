@@ -36,6 +36,7 @@
       padding: 0;
       width: 100%;
       height: 100%;
+      overflow: hidden;
     }
 
     #map {
@@ -586,7 +587,6 @@ $('.parkingData').click(function(){
 
         navigator.geolocation.getCurrentPosition(success, error, options);
 
-       
 
     });
 
@@ -616,16 +616,16 @@ $("#locationSearchButton").click(function(){
     minZoom: 14,
     maxZoom: 22,
     state: true,
+
     highlightColor:'blue',
     //effects: ['shadows'],
     attribution: '© ParkZone <a href="http://www.ParkZone.us">ParkZone</a>'
   }).appendTo(map);
 
-    osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755365},{id: "is28",scale : 20, elevation :0, rotation : 30 , color: 'blue'});
+   
     osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
-      osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.980013,latitude: 40.755965},{id: "is29",scale : 20, elevation :0, rotation : 0 , color: 'green'});
-    osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.981613,latitude: 40.763664},{id: "is31",scale :50, elevation :0, rotation : 0 });
-     osmb.addOBJ('./static/images/parkzone1.obj', {longitude: -73.983913,latitude: 40.764965 },{id: "is26",scale : 20, elevation :0, rotation : 0 , color: 'yellow'});
+
+    
 
 
     
@@ -637,16 +637,20 @@ $("#locationSearchButton").click(function(){
     }
   );
 
-  osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+  building = osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+  osmb.addLayer(building);
   //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
-
- 
+  //osmb.remove(buildings);
+ //***************************************************************************
+ var markers = [];
 function plotMarker(){
+	
 	{% for z in parkZones %}
-  		var cor = {lat:{{z.latitude}},lon:{{z.longitude}}};
   		
-  		osmb.addOBJ('./static/images/parkzone1.obj', {longitude: cor.lan,latitude: cor.lat },{id: "is{{z.id}}" ,scale : 20, elevation :0, rotation : 0 , color: 'red'});
+  	obj = osmb.addOBJ('./static/images/parkzone1.obj', {longitude:{{z.longitude}},latitude: {{z.latitude}} },{id: "marker{{z.id}}" ,scale : 5, elevation :0, rotation : 0 , color: 'red'});
+  	markers.push(obj);
 	{% endfor %}
+	osmb.addLayer(markers);
 
 }			
 
@@ -820,7 +824,7 @@ function spin(){
         	$(".parkingData").show("slow");
         	$(".parkingData").show("slow");
         	plotMarker();
-        	osmb.setStyle( { color: 'rgb(220, 210, 200)' } );
+        	osmb.removeLayer(geoJsonTiles);
 			
 	
 		}); 
@@ -910,7 +914,7 @@ function spin(){
 		}
 
 	// ******************************************************************
-		var test= "http://router.project-osrm.org/route/v1/driving/-73.963737,40.808213;-73.950906,40.820588?geometries=geojson&steps=true";
+		var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from=40.808213,-73.963737&to=40.763664,-73.981613";
 		
 		d3.json(test, function(error, response) {
 			if (error) return console.warn(error);
