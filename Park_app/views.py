@@ -12,5 +12,6 @@ import urllib2
 
 def index(request):
 	parkZones = ParkInfo.objects.all()
+	parkSigns = ParkSigns.objects.all()
 
-	return render(request, 'Park_app/index.html', {'parkZones' : parkZones})
+	return render(request, 'Park_app/index.html', {'parkZones' : parkZones ,'parkSigns' : parkSigns})

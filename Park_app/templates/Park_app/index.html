@@ -123,6 +123,29 @@
       cursor: pointer;
     }
 
+
+
+
+    .toggleArea button {
+      width: 150px;
+      height: 35px;
+      margin: 5px 0 0 0;
+      border: none;
+      background: #666;
+      opacity: 0.9;
+      text-align: center;
+      float:left;
+      font-size: 1.0em;
+      position: absolute;
+      right: -150px;
+      z-index: 999;
+      
+    }
+    .toggleArea button:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
 	#locationSearchContainer {
 		top: 50%; 
 		left: 50%;
@@ -352,13 +375,25 @@
 	#cd-top-nav li {
 	  display: inline-block;
 	  margin-right: 1em;
+	  -moz-transition: 1s linear;
+      -ms-transition: 1s linear;
+      -o-transition: 1s linear;
+      -webkit-transition: 1s linear;
+      transition: 1s linear;
+      text-decoration: none; 
 	}
 	#cd-top-nav a {
 	  display: inline-block;
+	  text-decoration: none; 
 	  padding: .5em;
 	  color: #FFF;
 	  text-transform: uppercase;
 	  font-weight: 600;
+	  -moz-transition: 1s linear;
+      -ms-transition: 1s linear;
+      -o-transition: 1s linear;
+      -webkit-transition: 1s linear;
+      transition: 1s linear;
 	}
 	#cd-top-nav a.current {
 	  background-color: #28aff8;
@@ -460,10 +495,82 @@
 	    transform: translateX(0);
 	  }
 	}
+	.signLabel 
+	{
+	position: absolute;
+	width: 175px;
+	height: 95px;
+	padding: 5px;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	top:200px;
+	z-index: 999;
+	font-size: 0.8em;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid #666;
+	-webkit-box-shadow: 2px 2px 2px #888;
+	-moz-box-shadow: 2px 2px 2px #888;
+	box-shadow: 2px 2px 2px #888;
+	text-overflow: 
 
-		
+  	
+	}
+
+	.signLabel:before 
+	{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	z-index: 999;
+	bottom: -20px;
+	left: 22px;
+  	border: 10px solid;
+  	border-color: #666 transparent transparent #666;
+	}
+	.signLabel:after 
+	{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	z-index: 999;
+	bottom: -14px;
+	left: 24px;
+	border: 10px solid #666;
+	border-color: #fff transparent transparent #fff;
+	}
+	.display{
+		display: table;
+	}
+  .garagesEMPic{
+  	background-image: url(static/images/garage-icon3.png);
+  }
+
+  .streetEMPic{  
+  	background-image: url(static/images/street-icon3.png);
+  }
+
+  .BuildingsEMPic{  
+  	background-image: url(static/images/building-icon3.png);
+  }
+
+  .streetSignsEMPic{ 
+  	background-image: url(static/images/street-parking-icon3.png);
+  }
+ .layersClicked{
+ 	color: #575757;
+ }
+
+
+
   </style>
   <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
+	}
 
 
 </head>
@@ -482,13 +589,17 @@
 	</header>
 
 
+<div class=signLabel id=signLabel>
+	<div class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="position:absolute; "></div>
+</div>
+
 <div id="dataContainer"  style= "overflow :scroll; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
 	<div class="parkingData" id="parkingData{{i.id}}">
 		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
 		<hr width="70%" align="left"  style="margin-bottom:1em ;margin-top:0.7em " >
-		<p><b>Address:</b>&nbsp;&nbsp;{{i.address}} </p>
-		<p><b>Phone: </b>&nbsp;&nbsp;{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
+		<p><b style= "font-size: 1.1em;">Address:</b>&nbsp;&nbsp;{{i.address}} </p>
+		<p><b style= "font-size: 1.1em;">Phone: </b>&nbsp;&nbsp;{{i.phone_number_1 }} 	&nbsp; {{i.phone_number_2}} &nbsp; </p>
 		<table class="table-responsive" style="width:75%">
 			  <tr class="success">
 			   <th>Half Hour </th> 
@@ -507,11 +618,16 @@
 		 </table>
 		<div style=" position: absolute;  right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
 		</div>
-		<div class="dataExpand" style="display:none; width: 50%" >
-			<div class='overlay'>
-    			<button id='GetDirections'>Get Directions</button>
+		<div class="dataExpand" style="display:none; width: 75%; margin-top:10px;line-height: 120%;" >
+			<div class='overlay' id="GetDirections{{i.id}}">
+    			<button id="GetDirections{{i.id}}">Get Directions</button>
 			</div>
-           <p> {{i.nearby_attractions}}</p>
+			<p style= "font-size: 1.2em;padding-top:5px; margin-bottom: 5px;"><b>Operation Hours:</b></p>
+			<p> {{i.operation_hours}}</p>
+			<p style= "font-size: 1.2em;padding-top:5px; margin-bottom: 5px;"><b>Nearby Aattractions: </b></p>
+           	<p> {{i.nearby_attractions}}</p>
+           	<p style= "font-size: 1.2em;padding-top:5px; margin-bottom: 5px;"><b>Features: </b></p>
+           	<p> {{i.features}} </p>
 
         </div>
       
@@ -522,7 +638,7 @@
 <div id="map"></div>
 
 {% for i in parkZones %}
-<div class="labels"; id= 'label{{i.id}}'>
+<div class="labels"; id= 'label{{i.id}}' style="display: none;">
  <p>{{i.one_hour }}</p>	
 </div>
 {% endfor %}	
@@ -547,6 +663,21 @@
 	</div>
 
 
+<div class="toggleArea">
+  <button title="Layers" class="layerBtn" style="top:200px;right: 0px;background-image: url(static/images/layers-icon.png);background-size: 25px 25px; background-repeat:no-repeat;background-position-y: 4px;
+    background-position-x: 5px;width:35px;height:35px; border-radius: 5px 0 0 5px ;padding: 0 5px;border: none;"></button>
+
+  <button class="garages" style="top:200px; text-align:left;padding-left:5px;color: #fff;"><em class="garagesEM" style="background-image: url(static/images/garage-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Garages</button>
+
+  <button class="street" style="top:235px;text-align:left;padding-left:5px;color: #fff;"><em class="streetEM"  style="background-image: url(static/images/street-icon.png);background-size: 20px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:20px;height:20px;background-color: transparent; border: none;"></em>Street Parking</button>
+
+  <button class="Buildings"  style="top:305px;text-align:left;padding-left:5px;color: #fff;" ><em class="BuildingsEM"  style="background-image: url(static/images/building-icon1.png);background-size: 25px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:20px;background-color: transparent; border: none;"></em>Buildings</button>
+
+  <button class="streetSigns" style="top:270px;text-align:left;padding-left:5px;color: #fff;"><em class="streetSignsEM"  style="background-image: url(static/images/street-parking-icon2.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Street Signs</button>
+</div>
+
+
+
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACGtaoiCJQKdRWkASuNpaadQ64Yz9uFxg&amp;sensor=false&amp;libraries=places"></script>
    
@@ -566,8 +697,60 @@ $('.parkingData').click(function(){
     $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
     flyTo($(this).attr('id').split('parkingData')[1]);
    
-
 });
+// ****************************************************************************
+	$('.layerBtn').click(function(){
+	  	if ($('.toggleArea').hasClass('layersClicked')){
+	  		$('.layerBtn').animate({ right: 0 });
+	  		$('.Buildings').animate({ right: -150 });
+	  		$('.garages').animate({ right: -150  });
+	  		$('.street').animate({ right: -150  });
+	  		$('.streetSigns').animate({ right: -150  });
+	  		$('.toggleArea').removeClass('layersClicked');
+	  	}else{
+	  		$('.layerBtn').animate({ right: 150 });
+	  		$('.Buildings').animate({ right: 0 });
+	  		$('.garages').animate({ right: 0  });
+	  		$('.street').animate({ right: 0  });
+	  		$('.streetSigns').animate({ right: 0  });
+	  		$('.toggleArea').addClass('layersClicked');
+	  	}
+    });
+
+	$('.Buildings').click(function(){
+		if ($('.Buildings').hasClass('layersClicked')){
+			removeSign();
+			$('.BuildingsEM').css("background-image","none");
+			$('.BuildingsEM').css("background-image","url(static/images/building-icon1.png)");
+			$('.Buildings').removeClass('layersClicked');
+			$('.Buildings').css('color',"#fff");
+			building = osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+		}else{
+			$('.BuildingsEM').css("background-image","none");
+			$('.BuildingsEM').css("background-image","url(static/images/building-icon3.png)");
+			$('.Buildings').addClass('layersClicked');
+			$('.Buildings').css('color',"#575757");
+			removeSign();
+		}
+	});
+
+
+
+		$('.garages').click(function(){
+		if ($('.garages').hasClass('layersClicked')){
+			$('.garagesEM').css("background-image","none");
+			$('.garagesEM').css("background-image","url(static/images/garage-icon.png)");
+			$('.garages').removeClass('layersClicked');
+			$('.garages').css('color',"#fff");
+			$(".labels").show("slow");
+		}else{
+			$('.garagesEM').css("background-image","none");
+			$('.garagesEM').css("background-image","url(static/images/garage-icon3.png)");
+			$('.garages').addClass('layersClicked');
+			$('.garages').css('color',"#575757");
+			$(".labels").hide("slow");
+		}
+	});
 
 
 	$('.labels').click(function(){
@@ -588,6 +771,20 @@ $('.parkingData').click(function(){
         navigator.geolocation.getCurrentPosition(success, error, options);
 
 
+    });
+
+    var idToGetPosition;
+    $('.overlay').click(function(e){
+	    var event = e || arguments[0] || window.event;
+	    console.log(event);
+	    event.stopPropagation();
+	    console.log($(this).attr('id').split('GetDirections')[1]);
+		idToGetPosition = $(this).attr('id').split('GetDirections')[1];
+		if (directionRoute!=null){
+			directionRoute.destroy();
+		}
+    	navigator.geolocation.getCurrentPosition(success2, error, options);
+    
     });
 
 
@@ -637,10 +834,10 @@ $("#locationSearchButton").click(function(){
     }
   );
 
-  building = osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
-  osmb.addLayer(building);
+	  building = osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
+	  // osmb.addLayer(building);
   //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
-  //osmb.remove(buildings);
+ 
  //***************************************************************************
  var markers = [];
 function plotMarker(){
@@ -652,7 +849,25 @@ function plotMarker(){
 	{% endfor %}
 	osmb.addLayer(markers);
 
-}			
+}		
+ //***************************************************************************
+ var signs = [];
+ var objects;
+function plotSign(){
+	
+	{% for z in parkSigns %}
+  		
+  	object = osmb.addOBJ('./static/images/signtest.obj', {longitude:{{z.lon}},latitude: {{z.lat}} },{id: "sign{{z.signID}}" ,scale : 5, elevation :0, rotation : 30 });
+  	signs.push(obj);
+	{% endfor %}
+	
+
+}		
+
+function removeSign(){
+
+	building.destroy();
+}
 
 
  //***************************************************************************
@@ -685,7 +900,7 @@ function flyTo(id){
 
 function flyToYourLocation(lat,lon){
 	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
-	 var valuesFlyTo   = {latitude: lat, longitude: lon, rotation: 30, zoom: 16, tilt: 35};
+	 var valuesFlyTo   = {latitude: lat, longitude: lon, rotation: 30, zoom: 15, tilt: 35};
 	 var tweenFlyToYourLocation = new TWEEN.Tween(valuesFlyFrom)
     	.to(valuesFlyTo, 3000)
    		.onUpdate(function() {
@@ -823,9 +1038,16 @@ function spin(){
 			$("#dataContainer").show("slow");
         	$(".parkingData").show("slow");
         	$(".parkingData").show("slow");
+        	$(".labels").show("slow");
         	plotMarker();
-        	osmb.removeLayer(geoJsonTiles);
-			
+        	plotSign();
+        	building.destroy();
+        	$('.BuildingsEM').css("background-image","none");
+			$('.BuildingsEM').css("background-image","url(static/images/building-icon1.png)");
+			$('.Buildings').removeClass('layersClicked');
+			$('.Buildings').css('color',"#fff");
+			building=osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
+			osmb.setTilt(osmb.getTilt()+0.01);
 	
 		}); 
 			
@@ -914,17 +1136,47 @@ function spin(){
 		}
 
 	// ******************************************************************
-		var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from=40.808213,-73.963737&to=40.763664,-73.981613";
+		// var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from=40.808213,-73.963737&to=40.763664,-73.981613";
 		
-		d3.json(test, function(error, response) {
-			if (error) return console.warn(error);
-			console.log(response);
-			var linestring1 = turf.lineString(response.routes[0].geometry.coordinates);
-					console.log(linestring1);
-					lines(linestring1);
-		});
+		// d3.json(test, function(error, response) {
+		// 	if (error) return console.warn(error);
+		// 	console.log(response);
+		// 	var linePoints = [];
+		// 	for (var i = 0; i < response.route.shape.shapePoints.length; i+=2){
+		// 		 var coors = [response.route.shape.shapePoints[i+1],response.route.shape.shapePoints[i]]
+		// 		linePoints.push(coors);
+				
+		// 	}
+		// 	var linestring1 = turf.lineString(linePoints);
+		// 			console.log(linestring1);
+		// 			lines(linestring1);
+		// });
 	
+		function myLocation(from,to){
+			var from_lat = from.latitude;
+			var from_lon = from.longitude;
+			var to_lat = to.latitude;
+			var to_lon = to.longitude;
+			var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
+			console.log(test);
+			d3.json(test, function(error, response) {
+				if (error) return console.warn(error);
+				console.log(response);
+				var linePoints = [];
+				for (var i = 0; i < response.route.shape.shapePoints.length; i+=2){
+					 var coors = [response.route.shape.shapePoints[i+1],response.route.shape.shapePoints[i]]
+					linePoints.push(coors);
+				
+			}
+			var linestring1 = turf.lineString(linePoints);
+			console.log(linestring1);
+			lines(linestring1);
+			});
+		}
 
+
+
+		var directionRoute;
 		function lines(linestring){
 		var linestring2 = linestring;
 
@@ -964,9 +1216,10 @@ function spin(){
 		}
 
 		//Add the Polygon json to the map ....
-		osmb.addGeoJSON(geojson_route);	
+		directionRoute = osmb.addGeoJSON(geojson_route);	
 		}	
-	//****************************************************			
+	//****************************************************
+			
 		var options = {
 		  enableHighAccuracy: true,
 		  timeout: 5000,
@@ -981,7 +1234,22 @@ function spin(){
 		  console.log('Longitude: ' + crd.longitude);
 		  console.log('More or less ' + crd.accuracy + ' meters.');
 		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
+		  myPosition = {latitude: crd.latitude,longitude: crd.longitude};
 		  flyToYourLocation(crd.latitude,crd.longitude);
+		};
+		function success2(pos) {
+		  var crd = pos.coords;
+
+		  console.log('Your current position is:');
+		  console.log('Latitude : ' + crd.latitude);
+		  console.log('Longitude: ' + crd.longitude);
+		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
+		  var myPosition = {latitude: crd.latitude,longitude: crd.longitude};
+		  flyToYourLocation(crd.latitude,crd.longitude);
+		  	    
+	      var positionTo   = {latitude: dynamicCor[idToGetPosition].lat, longitude: dynamicCor[idToGetPosition].lon};
+		  myLocation(myPosition,positionTo);
 		};
 
 		function error(err) {
@@ -990,6 +1258,43 @@ function spin(){
 
 		// navigator.geolocation.getCurrentPosition(success, error, options);
 
+	// ******************************************************************
+		var lon1=0;
+		var lat1=0;
+		var signData="";
+		osmb.on('pointerdown', function(e) {
+		  	var id = osmb.getTarget(e.detail.x, e.detail.y, function(id) {
+			  	
+			  	if (id)	{
+				    if (id.startsWith("sign")) {
+				      var idSplit = id.substr(4);
+				      console.log(idSplit);
+				      
+				      {% for z in parkSigns %}
+				      	 	if ({{z.signID}} == idSplit ){
+
+				      	 		lon1 = {{z.lon}};
+				      	 		lat1 = {{z.lat}};
+				      	 		$(".signLabel").text("{{z.sign_data}}");
+				      	 		$(".signLabel").addClass("display");
+				      	 		$(".signLabel").show();
+				      	 		osmb.setTilt(osmb.getTilt()+0.01);
+								
+				      			
+				      	 	}
+				      	
+				      {% endfor %}
+				    }
+				}
+		  	});
+		});
+
+		var signLabel = document.getElementById('signLabel');
+		osmb.on('change', function() {
+		  var pos = osmb.project(lat1, lon1, 0);
+		  signLabel.style.left = Math.round(pos.x)-20 + 'px';
+		  signLabel.style.top = Math.round(pos.y)-60 + 'px';
+		});
 
 
 </script>
