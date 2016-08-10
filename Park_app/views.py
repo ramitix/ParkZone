@@ -15,3 +15,8 @@ def index(request):
 	parkSigns = ParkSigns.objects.all()
 
 	return render(request, 'Park_app/index.html', {'parkZones' : parkZones ,'parkSigns' : parkSigns})
+
+def aboutUs(request):
+	
+
+	return render(request, 'Park_app/aboutus.html')

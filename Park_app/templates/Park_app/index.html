@@ -89,6 +89,20 @@
 	  margin-bottom : 10px;
 	  font-family: 'Open Sans';
 	}
+	.loading{
+
+	  position: absolute;
+	  width: 100%;
+      height: 100%;
+      z-index: 10000;
+	  background: black;
+	  color: #fff;
+	  opacity: 0.7;
+	  top:70px;
+	  left:0;
+
+
+	}
 
 
 	.parkingData:hover {
@@ -606,10 +620,10 @@
 		<nav id="cd-top-nav">
 			<ul>
 				<li><a id="howItWorks" href="#0">HOW IT WORKS</a></li>
-				<li><a href="#0">ABOUT US</a></li>
+				<li><a href="aboutus">ABOUT US</a></li>
 			</ul>
 		</nav>
-		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+		<a id="cd-menu-trigger" href="/"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
 	
 	</header>
 
@@ -705,6 +719,10 @@
 	<div style="background:url(static/images/gps.gif) no-repeat center center;width:450px;height:500px;background-size: 100px "></div>
 </div>
 
+<div class="loading" style="display:none;" >
+	<div style="background:url(static/images/gps.gif) no-repeat center center;opacity: 1; width:100%;height:100%;background-size: 100px "></div>
+</div>
+
 
 
 
@@ -715,7 +733,7 @@
 
 <script>
 
-
+$('.loading').hide();
 
 $("#howItWorks").click(function(){
 	$('body').chardinJs("start");
@@ -930,15 +948,24 @@ function plotMarker(){
  var signs = [];
 
 function plotSign(){
-	
+
+   
+    $('.loading').show();
 	{% for z in parkSigns %}
+
   		
   	var object = osmb.addOBJ('./static/images/signtest.obj', {longitude:{{z.lon}},latitude: {{z.lat}} },{id: "sign{{z.signID}}" ,scale : 5, elevation :0, rotation : 30 });
   	signs.push(object);
 	{% endfor %}
-	
 
-}		
+    // osmb.off('loadfeature', function() {$('.loading').hide();});
+	osmb.on('loadfeature', function() {$('.loading').hide();});
+ 
+
+}	
+
+
+ 	
  //***************************************************************************
 function removeBuildings(){
 
@@ -1149,7 +1176,8 @@ function spin(){
 			$('.Buildings').css('color',"#fff");
 			building=osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
 			osmb.setTilt(osmb.getTilt()+0.01);
-	
+			$('.layerBtn').trigger( "click" );
+			$('.streetSigns').trigger( "click" );
 		}); 
 			
 		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
@@ -1399,6 +1427,7 @@ function spin(){
 		  console.log('Longitude: ' + crd.longitude);
 		  console.log('More or less ' + crd.accuracy + ' meters.');
 		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
+		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: dynamicCor[idToGetPosition].lon,latitude: dynamicCor[idToGetPosition].lat},{id: "local2",scale : 10, elevation :0, rotation : 30 , color: 'green'});
 		  var myPosition = {latitude: crd.latitude,longitude: crd.longitude};
 		  flyToYourLocation(crd.latitude,crd.longitude);
 		  	    
@@ -1433,7 +1462,9 @@ function spin(){
 				      	 		$(".signLabel").html('<a id="remove1" class="glyphicon glyphicon-remove-circle " style="cursor: pointer;position: absolute;font-size: 1.4em;right: 3px; top:3px;"aria-hidden="true" ></a>{{z.sign_data}}');
 				      	 		$(".signLabel").addClass("display");
 				      	 		$(".signLabel").show();
-				      	 		osmb.setTilt(osmb.getTilt()+0.01);
+   								osmb.setTilt(osmb.getTilt()+0.01);
+								
+				      	 		
 								
 				      			
 				      	 	}
