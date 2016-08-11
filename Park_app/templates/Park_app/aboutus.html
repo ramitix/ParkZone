@@ -291,9 +291,13 @@
 		</div>
 
 		<div class="box fade-in three">
-	   		<center><img src="team3.png" style="width:200px;height:200px;"></center>
+	   		<center><img src="https://d3q6qq2zt8nhwv.cloudfront.net/m/1_extra_1aeplf03.jpg" style="width:200px;height:200px;"></center>
 		<h2 style="text-align:center;">Michael Medina</h2>
 		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database building. Also contributed to UI and front end development.</p>
+		</div>
+
+		<div>
+			<button type="button" class="gitlink fade-in four" onclick="window.open('https://github.com/ramitix/ParkZone')"><img src="https://lh5.googleusercontent.com/-Xxu-QmBtYNQ/V6ywWE4OSTI/AAAAAAAAKC0/amNiPFf5Obw82azM4Pk0EHSMhBVgMAB2gCL0B/w181-h180-no/1%2Bcopy.png" style="width:70px;height:70px;"></button>
 		</div>
 
 	</div>
@@ -310,11 +314,20 @@
 		background-color:#28aff8;
 	}
 
+	.gitlink {
+    	margin: 5px;
+    	padding:0px;
+    	border-radius: 50%;
+    	cursor: pointer;
+    	background-color: white;
+    	border:1px;
+	}
+
 	.wrapper{
 		margin: 0 auto;
 		text-align:center;
 		width: 90%;
-		}
+	}
 
 
 	@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
@@ -358,6 +371,12 @@
         -webkit-animation-delay: 2s;
         -moz-animation-delay: 2s;
 		animation-delay: 2s;
+	}
+
+	.fade-in.four {
+        -webkit-animation-delay: 2.5s;
+        -moz-animation-delay: 2.5s;
+		animation-delay: 2.5s;
 	}
 
 	.box{
