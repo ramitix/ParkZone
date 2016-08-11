@@ -257,6 +257,7 @@
 
 </head>
 <body>
+
 	<header>
 		<a id="cd-logo" href="/"><img src="/static/images/ParkZone2.png" width="20%" alt="Homepage" margin-top="0px"></a>
 		
@@ -270,152 +271,118 @@
 	
 	</header>
 
-<div id="title">
-	<h1 style="color:#28aff8;text-align:center;font-size:300%;margin-top:-10px;"> The Team </h1>
-</div>
+	<div class="logo fade-in">
+			<h1 style="text-align:center; color:white"> Meet The Team Behind ParkZone </h1>
+	</div>
 
-<div id="pagewrap">
-	
-	<section id="content">
-		<center><img src="https://lh3.googleusercontent.com/-6ChPckwsg3w/USavbXMrm4I/AAAAAAAAAGE/wg2Zk0GvngM_dPMazUNOLU0gdPCUpMBQQCEw/w139-h140-p/16690_4882491587684_802185620_n.jpg" style="width:200px;height:200px;"></center>
+
+	<div class="wrapper">
+
+		<div class="box fade-in one">
+	   		<center><img src="https://lh3.googleusercontent.com/-6ChPckwsg3w/USavbXMrm4I/AAAAAAAAAGE/wg2Zk0GvngM_dPMazUNOLU0gdPCUpMBQQCEw/w139-h140-p/16690_4882491587684_802185620_n.jpg" style="width:200px;height:200px;"></center>
 		<h2 style="text-align:center;">Mark Lindo</h2>
-		<p align="justify">This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text.</p>
-	</section>
-	
-	<section id="middle">
-		<center><img src="https://lh3.googleusercontent.com/FCSK9qQFt287019_TVJXDw7LW7q2m5Rnqv8M3NaiJFKjo5BXqxv3sA1_EYtJvyIN9tiid-lg=s207-p-no" style="width:200px;height:200px;"></center>
+		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database building. Contributed to UI and front end development. Also worked on paperwork.</p>
+		</div>
+
+		<div class="box fade-in two">
+	   		<center><img src="https://lh3.googleusercontent.com/FCSK9qQFt287019_TVJXDw7LW7q2m5Rnqv8M3NaiJFKjo5BXqxv3sA1_EYtJvyIN9tiid-lg=s207-p-no" style="width:200px;height:200px;"></center>
 		<h2 style="text-align:center;">Ramy Atalla</h2>
-		<p align="justify">This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text.</p>
-	</section>
+		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database management. Contributed to UI and front end development. Also worked on online webhosting and maintenance.</p>
+		</div>
 
-	<aside id="sidebar">
-		<center><img src="team3.png" style="width:200px;height:200px;"></center>
+		<div class="box fade-in three">
+	   		<center><img src="team3.png" style="width:200px;height:200px;"></center>
 		<h2 style="text-align:center;">Michael Medina</h2>
-		<p align="justify">This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text. This is test text.</p>
-	</aside>
+		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database building. Also contributed to UI and front end development.</p>
+		</div>
 
-</div>
+	</div>
 
-<style>
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+	<style>
 
-body { 
-  font-family: 'Open Sans', sans-serif;
-  color: #666;
-}
+	.logo{
+		margin:auto;
+		margin-top: 20px;
+		width:800px;
+		height:100px;
+		border: 3px solid #28aff8;
+		padding: 10px;
+		background-color:#28aff8;
+	}
+
+	.wrapper{
+		margin: 0 auto;
+		text-align:center;
+		width: 90%;
+		}
 
 
+	@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+	@-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+	@keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
 
-#pagewrap {
-	padding: 5px;
-	width: 500px;
-	height: 500px;
-	margin-left: 20px;
-	margin-right: 20px; 
-}
+	.fade-in {
+   		opacity:0;  /* make things invisible upon start */
+        -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+        -moz-animation:fadeIn ease-in 1;
+   		animation:fadeIn ease-in 1;
 
-#content {
-	width: 290px;
-	float: left;
-	padding: 5px 15px;
-}
+        -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+        -moz-animation-fill-mode:forwards;
+   		animation-fill-mode:forwards;
 
-#middle {
-	width: 290px; /* Account for margins + border values */
-	float: left;
-	padding: 5px 15px;
-	margin-left:11px;
-}
+        -webkit-animation-duration:1s;
+        -moz-animation-duration:1s;
+        animation-duration:1s;
+	}
 
-#sidebar {
-	width: 290px;
-	float: right;
-	padding: 5px 15px;
-	margin: 0px 5px 5px 5px;
-}
+	.fade-in.logo{
+		-webkit-animation-delay: 0.5s;
+        -moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
 
-#content {
-	background: #f8f8f8;
-}
-#sidebar {
-	background: #f0efef;
-}
-header, #content, #middle, #sidebar {
-	margin-bottom: 5px;
-}
+	.fade-in.one {
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
 
-#pagewrap, #title, #content, #middle, #sidebar, footer {
-	border: solid 1px #ccc;
-}
+	.fade-in.two {
+        -webkit-animation-delay: 1.5s;
+        -moz-animation-delay:1.5s;
+		animation-delay: 1.5s;
+	}
 
-body { 
-  font-family: 'Open Sans', sans-serif;
-  color: #666;
-}
+	.fade-in.three {
+        -webkit-animation-delay: 2s;
+        -moz-animation-delay: 2s;
+		animation-delay: 2s;
+	}
 
-#title{
-	padding: 10px;
-	width: 960px;
-	height: 50px;
-	margin: 20px auto;
-}
+	.box{
+		width: 500px;
+		height: 500px;
+		position: auto;
+		margin: 0 auto;
+		float: left;
+		margin-top: 20px;
+		margin-left: 20px;
+		margin-right: 20px;
+		display:inline-block;
+		color: white;
+		padding: 40px; 
+		text-align:center;
+		border: 1px solid #fff;
+		background: #28aff8;
+		border-radius: 10px;
+	}
 
-#pagewrap {
-	padding: 30px;
-	width: 960px;
-	height: 600px;
-	margin: 20px auto;
 
-#content {
-	width: 290px;
-	float: left;
-	padding: 5px 15px;
-}
-
-#middle {
-	width: 290px; 
-	float: left;
-	padding: 5px 15px;
-	margin: 0px 5px 5px 5px;
-}
-
-#sidebar {
-	width: 290px;
-	padding: 5px 15px;
-	float: left;
-}
-
-#content {
-	background: #f8f8f8;
-}
-#sidebar {
-	background: #f0efef;
-}
-#content, #middle, #sidebar {
-	margin-bottom: 5px;
-}
-
-#pagewrap, #content, #middle, #sidebar,{
-	border: solid 1px #ccc;
-}
-</style>
-
+	</style>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACGtaoiCJQKdRWkASuNpaadQ64Yz9uFxg&amp;sensor=false&amp;libraries=places"></script>
    
     <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
-
-
-<script>
-
-
-
-
-
-
-
-
-</script>
-
 </body>
 </html>
