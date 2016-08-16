@@ -823,6 +823,21 @@ $('.parkingData').click(function(){
 			removeSign();
 		}
 	});
+		$('.street').click(function(){
+		if ($('.street').hasClass('layersClicked')){
+			$('.streetEM').css("background-image","none");
+			$('.streetEM').css("background-image","url(static/images/street-icon.png)");
+			$('.street').removeClass('layersClicked');
+			$('.street').css('color',"#fff");
+			ShowParkingLines();
+		}else{
+			$('.streetEM').css("background-image","none");
+			$('.streetEM').css("background-image","url(static/images/street-icon3.png)");
+			$('.street').addClass('layersClicked');
+			$('.street').css('color',"#575757");
+			removeParkingLines();
+		}
+	});
 
 // ****************************************************************************
 	$('.labels').click(function(){
@@ -1178,6 +1193,7 @@ function spin(){
 			osmb.setTilt(osmb.getTilt()+0.01);
 			$('.layerBtn').trigger( "click" );
 			$('.streetSigns').trigger( "click" );
+			$('.street').trigger( "click" );
 		}); 
 			
 		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
@@ -1481,6 +1497,76 @@ function spin(){
 		  signLabel.style.left = Math.round(pos.x)-20 + 'px';
 		  signLabel.style.top = Math.round(pos.y)-60 + 'px';
 		});
+//*****************************************************************************
+
+
+ function ShowParkingLines(){
+
+	var parkingLinePoints = [	[-73.98691713809967,40.76593074121366], [-73.98524343967438,40.765233946526294] ];
+	var parkingLinestring = turf.lineString(parkingLinePoints);
+	console.log(parkingLinestring);
+	parkingLines(parkingLinestring);
+
+	var parkingLinePoints1 = [	[ -73.98652017116547,40.76571540602614], [-73.98514151573181,40.76514049828669] ];
+	var parkingLinestring1 = turf.lineString(parkingLinePoints1);
+	console.log(parkingLinestring1);
+	parkingLines(parkingLinestring1);
+}
+ function removeParkingLines(){
+
+ 	
+	for(i=0;i<parkingLine.length;i++){
+
+		parkingLine[i].destroy();
+	}
+ }
+		
+
+	var parkingLine=[];
+
+	function parkingLines(linestring){
+		var linestring2 = linestring;
+
+
+		//Set the unit measure and calculate the buffer using Turf.js ....
+		var unit = 'meters';
+		var buffered = turf.buffer(linestring2, 0.5, unit);
+		var result = turf.featureCollection([buffered]);
+
+		//Convert to string the buffered json ....
+		var my_json = JSON.parse(JSON.stringify(result));
+
+		//Create an empty Polygon json to put in OSM Building map ....
+		var geojson_route = {
+		type: 'FeatureCollection',
+		features: [{
+		type: 'Feature',
+		properties: {
+		color: '#FFFF0A',
+		roofColor: '#FFFF28',
+		height: 5,
+		minHeight: 0
+		},
+		geometry: {
+		type: 'Polygon',
+		coordinates: [
+		[
+		]
+		]
+		}
+		}]
+		};
+
+		//Add the coordinates at the Polygon json bringing them from the buffered json ....
+		for (var i = 0; i < my_json.features[0].geometry.coordinates[0].length; i++) {
+		  geojson_route.features[0].geometry.coordinates[0][i] = my_json.features[0].geometry.coordinates[0][i];
+		}
+		console.log(geojson_route);
+		//Add the Polygon json to the map ....
+		parkingLine.push ( osmb.addGeoJSON(geojson_route));
+	}
+	
+
 
 
 </script>
