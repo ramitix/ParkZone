@@ -10,21 +10,8 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class BikeRacks(models.Model):
-    rackID = models.TextField(db_column='ID', primary_key=True)  # This field type is a guess.
-    name = models.TextField(db_column='Name',blank=True, null=True)  # This field type is a guess.
-    address = models.TextField(db_column='Address',blank=True, null=True)  # This field type is a guess.
-    extendeddata = models.TextField(db_column='ExtendedData', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
-    longitude = models.TextField(db_column='Longitude',blank=True, null=True)  # This field type is a guess.
-    latitude = models.TextField(db_column='Latitude',blank=True, null=True)  # This field type is a guess.
-
-    class Meta:
-        managed = False
-        db_table = 'Bike_Racks'
-
-
 class ParkInfo(models.Model):
-    id = models.TextField(db_column='ID', primary_key=True)  # Field name made lowercase. This field type is a guess.
+    id = models.TextField(db_column='ID',  primary_key=True)  # Field name made lowercase. This field type is a guess.
     name = models.TextField(db_column='Name', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     address = models.TextField(db_column='Address', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     entrance = models.TextField(db_column='Entrance', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
@@ -49,10 +36,10 @@ class ParkInfo(models.Model):
 
 
 class ParkSigns(models.Model):
-    signID = models.TextField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    signinfo = models.TextField(db_column='SignInfo', blank=True, null=True)  # Field name made lowercase.
-    lon = models.TextField(db_column='Lon', blank=True, null=True)  # Field name made lowercase.
-    lat = models.TextField(db_column='Lat', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='ID', primary_key=True)  # This field type is a guess.
+    signinfo = models.TextField(db_column='SignInfo', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    lon = models.TextField(db_column='Lon',blank=True, null=True)  # This field type is a guess.
+    lat = models.TextField(db_column='Lat',blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False

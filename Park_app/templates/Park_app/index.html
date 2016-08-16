@@ -712,6 +712,8 @@
   <button class="Buildings"  style="top:305px;text-align:left;padding-left:5px;color: #fff;" ><em class="BuildingsEM"  style="background-image: url(static/images/building-icon1.png);background-size: 25px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:20px;background-color: transparent; border: none;"></em>Buildings</button>
 
   <button class="streetSigns" style="top:270px;text-align:left;padding-left:5px;color: #fff;"><em class="streetSignsEM"  style="background-image: url(static/images/street-parking-icon2.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Street Signs</button>
+
+  <button class="bikeRacks" style="top:340px;text-align:left;padding-left:5px;color: #fff;"><em class="bikeRacksEM"  style="background-image: url(static/images/bike-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Bicycle Racks</button>
 </div>
 
 
@@ -759,6 +761,7 @@ $('.parkingData').click(function(){
 	  		$('.garages').animate({ right: -150  });
 	  		$('.street').animate({ right: -150  });
 	  		$('.streetSigns').animate({ right: -150  });
+	  		$('.bikeRacks').animate({ right: -150  });
 	  		$('.toggleArea').removeClass('layersClicked');
 	  	}else{
 	  		$('.layerBtn').animate({ right: 150 });
@@ -766,6 +769,7 @@ $('.parkingData').click(function(){
 	  		$('.garages').animate({ right: 0  });
 	  		$('.street').animate({ right: 0  });
 	  		$('.streetSigns').animate({ right: 0  });
+	  		$('.bikeRacks').animate({ right: 0  });
 	  		$('.toggleArea').addClass('layersClicked');
 	  	}
     });
@@ -836,6 +840,22 @@ $('.parkingData').click(function(){
 			$('.street').addClass('layersClicked');
 			$('.street').css('color',"#575757");
 			removeParkingLines();
+		}
+	});
+
+	$('.bikeRacks').click(function(){
+		if ($('.bikeRacks').hasClass('layersClicked')){
+			$('.bikeRacksEM').css("background-image","none");
+			$('.bikeRacksEM').css("background-image","url(static/images/bike-icon.png)");
+			$('.bikeRacks').removeClass('layersClicked');
+			$('.bikeRacks').css('color',"#fff");
+			plotBikeRackes();
+		}else{
+			$('.bikeRacksEM').css("background-image","none");
+			$('.bikeRacksEM').css("background-image","url(static/images/bike-icon3.png)");
+			$('.bikeRacks').addClass('layersClicked');
+			$('.bikeRacks').css('color',"#575757");
+			removeBikeRacks();
 		}
 	});
 
@@ -979,6 +999,27 @@ function plotSign(){
 
 }	
 
+ //***************************************************************************
+
+ var racks = [];
+
+function plotBikeRackes(){
+
+   
+    $('.loading').show();
+	{% for z in bikeRacks %}
+
+  		
+  	var rack = osmb.addOBJ('./static/images/parkzone1.obj', {longitude:{{z.longitude}},latitude: {{z.latitude}} },{id:"rack{{z.rackID}}" ,scale : 5, elevation :0, rotation : 0 , color: '#B1FB17'});
+  	racks.push(rack);
+	{% endfor %}
+
+
+	osmb.on('loadfeature', function() {$('.loading').hide();});
+ 
+
+}	
+
 
  	
  //***************************************************************************
@@ -992,6 +1033,13 @@ function removeSign(){
 	for(i=0;i<signs.length;i++){
 
 		signs[i].destroy();
+	}
+}
+function removeBikeRacks(){
+
+	for(i=0;i<racks.length;i++){
+
+		racks[i].destroy();
 	}
 }
 
@@ -1479,10 +1527,23 @@ function spin(){
 				      	 		$(".signLabel").addClass("display");
 				      	 		$(".signLabel").show();
    								osmb.setTilt(osmb.getTilt()+0.01);
-								
-				      	 		
-								
-				      			
+				      	 	}
+				      	{% endfor %}
+				    }else if (id.startsWith("rack")) {
+				      var idSplit1 = id.substr(4);
+				      console.log(idSplit);
+				      
+				      {% for z in bikeRacks %}
+				      	 	if ({{z.rackID}} == idSplit1 ){
+
+				      	 		lon1 = {{z.longitude}};
+				      	 		lat1 = {{z.latitude}};
+				      	 		//$(".signLabel").text("{{z.sign_data}}");
+				      	 		$(".signLabel").html('<a id="remove1" class="glyphicon glyphicon-remove-circle " style="cursor: pointer;position: absolute;font-size: 1.4em;right: 3px; top:3px;"aria-hidden="true" ></a>{{z.address}}');
+				      	 		$(".signLabel").addClass("display");
+				      	 		$(".signLabel").show();
+   								osmb.setTilt(osmb.getTilt()+0.01);
+							
 				      	 	}
 				      	
 				      {% endfor %}
