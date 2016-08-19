@@ -1242,6 +1242,7 @@ function spin(){
 			$('.layerBtn').trigger( "click" );
 			$('.streetSigns').trigger( "click" );
 			$('.street').trigger( "click" );
+			$('.bikeRacks').trigger( "click" );
 		}); 
 			
 		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
@@ -1523,7 +1524,7 @@ function spin(){
 				      	 		lon1 = {{z.lon}};
 				      	 		lat1 = {{z.lat}};
 				      	 		//$(".signLabel").text("{{z.sign_data}}");
-				      	 		$(".signLabel").html('<a id="remove1" class="glyphicon glyphicon-remove-circle " style="cursor: pointer;position: absolute;font-size: 1.4em;right: 3px; top:3px;"aria-hidden="true" ></a>{{z.sign_data}}');
+				      	 		$(".signLabel").html('<a id="remove1" class="glyphicon glyphicon-remove-circle " style="cursor: pointer;position: absolute;font-size: 1.4em;right: 3px; top:3px;"aria-hidden="true" ></a>{{z.signinfo}}');
 				      	 		$(".signLabel").addClass("display");
 				      	 		$(".signLabel").show();
    								osmb.setTilt(osmb.getTilt()+0.01);
