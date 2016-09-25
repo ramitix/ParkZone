@@ -7,10 +7,14 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="alternative" href="{% static 'images/parkzone.obj' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
  	<link rel="stylesheet" href="{% static 'css/OSMBuildings.css' %}">
  	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
  	<link rel="stylesheet"  href="{% static 'css/chardinjs.css' %}" >
+ 	<link rel="stylesheet" href="{% static 'css/wow-alert.css' %}" >
+
+
 
  	<script src="{% static 'js/tween.js' %}"></script>
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
@@ -21,10 +25,11 @@
 	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" > </script>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/chardinjs.min.js' %}"></script>
+	<script src="{% static 'js/wow-alert.js' %}"></script>
 	
 	
 	 <div id="locationSearchContainer" >
-		<input data-intro="Enter your address here <br>eg. W 59 st, An autocomplete menu will showup or you can click on MY LOCATION button " data-position="top" type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
+		<input  data-intro="Enter your address here <br>eg. <b>W 59 St,NY</b><br>An autocomplete menu will showup or you can click on MY LOCATION button " data-position="top" type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
 		<button id="locationSearchButton" data-intro="Click here after you enter the address " data-position="bottom"> 
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 		</button>
@@ -33,581 +38,6 @@
 		</button>
 	</div>
 
-	  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    #map {
-
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      padding-top: 50px;
-    }
-    .parkingData {
-      position: relative;
-      width: 450px;
-      left: 20px;
-      top: 10px;
-      z-index: 1000;
-	  background: #fff;
-	  border: solid #fff;
-	  border-width: 1px ;
-	  border-radius: 3px ;
-	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-	  color: #222;
-	  font-size: 0.8em;
-	  opacity: 0.99;
-	  padding: 15px 15px;
-	  overflow :auto;
-	  margin-bottom : 10px;
-	  font-family: 'Open Sans';
-	  line-height: 100%;
-	}
-	#narrative{
-	  position: absolute;
-	  width: 450px;
-      left: -550px;
-      top: 140px;
-      height: 550px;
-      z-index: 1001;
-	  background: #28aff8;
-	  border: solid #fff;
-	  border-width: 1px ;
-	  border-radius: 3px ;
-	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-	  color: #fff;
-	  font-size: 1.0em;
-	  opacity: 0.99;
-      padding: 5px 20px 15px 10px;
-	  overflow :scroll;
-	  margin-bottom : 10px;
-	  font-family: 'Open Sans';
-	}
-	.loading{
-
-	  position: absolute;
-	  width: 100%;
-      height: 100%;
-      z-index: 10000;
-	  background: black;
-	  color: #fff;
-	  opacity: 0.7;
-	  top:70px;
-	  left:0;
-
-
-	}
-
-
-	.parkingData:hover {
-			background: #666;
-			color: #fff;
-	}
-
-    .control {
-      position: absolute;
-      right: 0px;
-      z-index: 999;
-
-    }
-
-    .control.tilt {
-      top: 70px;
-    }
-    .control.tilt  button.dec {
-      border-radius: 5px 0 0 0;
-    }
-
-    .control.rotation {
-      top: 105px;
-    }
-
-    .control.zoom {
-      top: 140px;
-      border-radius: 8px;
-    }
-    .control.zoom  button.dec {
-      border-radius: 0 0 0 5px;
-    }
-
-    .control.zoom button{
-      font-weight: normal;
-     
-    }
-
-
-    .control button {
-      width: 35px;
-      height: 35px;
-      margin: 5px 0 0 0;
-      border: none;
-      background: #666;
-      color: #fff;
-      opacity: 0.9;
-      font-weight: bold;
-      text-align: center;
-      float:left;
-      font-size: 1.2em;
-    }
-
-    .control button:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-
-
-
-
-    .toggleArea button {
-      width: 150px;
-      height: 35px;
-      margin: 5px 0 0 0;
-      border: none;
-      background: #666;
-      opacity: 0.9;
-      text-align: center;
-      float:left;
-      font-size: 1.0em;
-      position: absolute;
-      right: -150px;
-      z-index: 999;
-      
-    }
-    .toggleArea button:hover {
-      opacity: 1;
-      cursor: pointer;
-    }
-
-	#locationSearchContainer {
-		top: 50%; 
-		left: 50%;
-		position: absolute;
-		z-index: 1001;
-		opacity:0.95;
-		margin: -25px 0 0 -350px;
-		font-family: 'Open Sans';
-		
-	}
-
-	input#locationSearch {
-		background: #fff;
-		border: solid #ccc;
-		border-width: 1px 0 1px 1px;
-		border-radius: 3px 0 0 3px;
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-		color: #222;
-		font-size: 1.4em;
-		float: left;
-		height: 50px;
-		margin: 0 0 0 0px;
-		padding: 0 15px;
-		width: 500px;
-		box-shadow: 0 0 20px #666666;
-		font-family: 'Open Sans';
-		
-	}
-
-	input#locationSearch:focus {
-		outline: 0;
-	}
-
-	button:hover {
-		cursor: pointer;
-	}
-
-		button:focus {
-			outline: 0;
-		}
-
-	button#locationSearchButton, button#findMe{
-		background: #249ad9;
-		border: none;
-		border-radius: 3px;
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-		color: #fff;
-		float: left;
-		font-size: 1.3em;
-		height: 50px;
-		line-height: 35px;
-		margin: 0px 0 0 0;
-		padding: 0 20px;
-		font-family: 'Open Sans';
-	}
-
-	button#locationSearchButton {
-		border-radius: 0 3px 3px 0;
-		box-shadow: 0 0 20px #666666;
-	}
-
-	button#locationSearchButton:hover {
-		background: #28aff8;
-	}
-
-	button#findMe {
-		background: #666;
-		margin-left: 10px;
-		box-shadow: 0 0 20px #666666;
-	}
-
-	button#findMe:hover {
-		background: #888;
-	}
-
-
-	#ParkZone-logo-container {
-		position: absolute;
-		bottom: 25px;
-		right: 0px;
-		z-index: 9998;
-	}
-
-	#ParkZone-logo-container a {
-		background: url("static/images/ParkZone_logo_white.png");
-		background-size: 90%;
-		background-repeat:no-repeat;
-		display: block;
-		height: 90px;
-		overflow: hidden;
-		text-indent: -9999em;
-		width: 240px;
-		opacity:0.6;
-	}
-	.labels {
-		width:40px;
-		height:30px;
-		position:absolute;
-		z-index:9;
-		background: #249ad9;
-		border: none;
-		border-radius: 3px;
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-		color: #fff;
-		font-size: 1.2em;
-		line-height: 30px;
-		padding-left: 3px;
-		font-family: 'Open Sans';
-		cursor:pointer;
-
-	}
-	.labelsTip {
-		width:20px;
-		height:20px;
-		position:absolute;
-		z-index:9;
-		background: #249ad9;
-		border: none;
-		border-radius: 3px;
-		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-		color: #fff;
-		font-size: 1.2em;
-		line-height: 30px;
-		padding-left: 3px;
-		font-family: 'Open Sans';
-		cursor:pointer;
-
-	}
-	.clicked {
-			 background: green;
-	  }
-
-	.listClicked{
-
-	 	background: #28aff8;
-	 	color:#fff;
-
-	 }
-	 .listClicked:hover{
-
-	 	background: #666;
-	 
-	 }
-
-	 .overlay {
-	    position: absolute;
-	    top: 122px;
-	    right: 10px;
-	}
-
-	.overlay button {
-	    font:1.2em 'Open Sans';
-	    background-color: red;
-	    color: #fff;
-	    display: inline-block;
-	    margin: 0;
-	    padding: 7px 6px;
-	    border: none;
-	    cursor: pointer;
-	    border-radius: 3px;
-	}
-
-	.overlay button:hover {
-	    background-color:#4ea0da;
-	}
-
-	td {
-		padding: 5px;
-	}
-
-	header {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  height: 50px;
-	  width: 100%;
-	  background: #28aff8;
-	  z-index: 1000;
-	  /* Force Hardware Acceleration in WebKit */
-	  -webkit-transform: translateZ(0);
-	  -webkit-backface-visibility: hidden;
-	  -webkit-transition-property: -webkit-transform;
-	  -moz-transition-property: -moz-transform;
-	  transition-property: transform;
-	  -webkit-transition-duration: 0.4s;
-	  -moz-transition-duration: 0.4s;
-	  transition-duration: 0.4s;
-	}
-
-	header.is-fixed {
-	  position: fixed;
-	}
-
-	@media only screen and (min-width: 768px) {
-	  header {
-	    height: 70px;
-	  }
-	}
-
-
-
-	#cd-logo {
-	  display: block;
-	  float: left;
-	  margin: 8px 0 0 20px;
-	}
-	#cd-logo img {
-	  display: block;
-	}
-	@media only screen and (min-width: 768px) {
-	  #cd-logo {
-	    margin: 5px 0 0 30px;
-	  }
-	}
-
-	#cd-top-nav {
-	  position: absolute;
-	  top: 0;
-	  right: 120px;
-	  height: 100%;
-	  display: none;
-	}
-	#cd-top-nav ul {
-	  height: 100%;
-	  padding-top: 18px;
-	}
-	#cd-top-nav li {
-	  display: inline-block;
-	  margin-right: 1em;
-	  -moz-transition: 1s linear;
-      -ms-transition: 1s linear;
-      -o-transition: 1s linear;
-      -webkit-transition: 1s linear;
-      transition: 1s linear;
-      text-decoration: none; 
-	}
-	#cd-top-nav a {
-	  display: inline-block;
-	  text-decoration: none; 
-	  padding: .5em;
-	  color: #FFF;
-	  text-transform: uppercase;
-	  font-weight: 600;
-	  -moz-transition: 1s linear;
-      -ms-transition: 1s linear;
-      -o-transition: 1s linear;
-      -webkit-transition: 1s linear;
-      transition: 1s linear;
-	}
-	#cd-top-nav a.current {
-	  background-color: #28aff8;
-	}
-	.no-touch #cd-top-nav a:hover {
-	  color: rgba(255, 255, 255, 0.7);
-	}
-	@media only screen and (min-width: 768px) {
-	  #cd-top-nav {
-	    display: block;
-	  }
-	}
-
-	#cd-menu-trigger {
-	  position: absolute;
-	  right: 0;
-	  top: 0;
-	  height: 100%;
-	  width: 50px;
-	  background-color: #0798e6;
-	}
-	#cd-menu-trigger .cd-menu-text {
-	  height: 100%;
-	  text-transform: uppercase;
-	  color: #FFF;
-	  font-weight: 600;
-	  display: none;
-	}
-	#cd-menu-trigger .cd-menu-icon {
-	  /* this span is the central line in the menu menu */
-	  display: inline-block;
-	  position: absolute;
-	  left: 50%;
-	  top: 50%;
-	  bottom: auto;
-	  right: auto;
-	  -webkit-transform: translateX(-50%) translateY(-50%);
-	  -moz-transform: translateX(-50%) translateY(-50%);
-	  -ms-transform: translateX(-50%) translateY(-50%);
-	  -o-transform: translateX(-50%) translateY(-50%);
-	  transform: translateX(-50%) translateY(-50%);
-	  width: 18px;
-	  height: 2px;
-	  background-color: #FFF;
-	  /* these are the upper and lower lines in the menu menu */
-	}
-	#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
-	  content: '';
-	  width: 100%;
-	  height: 100%;
-	  position: absolute;
-	  background-color: inherit;
-	  left: 0;
-	}
-	#cd-menu-trigger .cd-menu-icon::before {
-	  bottom: 5px;
-	}
-	#cd-menu-trigger .cd-menu-icon::after {
-	  top: 5px;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon {
-	  background-color: #0798e6;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
-	  background-color: white;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::before {
-	  bottom: 0;
-	  -webkit-transform: rotate(45deg);
-	  -moz-transform: rotate(45deg);
-	  -ms-transform: rotate(45deg);
-	  -o-transform: rotate(45deg);
-	  transform: rotate(45deg);
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::after {
-	  top: 0;
-	  -webkit-transform: rotate(-45deg);
-	  -moz-transform: rotate(-45deg);
-	  -ms-transform: rotate(-45deg);
-	  -o-transform: rotate(-45deg);
-	  transform: rotate(-45deg);
-	}
-	@media only screen and (min-width: 768px) {
-	  #cd-menu-trigger {
-	    width: 110px;
-	    padding-left: 1.25em;
-	  }
-	  #cd-menu-trigger .cd-menu-text {
-	    display: inline-block;
-	    line-height: 70px;
-	  }
-	  #cd-menu-trigger .cd-menu-icon {
-	    left: auto;
-	    right: 1.25em;
-	    -webkit-transform: translateX(0);
-	    -moz-transform: translateX(0);
-	    -ms-transform: translateX(0);
-	    -o-transform: translateX(0);
-	    transform: translateX(0);
-	  }
-	}
-	.signLabel 
-	{
-	position: absolute;
-	width: 175px;
-	height: 95px;
-	padding: 5px;
-	background: #FFFFFF;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	top:200px;
-	z-index: 999;
-	font-size: 0.8em;
-	display: none;
-	text-align: center;
-	vertical-align: middle;
-	border: 2px solid #666;
-	-webkit-box-shadow: 2px 2px 2px #888;
-	-moz-box-shadow: 2px 2px 2px #888;
-	box-shadow: 2px 2px 2px #888;
-	text-overflow: 
-
-  	
-	}
-
-	.signLabel:before 
-	{
-	content: '';
-	position: absolute;
-	display: block;
-	width: 0;
-	z-index: 999;
-	bottom: -20px;
-	left: 22px;
-  	border: 10px solid;
-  	border-color: #666 transparent transparent #666;
-	}
-	.signLabel:after 
-	{
-	content: '';
-	position: absolute;
-	display: block;
-	width: 0;
-	z-index: 999;
-	bottom: -14px;
-	left: 24px;
-	border: 10px solid #666;
-	border-color: #fff transparent transparent #fff;
-	}
-	.display{
-		display: table;
-	}
-  .garagesEMPic{
-  	background-image: url(static/images/garage-icon3.png);
-  }
-
-  .streetEMPic{  
-  	background-image: url(static/images/street-icon3.png);
-  }
-
-  .BuildingsEMPic{  
-  	background-image: url(static/images/building-icon3.png);
-  }
-
-  .streetSignsEMPic{ 
-  	background-image: url(static/images/street-parking-icon3.png);
-  }
- .layersClicked{
- 	color: #575757;
- }
-
-
-
-
-  </style>
   <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
 	}
 
@@ -631,7 +61,7 @@
 	<a id="remove1" class="glyphicon glyphicon-remove-circle " style="cursor: pointer;position: absolute;font-size: 1.4em;right: 3px; top:3px;" aria-hidden="true" ></a>
 </div>
 
-<div id="dataContainer" data-intro="Here you get the results for your search. You find in each block the garage name the prices , nearby attractions, features,etc..<br> When you click on the block it will fly to the location on the map" data-position="right" style= "overflow :scroll; top:115px; overflow-x: hidden; max-height:100%; position: absolute; width:500px; z-index: 10; display: none; ">
+<div id="dataContainer" data-intro="Here you get the results for your search. You find in each block the garage name the prices , nearby attractions, features,etc..<br> When you click on the block it will fly to the location on the map.Press and hold on the image to zoom in" data-position="right" style= "overflow :scroll; top:115px; overflow-x: hidden; max-height:86%; position: absolute; width:500px; z-index: 10; display: none; ">
 	{% for i in parkZones %}
 	<div class="parkingData" id="parkingData{{i.id}}" >
 		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
@@ -648,13 +78,13 @@
 			   </tr>
 			  <tr>
 			   <td style="padding-left:8px;font-size: 1.4em;">{{i.half_hour }} </td>	
-			   <td style="padding-left:8px;font-size: 1.4em;">{{i.one_hour}} </td>
+			   <td class= "one_hour" style="padding-left:8px;font-size: 1.4em;">{{i.one_hour}} </td>
 			   <td style="padding-left:8px;font-size: 1.4em;">{{i.two_hours}} </td>
 			   <td style="padding-left:8px;font-size: 1.4em;">{{i.ten_hours}} </td>
 			   <td style="padding-left:8px;font-size: 1.4em;">{{i.number_24hours}} </td>
 			  </tr>
 		 </table>
-		<div style=" position: absolute;  right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover; ">
+		<div class="garageImg" style=" position: absolute; cursor: pointer; right:10px; top:15px; border: 1px solid #ccc;float: right; width:100px; height: 100px; background-image: url('{{i.image}}'); background-size: cover;z-index: 1001; ">
 		</div>
 		<div class="dataExpand" style="display:none; width: 75%; margin-top:10px;line-height: 120%;" >
 			<div class='overlay' id="GetDirections{{i.id}}" data-intro="Click Here to get guidance for from your location to this garage." data-position="bottom">
@@ -701,19 +131,19 @@
 	</div>
 
 
-<div class="toggleArea">
+<div class="toggleArea" >
   <button title="Layers" class="layerBtn" data-intro="Toggle Layers" data-position="left" style="top:200px;right: 0px;background-image: url(static/images/layers-icon.png);background-size: 25px 25px; background-repeat:no-repeat;background-position-y: 4px;
     background-position-x: 5px;width:35px;height:35px; border-radius: 5px 0 0 5px ;padding: 0 5px;border: none;"></button>
 
-  <button class="garages" style="top:200px; text-align:left;padding-left:5px;color: #fff;"><em class="garagesEM" style="background-image: url(static/images/garage-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Garages</button>
+  <button  class="garages" style="top:200px; text-align:left;padding-left:5px;color: #fff;"><em class="garagesEM" style="background-image: url(static/images/garage-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Garages</button>
 
-  <button class="street" style="top:235px;text-align:left;padding-left:5px;color: #fff;"><em class="streetEM"  style="background-image: url(static/images/street-icon.png);background-size: 20px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:20px;height:20px;background-color: transparent; border: none;"></em>Street Parking</button>
+  <button   class="street" style="top:235px;text-align:left;padding-left:5px;color: #fff;"><em class="streetEM"  style="background-image: url(static/images/street-icon.png);background-size: 20px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:20px;height:20px;background-color: transparent; border: none;"></em>Street Parking</button>
 
   <button class="Buildings"  style="top:305px;text-align:left;padding-left:5px;color: #fff;" ><em class="BuildingsEM"  style="background-image: url(static/images/building-icon1.png);background-size: 25px 20px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:20px;background-color: transparent; border: none;"></em>Buildings</button>
 
-  <button class="streetSigns" style="top:270px;text-align:left;padding-left:5px;color: #fff;"><em class="streetSignsEM"  style="background-image: url(static/images/street-parking-icon2.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Street Signs</button>
+  <button  class="streetSigns" style="top:270px;text-align:left;padding-left:5px;color: #fff;"><em class="streetSignsEM"  style="background-image: url(static/images/street-parking-icon2.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Street Signs</button>
 
-  <button class="bikeRacks" style="top:340px;text-align:left;padding-left:5px;color: #fff;"><em class="bikeRacksEM"  style="background-image: url(static/images/bike-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Bicycle Racks</button>
+  <button  class="bikeRacks" style="top:340px;text-align:left;padding-left:5px;color: #fff;"><em class="bikeRacksEM"  style="background-image: url(static/images/bike-icon.png);background-size: 25px 25px;font-family: 'Open Sans'; vertical-align:middle;margin:0 12px;display:inline-block;width:25px;height:25px;background-color: transparent; border: none;"></em>Bicycle Racks</button>
 </div>
 
 
@@ -722,7 +152,11 @@
 </div>
 
 <div class="loading" style="display:none;" >
-	<div style="background:url(static/images/gps.gif) no-repeat center center;opacity: 1; width:100%;height:100%;background-size: 100px "></div>
+	<div style="background:url(static/images/gps.gif) no-repeat center center;opacity: 1; width:100%;height:100%;background-size: 100px; "></div>
+</div>
+
+<div id = "error-popup">
+	<p>Sorry, we can’t help you if you don't know where you going!</p>
 </div>
 
 
@@ -735,7 +169,12 @@
 
 <script>
 
-$('.loading').hide();
+
+
+
+//$('.loading').hide();
+
+
 
 $("#howItWorks").click(function(){
 	$('body').chardinJs("start");
@@ -743,7 +182,6 @@ $("#howItWorks").click(function(){
 
 
 $('.parkingData').click(function(){
-    
     $('.parkingData').removeClass('listClicked');
     $(".parkingData").find('.dataExpand').hide();
     $(this).find('.dataExpand').toggle("fast");
@@ -751,6 +189,7 @@ $('.parkingData').click(function(){
     $('.labels').removeClass('clicked');
     $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
     flyTo($(this).attr('id').split('parkingData')[1]);
+     
    
 });
 // ****************************************************************************
@@ -859,6 +298,7 @@ $('.parkingData').click(function(){
 		}
 	});
 
+
 // ****************************************************************************
 	$('.labels').click(function(){
 	  $('.labels').removeClass('clicked');
@@ -935,7 +375,7 @@ $("#locationSearchButton").click(function(){
   var osmb = new OSMBuildings({
     baseURL: './static/images/',
     position: { latitude:40.763664, longitude:-73.981613 },
-    zoom:15,
+    zoom:16,
     tilt:35,
     rotation:30,
     minZoom: 14,
@@ -948,7 +388,7 @@ $("#locationSearchButton").click(function(){
   }).appendTo(map);
 
    
-    osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
+   // osmb.addOBJ('./static/images/signtest.obj', {longitude: -73.983013,latitude: 40.759965},{id: "is30",scale : 20, elevation :0, rotation : 0 });
 
     
 
@@ -1060,6 +500,14 @@ function flyTo(id){
     	.to(valuesFlyTo, 3000)
    		.onUpdate(function() {
         // here we call the functions to update the map state
+
+            console.log("positionLatitudeFrom:",valuesFlyFrom.latitude);
+        	console.log("positionLongitudeFrom:",valuesFlyFrom.longitude);
+        	console.log("positionLatitudeTo:",valuesFlyTo.latitude);
+        	console.log("positionLongitudeTo:",valuesFlyTo.longitude);
+         	console.log(this.latitude);
+        	console.log(this.longitude);
+
         	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
         	osmb.setRotation(this.rotation);
         	osmb.setZoom(this.zoom);
@@ -1081,7 +529,7 @@ function flyTo(id){
 
 function flyToYourLocation(lat,lon){
 	 var valuesFlyFrom = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
-	 var valuesFlyTo   = {latitude: lat, longitude: lon, rotation: 30, zoom: 15, tilt: 35};
+	 var valuesFlyTo   = {latitude: lat, longitude: lon, rotation: 30, zoom: 17, tilt: 35};
 	 var tweenFlyToYourLocation = new TWEEN.Tween(valuesFlyFrom)
     	.to(valuesFlyTo, 3000)
    		.onUpdate(function() {
@@ -1181,16 +629,18 @@ for (var i = 0; i < controlButtons.length; i++) {
 
 //*****************************************************
 
-var valuesFrom = {latitude: 40.710425, longitude: -74.014572, rotation: 0, zoom: 15.5, tilt: 45},
-  	values1 = {latitude: 40.710425, longitude: -74.014572, rotation: -360, zoom: 15.5, tilt: 45},
 
-  	animationTime = 95000;
-var tween;
+
 
 //spin();
 
-
+var tween;
 function spin(){
+
+	var valuesFrom = {latitude: 40.710425, longitude: -74.014572, rotation: 0, zoom: 16, tilt: 35},
+  	values1 = {latitude: 40.710425, longitude: -74.014572, rotation: -360, zoom: 16, tilt: 35},
+  	animationTime = 95000;
+
 	 tween = new TWEEN.Tween(valuesFrom)
     	.to(values1, animationTime)
    		.onUpdate(function() {
@@ -1200,134 +650,138 @@ function spin(){
         	osmb.setZoom(this.zoom);
         	osmb.setTilt(this.tilt);
     	});
-				tween.start();
-				tween.repeat(Infinity);
+	tween.start();
+	tween.repeat(Infinity);
 }
-		animate();
-		function animate(time) {
-    		requestAnimationFrame(animate);
-    		TWEEN.update(time);
+animate();
+
+function animate(time) {
+	requestAnimationFrame(animate);
+	TWEEN.update(time);
+}
+
+
+//*****************************   search    ************************************
+//*****************************   search    ************************************
+
+var locationSearchButton = document.getElementById("locationSearchButton");
+locationSearchButton.addEventListener("click", function(event) {
+	event.preventDefault();
+	if($.trim($("#locationSearch").val()).length>0){
+		changeLocation(locationSearch.value);
+		changeSearchLocation();
+		$("#dataContainer").show("slow");
+    	$(".parkingData").show("slow");
+    	$(".parkingData").show("slow");
+    	$(".labels").show("slow");
+    	plotMarker();
+    	TWEEN.remove(tween);
+    	//plotSign();
+    	building.destroy();
+    	$('#narrative').hide();
+    	if (directionRoute!=null){
+			directionRoute.destroy();
 		}
-
-
-//*****************************search************************************
-//*****************************search************************************
-
- 		var locationSearchButton = document.getElementById("locationSearchButton");
-		locationSearchButton.addEventListener("click", function(event) {
-			event.preventDefault();
-			changeLocation(locationSearch.value);
-			changeSearchLocation();
-			$("#dataContainer").show("slow");
-        	$(".parkingData").show("slow");
-        	$(".parkingData").show("slow");
-        	$(".labels").show("slow");
-        	plotMarker();
-        	//plotSign();
-        	building.destroy();
-        	$('#narrative').hide();
-        	if (directionRoute!=null){
-				directionRoute.destroy();
-			}
-			$('.streetSignsEM').css("background-image","none");
-			$('.streetSignsEM').css("background-image","url(static/images/street-parking-icon2.png)");
-			$('.streetSigns').removeClass('layersClicked');
-			$('.streetSigns').css('color',"#fff");
-        	$('.BuildingsEM').css("background-image","none");
-			$('.BuildingsEM').css("background-image","url(static/images/building-icon1.png)");
-			$('.Buildings').removeClass('layersClicked');
-			$('.Buildings').css('color',"#fff");
-			building=osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
-			osmb.setTilt(osmb.getTilt()+0.01);
-			$('.layerBtn').trigger( "click" );
-			$('.streetSigns').trigger( "click" );
-			$('.street').trigger( "click" );
-			$('.bikeRacks').trigger( "click" );
-		}); 
+		$('.streetSignsEM').css("background-image","none");
+		$('.streetSignsEM').css("background-image","url(static/images/street-parking-icon2.png)");
+		$('.streetSigns').removeClass('layersClicked');
+		$('.streetSigns').css('color',"#fff");
+    	$('.BuildingsEM').css("background-image","none");
+		$('.BuildingsEM').css("background-image","url(static/images/building-icon1.png)");
+		$('.Buildings').removeClass('layersClicked');
+		$('.Buildings').css('color',"#fff");
+		building=osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json',{color:'#D0D0D0'});
+		osmb.setTilt(osmb.getTilt()+0.01);
+		$('.layerBtn').trigger( "click" );
+		$('.streetSigns').trigger( "click" );
+		$('.garages').trigger( "click" );
+		$('.garages').prop('disabled', false);
+		$('.streetSigns').prop('disabled', false);
+		$('.street').prop('disabled', false);
+		$('.bikeRacks').prop('disabled', false);
+	}else{
+		openError();
+	}	
+}); 
 			
-		var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
-  		var searchpositionTo = {x: 370.5 , y: 100 ,width: 350,height:35 };
-  		//var currentPosition = searchPositionFrom ;
+var searchPositionFrom =  {x: 707.5 , y: 348.5, width: 500, height:50};
+var searchpositionTo = {x: 320.5 , y: 100 ,width: 350,height:35 };
+//var currentPosition = searchPositionFrom ;
 
-		function changeSearchLocation(){
-				var tweenSearchPosition = new TWEEN.Tween(searchPositionFrom)
-    			.to(searchpositionTo, 600)
-   				.onUpdate(function() {
-   				//if (currentPosition == searchPositionTo){
-        		locationSearchContainer.style.left = ( this.x ) + 'px';
-        		locationSearchContainer.style.top = ( this.y ) + 'px';
-        		locationSearch.style.width = (this.width ) + 'px';
-        		locationSearch.style.height = (this.height ) + 'px';
-        		locationSearchButton.style.height = (this.height ) + 'px';
-        		findMe.style.height = (this.height ) + 'px';
+function changeSearchLocation(){
+		var tweenSearchPosition = new TWEEN.Tween(searchPositionFrom)
+		.to(searchpositionTo, 600)
+			.onUpdate(function() {
+		locationSearchContainer.style.left = ( this.x ) + 'px';
+		locationSearchContainer.style.top = ( this.y ) + 'px';
+		locationSearch.style.width = (this.width ) + 'px';
+		locationSearch.style.height = (this.height ) + 'px';
+		locationSearchButton.style.height = (this.height ) + 'px';
+		findMe.style.height = (this.height ) + 'px';
+	});
+	tweenSearchPosition.start();
+	//TWEEN.remove(tweenSearchPosition);
+}
 
-        	//}
-    	});
-				tweenSearchPosition.start();
-				//TWEEN.remove(tweenSearchPosition);
+var	searchedMarker = null;
+
+function changeLocation(location) {
+	console.log("Loading location: " + location);
 	
+	if (searchedMarker != null){
+		searchedMarker.destroy();
+	}
+	var url = "http://nominatim.openstreetmap.org/search?format=json&q=";
+	d3.json(url + location, function(error, response) {
+		if (error) return console.warn(error);
 		
+		
+		if (response && response[0] && response[0].lat && response[0].lon) {
+			var position = {
 			
-
-			
-
+					latitude: response[0].lat,
+					longitude: response[0].lon
+			};
+			searchedMarker = osmb.addOBJ('./static/images/parkzone1.obj', {longitude:position.longitude,latitude: position.latitude },{id: "position" ,scale : 10, elevation :0, rotation : 0 , color: '#00FF00'});
+			changePosition(position.latitude,position.longitude);
 		}
+	});
+}
 
-		function changeLocation(location) {
-			console.log("Loading location: " + location);
+function changePosition(lat,lon) {
+	var temp = osmb.getPosition().longitude;
+		
+	//there is some error in longitude incerement got to look into it
 
-			var url = "http://nominatim.openstreetmap.org/search?format=json&q=";
-			d3.json(url + location, function(error, response) {
-				if (error) return console.warn(error);
-				
-				
-				if (response && response[0] && response[0].lat && response[0].lon) {
-					var position = {
-						coords: {
-							latitude: response[0].lat,
-							longitude: response[0].lon
-
-						}
-
-					};
-
-					changePosition(position);
-				}
-			});
-		}
-
-		function changePosition(position) {
-			var positionLatitude = position.coords.latitude;
-			var positionLongitude = position.coords.longitude;
-
-						
-			//there is some error in longitude incerement got to look into it
-
-			var valuesFromPosition = {latitude: osmb.getPosition().latitude, longitude: osmb.getPosition.longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
-			var valuesToPosition = {latitude: positionLatitude, longitude: positionLongitude, rotation: 30, zoom: 15, tilt: 0};
+	var valuesFromYourPosition ={latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
+	var valuesToSearchedPosition = {latitude: lat, longitude: lon, rotation: 30, zoom: 15.5, tilt: 0};
+		console.log("positionLongitude1:",temp);
 
 			
-
-	 var tweenPosition = new TWEEN.Tween(valuesFromPosition)
-    	.to(valuesToPosition, 900)
+	 var tweenSearchedPosition = new TWEEN.Tween(valuesFromYourPosition)
+    	.to(valuesToSearchedPosition, 900)
    		.onUpdate(function() {
         // here we call the functions to update the map state
-       // console.log(positionLongitude);
-      //  console.log(this.longitude);
-        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
+        	console.log("positionLatitudeFrom:",valuesFromYourPosition.latitude);
+        	console.log("positionLongitudeFrom:",valuesFromYourPosition.longitude);
+        	console.log("positionLatitudeTo:",valuesToSearchedPosition.latitude);
+        	console.log("positionLongitudeTo:",valuesToSearchedPosition.longitude);
+         	console.log(this.latitude);
+        	console.log(this.longitude);
+        	console.log("temp:",temp);
+        	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude - temp });
         	osmb.setRotation(this.rotation);
         	osmb.setZoom(this.zoom);
         	osmb.setTilt(this.tilt);
     	});
-				tweenPosition.start();
+				tweenSearchedPosition.start();
 			
 	};
+	animate();
+	function animate(time) {
 		requestAnimationFrame(animate);
-
-		function animate(time) {
-		    requestAnimationFrame(animate);
-		    TWEEN.update(time);
-		}
+		TWEEN.update(time);
+	}
 
 	// ******************************************************************
 		// var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from=40.808213,-73.963737&to=40.763664,-73.981613";
@@ -1467,6 +921,8 @@ function spin(){
 		}
 
 //**********************************************************************	
+// getting your position
+
 		var options = {
 		  enableHighAccuracy: true,
 		  timeout: 5000,
@@ -1507,6 +963,7 @@ function spin(){
 		// navigator.geolocation.getCurrentPosition(success, error, options);
 
 	// ******************************************************************
+	//parking sign bubble
 		var lon1=0;
 		var lat1=0;
 		var signData="";
@@ -1544,6 +1001,7 @@ function spin(){
 				      	 		$(".signLabel").addClass("display");
 				      	 		$(".signLabel").show();
    								osmb.setTilt(osmb.getTilt()+0.01);
+   								osmb.setTilt(osmb.getTilt()-0.01);
 							
 				      	 	}
 				      	
@@ -1560,7 +1018,7 @@ function spin(){
 		  signLabel.style.top = Math.round(pos.y)-60 + 'px';
 		});
 //*****************************************************************************
-
+//street parking line
 
  function ShowParkingLines(){
 
@@ -1604,8 +1062,8 @@ function spin(){
 		features: [{
 		type: 'Feature',
 		properties: {
-		color: '#FFFF0A',
-		roofColor: '#FFFF28',
+		color: '#9fedc2',
+		roofColor: '#cfffed',
 		height: 5,
 		minHeight: 0
 		},
@@ -1627,9 +1085,67 @@ function spin(){
 		//Add the Polygon json to the map ....
 		parkingLine.push ( osmb.addGeoJSON(geojson_route));
 	}
-	
+//*****************************************************************************************************
+//triggering the toggle menu	
+	$('.garages').trigger("click");
+	$('.streetSigns').trigger( "click" );
+	$('.street').trigger( "click" );
+	$('.bikeRacks').trigger( "click" );
+	$('.garages').prop('disabled', true);
+	$('.streetSigns').prop('disabled', true);
+	$('.street').prop('disabled', true);
+	$('.bikeRacks').prop('disabled', true);
+//*****************************************************************************************************
+// Error messege
+
+function openError() {
+	$("#error-popup").show();
+}
+ 
+$("#locationSearch").focus(function(){
+  $("#error-popup").hide();
+});
+
+//*****************************************************************************************************
+ // for image zoom 
+   $('.garageImg').click(function(e){
+	    var event = e || arguments[0] || window.event;
+	    console.log(event);
+	    event.stopPropagation();
+	});
+//*****************************************************************************************************
+//sorting list
+
+$('#cd-menu-trigger').on('click', function () {
+    var priceOrderedDivs = $(".parkingData").sort(function (a, b) {
+        return ($(a).find(".one_hour").text() > $(b).find(".one_hour").text()? 1 : -1);
+    });
+    $("#dataContainer").html(priceOrderedDivs);
+
+    $('.parkingData').click(function(){
+	    $('.parkingData').removeClass('listClicked');
+	    $(".parkingData").find('.dataExpand').hide();
+	    $(this).find('.dataExpand').toggle("fast");
+	    $(this).addClass("listClicked");
+	    $('.labels').removeClass('clicked');
+	    $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
+	    flyTo($(this).attr('id').split('parkingData')[1]);
+	    	    
+	});
+});
 
 
+//***********************************************************************************************************
+//loading overlay
+	$('.loading').show();
+
+	osmb.on('busy', function() {$('.loading').show();});
+	//osmb.on('loadfeature', function() {$('.loading').hide();});
+	osmb.on('idle', function() {$('.loading').hide();});
+
+jQuery(document).ready(function($) {
+	alert("Welcome to ParkZone<br>This website helps you find parking garages, street parking,<br> information about parking signs and bicycle racks in <b>NEW YORK<b> <br> The data is NOT COMPELTE, we cover ONLY ONE zipcode which is 10019 Midtown west<br>YOU CAN TRY THIS ADDRESS W 57 ST,NY OR ZIP CODE 10019<br>");
+});
 
 </script>
 

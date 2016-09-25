@@ -1,0 +1,617 @@
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #map {
+
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      padding-top: 50px;
+    }
+    .parkingData {
+      position: relative;
+      width: 450px;
+      left: 20px;
+      top: 10px;
+      z-index: 1000;
+	  background: #fff;
+	  border: solid #fff;
+	  border-width: 1px ;
+	  border-radius: 3px ;
+	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	  color: #222;
+	  font-size: 0.8em;
+	  opacity: 0.99;
+	  padding: 15px 15px;
+	  overflow :auto;
+	  margin-bottom : 10px;
+	  font-family: 'Open Sans';
+	  line-height: 100%;
+	}
+	#narrative{
+	  position: absolute;
+	  width: 450px;
+      left: -550px;
+      top: 140px;
+      height: 550px;
+      z-index: 1001;
+	  background: #28aff8;
+	  border: solid #fff;
+	  border-width: 1px ;
+	  border-radius: 3px ;
+	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	  color: #fff;
+	  font-size: 1.0em;
+	  opacity: 0.99;
+      padding: 5px 20px 15px 10px;
+	  overflow :scroll;
+	  margin-bottom : 10px;
+	  font-family: 'Open Sans';
+	}
+	.loading{
+
+	  position: absolute;
+	  width: 100%;
+      height: 100%;
+      z-index: 10000;
+	  background: black;
+	  color: #fff;
+	  opacity: 0.7;
+	  top:70px;
+	  left:0;
+
+
+	}
+
+
+	.parkingData:hover {
+			background: #666;
+			color: #fff;
+	}
+
+    .control {
+      position: absolute;
+      right: 0px;
+      z-index: 999;
+
+    }
+
+    .control.tilt {
+      top: 70px;
+    }
+    .control.tilt  button.dec {
+      border-radius: 5px 0 0 0;
+    }
+
+    .control.rotation {
+      top: 105px;
+    }
+
+    .control.zoom {
+      top: 140px;
+      border-radius: 8px;
+    }
+    .control.zoom  button.dec {
+      border-radius: 0 0 0 5px;
+    }
+
+    .control.zoom button{
+      font-weight: normal;
+     
+    }
+
+
+    .control button {
+      width: 35px;
+      height: 35px;
+      margin: 5px 0 0 0;
+      border: none;
+      background: #666;
+      color: #fff;
+      opacity: 0.9;
+      font-weight: bold;
+      text-align: center;
+      float:left;
+      font-size: 1.2em;
+    }
+
+    .control button:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+
+
+
+    .toggleArea button {
+      width: 150px;
+      height: 35px;
+      margin: 5px 0 0 0;
+      border: none;
+      background: #666;
+      opacity: 0.9;
+      text-align: center;
+      float:left;
+      font-size: 1.0em;
+      position: absolute;
+      right: -150px;
+      z-index: 999;
+      
+    }
+    .toggleArea button:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+	#locationSearchContainer {
+		top: 50%; 
+		left: 50%;
+		position: absolute;
+		z-index: 1001;
+		opacity:0.95;
+		margin: -25px 0 0 -300px;
+		font-family: 'Open Sans';
+		
+	}
+
+	input#locationSearch {
+		background: #fff;
+		border: solid #ccc;
+		border-width: 1px 0 1px 1px;
+		border-radius: 3px 0 0 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #222;
+		font-size: 1.4em;
+		float: left;
+		height: 50px;
+		margin: 0 0 0 0px;
+		padding: 0 15px;
+		width: 500px;
+		box-shadow: 0 0 20px #666666;
+		font-family: 'Open Sans';
+		
+	}
+
+	input#locationSearch:focus {
+		outline: 0;
+		border-color: #249ad9;
+		box-shadow: 0 0 8px rgba(36, 154, 217, 0.5);
+	}
+
+	button:hover {
+		cursor: pointer;
+	}
+
+		button:focus {
+			outline: 0;
+		}
+
+	button#locationSearchButton, button#findMe{
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		float: left;
+		font-size: 1.3em;
+		height: 50px;
+		line-height: 35px;
+		margin: 0px 0 0 0;
+		padding: 0 20px;
+		font-family: 'Open Sans';
+	}
+
+	button#locationSearchButton {
+		border-radius: 0 3px 3px 0;
+		box-shadow: 0 0 20px #666666;
+	}
+
+	button#locationSearchButton:hover {
+		background: #28aff8;
+	}
+
+	button#findMe {
+		background: #666;
+		margin-left: 10px;
+		box-shadow: 0 0 20px #666666;
+	}
+
+	button#findMe:hover {
+		background: #888;
+	}
+
+    #error-popup{
+    	background: #f35141;
+		border: none;
+		border-radius: 8px;
+		color: #fff;
+		font-size: 1.2em;
+		font-weight: lighter;
+		height: 80px;
+		width: 300px;
+		line-height: 25px;
+		padding: 10px 20px 10px 20px;
+		font-family: 'Open Sans';
+		top: 50%; 
+		left: 50%;
+		position: absolute;
+		z-index: 1002;
+		margin: 27px 0 0 -150px;
+		text-align: center;
+		display: none;
+
+    }
+
+	#error-popup:before 
+	{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	z-index: 999;
+	top: -30px;
+	left: 130px;
+	border: 20px solid #f35141;
+	border-color: transparent transparent #f35141 transparent;
+	}
+
+	#ParkZone-logo-container {
+		position: absolute;
+		bottom: 25px;
+		right: 0px;
+		z-index: 9998;
+	}
+
+	#ParkZone-logo-container a {
+		background: url("/static/images/ParkZone_logo_white.png");
+		background-size: 90%;
+		background-repeat:no-repeat;
+		display: block;
+		height: 90px;
+		overflow: hidden;
+		text-indent: -9999em;
+		width: 240px;
+		opacity:0.6;
+	}
+	.labels {
+		width:40px;
+		height:30px;
+		position:absolute;
+		z-index:9;
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		font-size: 1.2em;
+		line-height: 30px;
+		padding-left: 3px;
+		font-family: 'Open Sans';
+		cursor:pointer;
+
+	}
+	.labelsTip {
+		width:20px;
+		height:20px;
+		position:absolute;
+		z-index:9;
+		background: #249ad9;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+		color: #fff;
+		font-size: 1.2em;
+		line-height: 30px;
+		padding-left: 3px;
+		font-family: 'Open Sans';
+		cursor:pointer;
+
+	}
+	.clicked {
+			 background: #43b571;
+	  }
+
+	.listClicked{
+
+	 	background: #28aff8;
+	 	color:#fff;
+
+	 }
+	 .listClicked:hover{
+
+	 	background: #666;
+	 
+	 }
+
+	 .overlay {
+	    position: absolute;
+	    top: 122px;
+	    right: 10px;
+	}
+
+	.overlay button {
+	    font:1.2em 'Open Sans';
+	    background-color: red;
+	    color: #fff;
+	    display: inline-block;
+	    margin: 0;
+	    padding: 7px 6px;
+	    border: none;
+	    cursor: pointer;
+	    border-radius: 3px;
+	}
+
+	.overlay button:hover {
+	    background-color:#4ea0da;
+	}
+
+	td {
+		padding: 5px;
+	}
+
+	header {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 50px;
+	  width: 100%;
+	  background: #28aff8;
+	  z-index: 1000;
+	  /* Force Hardware Acceleration in WebKit */
+	  -webkit-transform: translateZ(0);
+	  -webkit-backface-visibility: hidden;
+	  -webkit-transition-property: -webkit-transform;
+	  -moz-transition-property: -moz-transform;
+	  transition-property: transform;
+	  -webkit-transition-duration: 0.4s;
+	  -moz-transition-duration: 0.4s;
+	  transition-duration: 0.4s;
+	}
+
+	header.is-fixed {
+	  position: fixed;
+	}
+
+	@media only screen and (min-width: 768px) {
+	  header {
+	    height: 70px;
+	  }
+	}
+
+
+
+	#cd-logo {
+	  display: block;
+	  float: left;
+	  margin: 8px 0 0 20px;
+	}
+	#cd-logo img {
+	  display: block;
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-logo {
+	    margin: 5px 0 0 30px;
+	  }
+	}
+
+	#cd-top-nav {
+	  position: absolute;
+	  top: 0;
+	  right: 120px;
+	  height: 100%;
+	  display: none;
+	}
+	#cd-top-nav ul {
+	  height: 100%;
+	  padding-top: 18px;
+	}
+	#cd-top-nav li {
+	  display: inline-block;
+	  margin-right: 1em;
+	  -moz-transition: 1s linear;
+      -ms-transition: 1s linear;
+      -o-transition: 1s linear;
+      -webkit-transition: 1s linear;
+      transition: 1s linear;
+      text-decoration: none; 
+	}
+	#cd-top-nav a {
+	  display: inline-block;
+	  text-decoration: none; 
+	  padding: .5em;
+	  color: #FFF;
+	  text-transform: uppercase;
+	  font-weight: 600;
+	  -moz-transition: 1s linear;
+      -ms-transition: 1s linear;
+      -o-transition: 1s linear;
+      -webkit-transition: 1s linear;
+      transition: 1s linear;
+	}
+	#cd-top-nav a.current {
+	  background-color: #28aff8;
+	}
+	.no-touch #cd-top-nav a:hover {
+	  color: rgba(255, 255, 255, 0.7);
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-top-nav {
+	    display: block;
+	  }
+	}
+
+	#cd-menu-trigger {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  height: 100%;
+	  width: 50px;
+	  background-color: #0798e6;
+	}
+	#cd-menu-trigger .cd-menu-text {
+	  height: 100%;
+	  text-transform: uppercase;
+	  color: #FFF;
+	  font-weight: 600;
+	  display: none;
+	}
+	#cd-menu-trigger .cd-menu-icon {
+	  /* this span is the central line in the menu menu */
+	  display: inline-block;
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  bottom: auto;
+	  right: auto;
+	  -webkit-transform: translateX(-50%) translateY(-50%);
+	  -moz-transform: translateX(-50%) translateY(-50%);
+	  -ms-transform: translateX(-50%) translateY(-50%);
+	  -o-transform: translateX(-50%) translateY(-50%);
+	  transform: translateX(-50%) translateY(-50%);
+	  width: 18px;
+	  height: 2px;
+	  background-color: #FFF;
+	  /* these are the upper and lower lines in the menu menu */
+	}
+	#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
+	  content: '';
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  background-color: inherit;
+	  left: 0;
+	}
+	#cd-menu-trigger .cd-menu-icon::before {
+	  bottom: 5px;
+	}
+	#cd-menu-trigger .cd-menu-icon::after {
+	  top: 5px;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon {
+	  background-color: #0798e6;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+	  background-color: white;
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::before {
+	  bottom: 0;
+	  -webkit-transform: rotate(45deg);
+	  -moz-transform: rotate(45deg);
+	  -ms-transform: rotate(45deg);
+	  -o-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	#cd-menu-trigger.is-clicked .cd-menu-icon::after {
+	  top: 0;
+	  -webkit-transform: rotate(-45deg);
+	  -moz-transform: rotate(-45deg);
+	  -ms-transform: rotate(-45deg);
+	  -o-transform: rotate(-45deg);
+	  transform: rotate(-45deg);
+	}
+	@media only screen and (min-width: 768px) {
+	  #cd-menu-trigger {
+	    width: 110px;
+	    padding-left: 1.25em;
+	  }
+	  #cd-menu-trigger .cd-menu-text {
+	    display: inline-block;
+	    line-height: 70px;
+	  }
+	  #cd-menu-trigger .cd-menu-icon {
+	    left: auto;
+	    right: 1.25em;
+	    -webkit-transform: translateX(0);
+	    -moz-transform: translateX(0);
+	    -ms-transform: translateX(0);
+	    -o-transform: translateX(0);
+	    transform: translateX(0);
+	  }
+	}
+	.signLabel 
+	{
+	position: absolute;
+	width: 175px;
+	height: 95px;
+	padding: 5px;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	top:200px;
+	z-index: 999;
+	font-size: 0.8em;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid #666;
+	-webkit-box-shadow: 2px 2px 2px #888;
+	-moz-box-shadow: 2px 2px 2px #888;
+	box-shadow: 2px 2px 2px #888;
+	text-overflow: 
+
+  	
+	}
+
+	.signLabel:before 
+	{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	z-index: 999;
+	bottom: -20px;
+	left: 22px;
+  	border: 10px solid;
+  	border-color: #666 transparent transparent #666;
+	}
+	.signLabel:after 
+	{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	z-index: 999;
+	bottom: -14px;
+	left: 24px;
+	border: 10px solid #666;
+	border-color: #fff transparent transparent #fff;
+	}
+	.display{
+		display: table;
+	}
+  .garagesEMPic{
+  	background-image: url(static/images/garage-icon3.png);
+  }
+
+  .streetEMPic{  
+  	background-image: url(static/images/street-icon3.png);
+  }
+
+  .BuildingsEMPic{  
+  	background-image: url(static/images/building-icon3.png);
+  }
+
+  .streetSignsEMPic{ 
+  	background-image: url(static/images/street-parking-icon3.png);
+  }
+ .layersClicked{
+ 	color: #575757;
+ }
+.garageImg {
+    transition: -webkit-transform 0.55s ease;
+    transition: transform 0.55s ease;
+    transform-origin: top right;
+}
+
+.garageImg:active {
+    -webkit-transform: scale(2.5,2.5);
+    transform: scale(2.5,2.5);
+    transform-origin: top right;
+}
+
