@@ -732,7 +732,7 @@ function changeLocation(location) {
 	if (searchedMarker != null){
 		searchedMarker.destroy();
 	}
-	var url = "http://nominatim.openstreetmap.org/search?format=json&q=";
+	var url = "https://nominatim.openstreetmap.org/search?format=json&q=";
 	d3.json(url + location, function(error, response) {
 		if (error) return console.warn(error);
 		
@@ -806,7 +806,7 @@ function changePosition(lat,lon) {
 			var from_lon = from.longitude;
 			var to_lat = to.latitude;
 			var to_lon = to.longitude;
-			var test= "http://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
+			var test= "https://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
 			console.log(test);
 
 
