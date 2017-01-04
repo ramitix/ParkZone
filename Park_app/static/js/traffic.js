@@ -207,12 +207,12 @@ if(run==true){
     
     //road1 1 h from top
     var road = new drawroad();
-    road.x = 0, road.y = ((h/2)-175), road.width = w, road.height = 80;
+    road.x = 0, road.y = 175, road.width = w, road.height = 80;
     roads.push(road);
     
     //road2 3 v from right
     var road = new drawroad();
-    road.x = ((w/2)-40), road.y = 0, road.width = 80, road.height = h;
+    road.x = 710, road.y = 0, road.width = 80, road.height = h;
     roads.push(road);
     
     //road3
@@ -237,7 +237,7 @@ if(run==true){
     
     //road7 2 h from top
     var road = new drawroad();
-    road.x = 0, road.y = ((h/2)+25), road.width = w, road.height = 80;
+    road.x = 0, road.y = 375, road.width = w, road.height = 80;
     roads.push(road);
     
     intersections();
