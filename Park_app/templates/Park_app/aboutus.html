@@ -12,6 +12,7 @@
  	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
  	<link rel="stylesheet"  href="{% static 'css/chardinjs.css' %}" >
 
+
  	<script src="{% static 'js/tween.js' %}"></script>
  	<script src="{% static 'js/OSMBuildings.js' %}"></script>
  	<script src="{% static 'js/d3.js' %}"></script>
@@ -21,17 +22,10 @@
 	<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript" > </script>
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/chardinjs.min.js' %}"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
 	
+
 	
-	 <div id="locationSearchContainer" >
-		<input data-intro="Enter your address here <br>eg. W 59 st, An autocomplete menu will showup or you can click on MY LOCATION button " data-position="top" type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
-		<button id="locationSearchButton" data-intro="Click here after you enter the address " data-position="bottom"> 
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		</button>
-		<button id="findMe" class="btn btn-default btn-lg" data-intro="Click here to go to your location" data-position="right">
-				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-		</button>
-	</div>
 
 	  <style>
     html, body {
@@ -39,30 +33,17 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow: scroll;
     }
 
-    
+	#main_Picture {
 
-	#ParkZone-logo-container {
-		position: absolute;
-		bottom: 25px;
-		right: 0px;
-		z-index: 9998;
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+	margin-top:25px;
 	}
-
-	#ParkZone-logo-container a {
-		background: url("static/images/ParkZone_logo_white.png");
-		background-size: 90%;
-		background-repeat:no-repeat;
-		display: block;
-		height: 90px;
-		overflow: hidden;
-		text-indent: -9999em;
-		width: 240px;
-		opacity:0.6;
-	}
-
 
 
 	td {
@@ -249,78 +230,22 @@
 	  }
 	}
 
-
-  </style>
-  <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
-	}
-
-
-</head>
-<body>
-
-	<header>
-		<a id="cd-logo" href="/"><img src="/static/images/ParkZone2.png" width="20%" alt="Homepage" margin-top="0px"></a>
-		
-		<nav id="cd-top-nav">
-			<ul>
-				<li><a id="Home" href="/">HOME</a></li>
-				<li><a href="?aboutUs">ABOUT US</a></li>
-			</ul>
-		</nav>
-		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
-	
-	</header>
-
-	<div class="logo fade-in">
-			<h1 style="text-align:center; color:white"> Meet The Team Behind ParkZone </h1>
-	</div>
-
-
-	<div class="wrapper">
-
-		<div class="box fade-in one">
-	   		<center><img src="https://lh3.googleusercontent.com/-6ChPckwsg3w/USavbXMrm4I/AAAAAAAAAGE/wg2Zk0GvngM_dPMazUNOLU0gdPCUpMBQQCEw/w139-h140-p/16690_4882491587684_802185620_n.jpg" style="width:200px;height:200px;"></center>
-		<h2 style="text-align:center;">Mark Lindo</h2>
-		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database building. Contributed to UI and front end development. Also worked on paperwork.</p>
-		</div>
-
-		<div class="box fade-in two">
-	   		<center><img src="https://lh3.googleusercontent.com/FCSK9qQFt287019_TVJXDw7LW7q2m5Rnqv8M3NaiJFKjo5BXqxv3sA1_EYtJvyIN9tiid-lg=s207-p-no" style="width:200px;height:200px;"></center>
-		<h2 style="text-align:center;">Ramy Atalla</h2>
-		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database management. Contributed to UI and front end development. Also worked on online webhosting and maintenance.</p>
-		</div>
-
-		<div class="box fade-in three">
-	   		<center><img src="https://d3q6qq2zt8nhwv.cloudfront.net/m/1_extra_1aeplf03.jpg" style="width:200px;height:200px;"></center>
-		<h2 style="text-align:center;">Michael Medina</h2>
-		<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. One of the three founding members of ParkZone. Worked on back end development, and database building. Also contributed to UI and front end development.</p>
-		</div>
-
-		<div>
-			<button type="button" class="gitlink fade-in four" onclick="window.open('https://github.com/ramitix/ParkZone')"><img src="https://lh5.googleusercontent.com/-Xxu-QmBtYNQ/V6ywWE4OSTI/AAAAAAAAKC0/amNiPFf5Obw82azM4Pk0EHSMhBVgMAB2gCL0B/w181-h180-no/1%2Bcopy.png" style="width:70px;height:70px;"></button>
-		</div>
-
-	</div>
-
-	<style>
-
 	.logo{
 		margin:auto;
 		margin-top: 20px;
 		width:800px;
 		height:100px;
-		border: 3px solid #28aff8;
+		/*border: 3px solid #28aff8;*/
 		padding: 10px;
-		background-color:#28aff8;
+		/*background-color:#28aff8;*/
 	}
-
-	.gitlink {
-    	margin: 5px;
-    	padding:0px;
-    	border-radius: 50%;
-    	cursor: pointer;
-    	background-color: white;
-    	border:1px;
+	.logo a{
+		color:#595959;;
+		font-size:140%; 
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	.logo li{
+		 list-style-type: none;
 	}
 
 	.wrapper{
@@ -344,16 +269,16 @@
         -moz-animation-fill-mode:forwards;
    		animation-fill-mode:forwards;
 
-        -webkit-animation-duration:1s;
-        -moz-animation-duration:1s;
-        animation-duration:1s;
+        -webkit-animation-duration:0.5s;
+        -moz-animation-duration:0.5s;
+        animation-duration:0.5s;
 	}
 
 	.fade-in.logo{
 		-webkit-animation-delay: 0.5s;
         -moz-animation-delay: 0.5s;
 		animation-delay: 0.5s;
-		border-radius: 10px;
+		/*border-radius: 10px;*/
 	}
 
 	.fade-in.one {
@@ -368,41 +293,202 @@
 		animation-delay: 1.5s;
 	}
 
-	.fade-in.three {
-        -webkit-animation-delay: 2s;
-        -moz-animation-delay: 2s;
-		animation-delay: 2s;
-	}
-
-	.fade-in.four {
-        -webkit-animation-delay: 2.5s;
-        -moz-animation-delay: 2.5s;
-		animation-delay: 2.5s;
-	}
 
 	.box{
 		width: 500px;
 		height: 500px;
-		position: auto;
 		margin: 0 auto;
-		float: left;
-		margin-top: 20px;
-		margin-left: 20px;
-		margin-right: 20px;
-		display:inline-block;
-		color: white;
-		padding: 40px; 
-		text-align:center;
-		border: 1px solid #fff;
-		background: #28aff8;
-		border-radius: 10px;
+		float: center;
+		margin-top: 75px;
+		margin-left: 50px;
+		margin-right: 50px;
+		display:inline-table;
+		color: #595959;
+
 	}
 
 
-	</style>
+	canvas{
+	  position: absolute;
+	  top:  0px;
+	  left: 0px;
+	}
+	header{
+		position: fixed;
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACGtaoiCJQKdRWkASuNpaadQ64Yz9uFxg&amp;sensor=false&amp;libraries=places"></script>
-   
-    <script src="{% static 'js/jquery.geocomplete.js' %}"></script>
+	}
+
+  </style>
+  <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
+	
+
+
+</head>
+<body>
+
+	<header>
+		<a id="cd-logo" href="/"><img src="/static/images/ParkZone2.png" width="20%" alt="Homepage" margin-top="0px"></a>
+		
+		<nav id="cd-top-nav">
+			<ul>
+				<li><a id="Home" href="/">HOME</a></li>
+				<li><a href="?aboutUs">ABOUT US</a></li>
+			</ul>
+		</nav>
+		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
+	
+	</header>
+	<div>
+		<section>
+		 <div id="main_Picture" >
+		 	 <canvas></canvas>
+		 </div>
+		</section>
+		<section>
+			<div class="logo fade-in" style=" position:absolute; width:100%; height:700px; top:700px;">
+				<h1  style=" width:100% ; position:relative; text-align:center; font-size:65px; font-family:Impact, Charcoal, sans-serif; padding-top: 100px;"> The Problem We All Face. </h1>
+				<p style=" padding-top: 100px; width:100% ;  position: relative;line-height: 2.5;font-size:150%; font-family:Arial, Helvetica, sans-serif; text-align:center; color:#595959;">Everyday thousands of people travel in and out of New York City but more often than not they run into these common problems:<br>
+					<ul style="width:100% ;  position:relative; text-align:center;">
+						<li><a>- You get to your destination and there is no parking available on the street or  ASPR info.</a></li>
+						<li><a>- You don’t know if your destination will provide parking or if you have to find a parking lot.</a></li>
+						<li><a>- All the parking lots around your destination seem too expensive or the parking lot is full.  </a></li>
+					</ul>
+				</p>
+			</div>
+		</section>
+		<section style=" position:absolute; width: 100%; height: 700px; top:1350px; align-items:center;background-color:#0798e6; ">
+			<div id="text" style=" position:relative; width: 60%; align-items:center; float: left; "> 
+				<h1  style=" width:100% ; position:relative; text-align:center; font-size:50px; font-family:Impact, Charcoal, sans-serif; 
+				margin-top: 250px;  color:white;">Parking in NYC is complete madness! </h1>
+				<h1  style=" width:80% ; position:relative; text-align:left; font-size:18px; font-family:Verdana, Geneva, sans-serif; 
+				 margin-left: 100px; color:white;">The Big Apple made close to $534 million in parking ticket payments in 2013. With parking tickets costing anywhere from $45 to $180, on-street parking in New York is risky.<br><br>That puts NEW YORK STATE on the top of the list.Here is a chart showing the parking tickets issued in the past 3 years</h1>
+			</div>
+			<div id="container" style=" float: left;  position:relative; min-width: 500px; max-width: 700px; display:block; margin-top: 175px;" ></div>
+			
+		</section>
+		<section>
+			<div class="wrapper" style=" position:absolute; width: 100%; height: 700px; top:2100px;">
+
+				<h1  style=" width:100% ; position:relative; text-align:center; font-size:65px; font-family:Impact, Charcoal, sans-serif; padding-top: 50px;"> Meet The Team </h1>
+				<div class="box fade-in one">
+			   		<center><img src="https://lh3.googleusercontent.com/FCSK9qQFt287019_TVJXDw7LW7q2m5Rnqv8M3NaiJFKjo5BXqxv3sA1_EYtJvyIN9tiid-lg=s207-p-no" style="width:200px;height:200px;"></center>
+				<h2 style="text-align:center;color:#0798e6;">Ramy Atalla</h2>
+				<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. Handeled 3D Design, UI Design, front end and back end development, database management and Hosting.</p>
+				</div>
+
+				<div class="box fade-in two">
+			   		<center><img src="https://lh3.googleusercontent.com/-6ChPckwsg3w/USavbXMrm4I/AAAAAAAAAGE/wg2Zk0GvngM_dPMazUNOLU0gdPCUpMBQQCEw/w139-h140-p/16690_4882491587684_802185620_n.jpg" style="width:200px;height:200px;"></center>
+				<h2 style="text-align:center;color:#0798e6;">Mark Lindo</h2>
+				<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. Handeled data mining and database building.</p>
+				</div>
+
+
+			</div>
+		</section>
+		<section>
+			<div style=" position:absolute; width: 100%; height: 400px; top:2800px; background-color:#0798e6;background-image: url(/static/images/Footer.png);background-repeat: repeat-x; background-position: left bottom; background-size: 100%;">
+
+<!-- 				<div class="box fade-in one">
+			   		<center><img src="https://lh3.googleusercontent.com/FCSK9qQFt287019_TVJXDw7LW7q2m5Rnqv8M3NaiJFKjo5BXqxv3sA1_EYtJvyIN9tiid-lg=s207-p-no" style="width:200px;height:200px;"></center>
+				<h2 style="text-align:center;">Ramy Atalla</h2>
+				<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. Handeled 3D Design, UI Design, front end and back end development, database management and Hosting.</p>
+				</div>
+
+				<div class="box fade-in two">
+			   		<center><img src="https://lh3.googleusercontent.com/-6ChPckwsg3w/USavbXMrm4I/AAAAAAAAAGE/wg2Zk0GvngM_dPMazUNOLU0gdPCUpMBQQCEw/w139-h140-p/16690_4882491587684_802185620_n.jpg" style="width:200px;height:200px;"></center>
+				<h2 style="text-align:center;">Mark Lindo</h2>
+				<p style="font-size:125%" align="justify">Currently a student at City University of New York (CUNY) Hunter College and studying for a degree in Computer Science. Handeled data mining and database building.</p>
+				</div> -->
+
+
+			</div>
+		</section>
+	</div>
+
+
+ <script>
+
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+        	backgroundColor: '#0798e6',
+            type: 'column'
+        },
+        title: {
+            text: 'Parking Tickets Issued In NYC',
+            style: {
+                color: '#FFFFFF',
+                 fontWeight: 'bold'
+            },
+        },
+        subtitle: {
+            text: 'Source: <a href="https://data.cityofnewyork.us">http://data.cityofnewyork.us</a>',
+            style: {
+                color: '#FFFFFF'
+            },
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Arial, Helvetica, sans-serif',
+                    color: '#ffffff'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+	            style: {
+	                color: '#FFFFFF'
+	            }
+        	},
+            title: {
+                text: 'Parking Tickets Issued (millions)',
+                style: {
+                color: '#FFFFFF'
+           		 },
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Parking Tickets Issued: <b>{point.y:.1f} millions</b>'
+        },
+        series: [{
+            name: 'Parking Tickets Issued',
+            color:'#ffffff',
+            data: [
+                ['2014', 9.1],
+                ['2015', 11.8],
+                ['2016', 10.6]
+          
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: 0,
+                color: '#0798e6',
+                align: 'center',
+                format: '{point.y:.1f}', // one decimal
+                y: 30, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Arial, Helvetica, sans-serif',
+                    color: '#ffffff'
+                }
+            }
+        }]
+    });
+});
+
+
+ </script>
+ <script src="{% static 'js/traffic.js' %}"></script>
+
+
+
 </body>
 </html>

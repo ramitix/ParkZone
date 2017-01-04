@@ -1,0 +1,29 @@
+@import 'nib'
+
+@keyframes bounce
+  0%, 100%, 20%, 50%, 80%
+    transform translate(0, 0)
+  40%
+    transform translate(0, -30px)
+  60%
+    transform translate(0, -15px)
+
+section
+  background tomato
+  height 100vh
+  display flex
+  justify-content center
+  align-items center
+  &:before
+    content ''
+    position absolute
+    bottom 0
+    left 50%
+    margin-left -20px
+    width 40px
+    height 40px
+    background-image url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuNCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI5NC42N3B4IiBoZWlnaHQ9Ijk0LjY3cHgiIHZpZXdCb3g9IjAgMCA5NC42NyA5NC42NyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOTQuNjcgOTQuNjciIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNOTQuNjcsMjYuNzc2TDQ3LjMzNSw2OS4zOEwwLDI2Ljc3NmwxLjMzOC0xLjQ4Nmw0NS45OTcsNDEuMzk2bDQ1Ljk5Ny00MS4zOTZMOTQuNjcsMjYuNzc2eiIvPgo8L3N2Zz4=")
+    background-size contain
+    animation bounce 2s infinite
+    
+  
