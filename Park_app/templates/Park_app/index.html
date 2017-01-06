@@ -62,6 +62,15 @@
 </div>
 
 <div id="dataContainer" data-intro="Here you get the results for your search. You find in each block the garage name the prices , nearby attractions, features,etc..<br> When you click on the block it will fly to the location on the map.Press and hold on the image to zoom in" data-position="right" style= "overflow :scroll; top:115px; overflow-x: hidden; max-height:86%; position: absolute; width:500px; z-index: 10; display: none; ">
+	<div class="Sortby" id="Sortby">
+		<table class="table-responsive" style="width:80%;margin-left: 80px;">
+			  <tr class="success">
+			   <th style="font-weight: 300;padding: 15px;"><b>Sort by:  </b></th> 
+			   <th id="cheapest" style="padding: 15px;text-align: center;color:#707070;cursor: pointer;">CHEAPEST  </th> 
+			   <th id="closest" style="padding: 15px;text-align: center;color:#707070; cursor: pointer;">CLOSEST </th>
+			   </tr>
+		 </table> 
+		</div>
 	{% for i in parkZones %}
 	<div class="parkingData" id="parkingData{{i.id}}" >
 		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
@@ -89,6 +98,7 @@
 		<div class="dataExpand" style="display:none; width: 75%; margin-top:10px;line-height: 120%;" >
 			<div class='overlay' id="GetDirections{{i.id}}" data-intro="Click Here to get guidance for from your location to this garage." data-position="bottom">
     			<button id="GetDirections{{i.id}}" >Get Directions</button>
+    			<p class="distance" id="distance{{i.id}}" style="font-weight: 200;"></p>
 			</div>
 			<p style= "font-size: 1.2em;padding-top:5px; margin-bottom: 5px;"><b>Operation Hours:</b></p>
 			<p> {{i.operation_hours}}</p>
@@ -96,6 +106,7 @@
            	<p> {{i.nearby_attractions}}</p>
            	<p style= "font-size: 1.2em;padding-top:5px; margin-bottom: 5px;"><b>Features: </b></p>
            	<p> {{i.features}} </p>
+           	
 
         </div>
       
@@ -188,9 +199,7 @@ $('.parkingData').click(function(){
     $(this).addClass("listClicked");
     $('.labels').removeClass('clicked');
     $('#label'+ $(this).attr('id').split('parkingData')[1]).addClass("clicked");
-    flyTo($(this).attr('id').split('parkingData')[1]);
-     
-   
+    flyTo($(this).attr('id').split('parkingData')[1]);  
 });
 // ****************************************************************************
 	$('.layerBtn').click(function(){
@@ -202,7 +211,20 @@ $('.parkingData').click(function(){
 	  		$('.streetSigns').animate({ right: -150  });
 	  		$('.bikeRacks').animate({ right: -150  });
 	  		$('.toggleArea').removeClass('layersClicked');
+	  		setTimeout(function(){
+	  		$('.Buildings').css("display","none");
+	  		$('.garages').css("display","none");
+	  		$('.street').css("display","none");
+	  		$('.streetSigns').css("display","none");
+	  		$('.bikeRacks').css("display","none");
+			}, 500); 
+
 	  	}else{
+	  		$('.Buildings').css("display","block");
+	  		$('.garages').css("display","block");
+	  		$('.street').css("display","block");
+	  		$('.streetSigns').css("display","block");
+	  		$('.bikeRacks').css("display","block");
 	  		$('.layerBtn').animate({ right: 150 });
 	  		$('.Buildings').animate({ right: 0 });
 	  		$('.garages').animate({ right: 0  });
@@ -318,42 +340,7 @@ $('.parkingData').click(function(){
         navigator.geolocation.getCurrentPosition(success, error, options);
     });
 
-// ****************************************************************************    
 
-    var idToGetPosition;
-
-    $('.overlay').click(function(e){
-	    var event = e || arguments[0] || window.event;
-	    console.log(event);
-	    event.stopPropagation();
-	    console.log($(this).attr('id').split('GetDirections')[1]);
-		idToGetPosition = $(this).attr('id').split('GetDirections')[1];
-		if (directionRoute!=null){
-			directionRoute.destroy();
-		}
-		$('#narrative').show();
-		$('#narrative').animate({ left: 20  },1000);
-    	navigator.geolocation.getCurrentPosition(success2, error, options);
-    
-    });
-
-    $('#narrative').click(function(){
-
-		$('#narrative').animate({ left: -450  },1000);
-		setTimeout(emptyNarrtive, 1100);
-		
-	});
-	function emptyNarrtive(){
-		$('#narrative').empty();
-		
-		$('#narrative').css('background', "url(static/images/gps.gif) no-repeat center center" );
-		$('#narrative').css('background-size', 100 );
-		$('#narrative').css('background-color', "#28aff8" );
-	}
-
-    $('.signLabel').click(function(){
-    	$('.signLabel').hide('fast');
-    });
 
 
 $("#locationSearch").geocomplete();
@@ -370,7 +357,7 @@ $("#locationSearchButton").click(function(){
   // });
  
 
- 40.764259&lon=-73.984741&zoom=16.0&tilt=45.0&rotation=89.7
+ 
 
   var osmb = new OSMBuildings({
     baseURL: './static/images/',
@@ -502,12 +489,12 @@ function flyTo(id){
    		.onUpdate(function() {
         // here we call the functions to update the map state
 
-            console.log("positionLatitudeFrom:",valuesFlyFrom.latitude);
-        	console.log("positionLongitudeFrom:",valuesFlyFrom.longitude);
-        	console.log("positionLatitudeTo:",valuesFlyTo.latitude);
-        	console.log("positionLongitudeTo:",valuesFlyTo.longitude);
-         	console.log(this.latitude);
-        	console.log(this.longitude);
+         //    console.log("positionLatitudeFrom:",valuesFlyFrom.latitude);
+        	// console.log("positionLongitudeFrom:",valuesFlyFrom.longitude);
+        	// console.log("positionLatitudeTo:",valuesFlyTo.latitude);
+        	// console.log("positionLongitudeTo:",valuesFlyTo.longitude);
+         // 	console.log(this.latitude);
+        	// console.log(this.longitude);
 
         	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude });
         	osmb.setRotation(this.rotation);
@@ -669,13 +656,10 @@ var locationSearchButton = document.getElementById("locationSearchButton");
 locationSearchButton.addEventListener("click", function(event) {
 	event.preventDefault();
 	if($.trim($("#locationSearch").val()).length>0){
+		plotMarker();
 		changeLocation(locationSearch.value);
 		changeSearchLocation();
-		$("#dataContainer").show("slow");
-    	$(".parkingData").show("slow");
-    	$(".parkingData").show("slow");
-    	$(".labels").show("slow");
-    	plotMarker();
+
     	TWEEN.remove(tween);
     	//plotSign();
     	building.destroy();
@@ -695,7 +679,7 @@ locationSearchButton.addEventListener("click", function(event) {
 		osmb.setTilt(osmb.getTilt()+0.01);
 		$('.layerBtn').trigger( "click" );
 		$('.streetSigns').trigger( "click" );
-		$('.garages').trigger( "click" );
+		//$('.garages').trigger( "click" );
 		$('.garages').prop('disabled', false);
 		$('.streetSigns').prop('disabled', false);
 		$('.street').prop('disabled', false);
@@ -727,7 +711,7 @@ function changeSearchLocation(){
 var	searchedMarker = null;
 
 function changeLocation(location) {
-	console.log("Loading location: " + location);
+	//console.log("Loading location: " + location);
 	
 	if (searchedMarker != null){
 		searchedMarker.destroy();
@@ -745,6 +729,7 @@ function changeLocation(location) {
 			};
 			searchedMarker = osmb.addOBJ('./static/images/parkzone1.obj', {longitude:position.longitude,latitude: position.latitude },{id: "position" ,scale : 10, elevation :0, rotation : 0 , color: '#00FF00'});
 			changePosition(position.latitude,position.longitude);
+			GetDistance(position.latitude,position.longitude);
 		}
 	});
 }
@@ -756,20 +741,20 @@ function changePosition(lat,lon) {
 
 	var valuesFromYourPosition ={latitude: osmb.getPosition().latitude, longitude: osmb.getPosition().longitude, rotation: osmb.getRotation(), zoom: osmb.getZoom(), tilt: osmb.getTilt()};
 	var valuesToSearchedPosition = {latitude: lat, longitude: lon, rotation: 30, zoom: 15.5, tilt: 0};
-		console.log("positionLongitude1:",temp);
+		//console.log("positionLongitude1:",temp);
 
 			
 	 var tweenSearchedPosition = new TWEEN.Tween(valuesFromYourPosition)
     	.to(valuesToSearchedPosition, 900)
    		.onUpdate(function() {
         // here we call the functions to update the map state
-        	console.log("positionLatitudeFrom:",valuesFromYourPosition.latitude);
-        	console.log("positionLongitudeFrom:",valuesFromYourPosition.longitude);
-        	console.log("positionLatitudeTo:",valuesToSearchedPosition.latitude);
-        	console.log("positionLongitudeTo:",valuesToSearchedPosition.longitude);
-         	console.log(this.latitude);
-        	console.log(this.longitude);
-        	console.log("temp:",temp);
+        	// console.log("positionLatitudeFrom:",valuesFromYourPosition.latitude);
+        	// console.log("positionLongitudeFrom:",valuesFromYourPosition.longitude);
+        	// console.log("positionLatitudeTo:",valuesToSearchedPosition.latitude);
+        	// console.log("positionLongitudeTo:",valuesToSearchedPosition.longitude);
+         // 	console.log(this.latitude);
+        	// console.log(this.longitude);
+        	// console.log("temp:",temp);
         	osmb.setPosition({ latitude: this.latitude, longitude: this.longitude - temp });
         	osmb.setRotation(this.rotation);
         	osmb.setZoom(this.zoom);
@@ -813,7 +798,7 @@ function changePosition(lat,lon) {
 
 			d3.json(test, function(error, response) {
 				if (error) return console.warn(error);
-				console.log(response);
+				//console.log(response);
 				renderNarrative(response);
 				var linePoints = [];
 				for (var i = 0; i < response.route.shape.shapePoints.length; i+=2){
@@ -822,7 +807,7 @@ function changePosition(lat,lon) {
 				
 			}
 			var linestring1 = turf.lineString(linePoints);
-			console.log(linestring1);
+			//console.log(linestring1);
 			lines(linestring1);
 			});
 		}
@@ -933,10 +918,10 @@ function changePosition(lat,lon) {
 		function success(pos) {
 		  var crd = pos.coords;
 
-		  console.log('Your current position is:');
-		  console.log('Latitude : ' + crd.latitude);
-		  console.log('Longitude: ' + crd.longitude);
-		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  // console.log('Your current position is:');
+		  // console.log('Latitude : ' + crd.latitude);
+		  // console.log('Longitude: ' + crd.longitude);
+		  // console.log('More or less ' + crd.accuracy + ' meters.');
 		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
 		  myPosition = {latitude: crd.latitude,longitude: crd.longitude};
 		  flyToYourLocation(crd.latitude,crd.longitude);
@@ -944,10 +929,10 @@ function changePosition(lat,lon) {
 		function success2(pos) {
 		  var crd = pos.coords;
 
-		  console.log('Your current position is:');
-		  console.log('Latitude : ' + crd.latitude);
-		  console.log('Longitude: ' + crd.longitude);
-		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  // console.log('Your current position is:');
+		  // console.log('Latitude : ' + crd.latitude);
+		  // console.log('Longitude: ' + crd.longitude);
+		  // console.log('More or less ' + crd.accuracy + ' meters.');
 		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: crd.longitude,latitude: crd.latitude},{id: "local1",scale : 10, elevation :0, rotation : 30 , color: 'blue'});
 		  osmb.addOBJ('./static/images/parkzone1.obj', {longitude: dynamicCor[idToGetPosition].lon,latitude: dynamicCor[idToGetPosition].lat},{id: "local2",scale : 10, elevation :0, rotation : 30 , color: 'green'});
 		  var myPosition = {latitude: crd.latitude,longitude: crd.longitude};
@@ -974,7 +959,7 @@ function changePosition(lat,lon) {
 			  	if (id)	{
 				    if (id.startsWith("sign")) {
 				      var idSplit = id.substr(4);
-				      console.log(idSplit);
+				      //console.log(idSplit);
 				      
 				      {% for z in parkSigns %}
 				      	 	if ({{z.signID}} == idSplit ){
@@ -990,7 +975,7 @@ function changePosition(lat,lon) {
 				      	{% endfor %}
 				    }else if (id.startsWith("rack")) {
 				      var idSplit1 = id.substr(4);
-				      console.log(idSplit);
+				      //console.log(idSplit);
 				      
 				      {% for z in bikeRacks %}
 				      	 	if ({{z.rackID}} == idSplit1 ){
@@ -1025,12 +1010,12 @@ function changePosition(lat,lon) {
 
 	var parkingLinePoints = [	[-73.98691713809967,40.76593074121366], [-73.98524343967438,40.765233946526294] ];
 	var parkingLinestring = turf.lineString(parkingLinePoints);
-	console.log(parkingLinestring);
+	//console.log(parkingLinestring);
 	parkingLines(parkingLinestring);
 
 	var parkingLinePoints1 = [	[ -73.98652017116547,40.76571540602614], [-73.98514151573181,40.76514049828669] ];
 	var parkingLinestring1 = turf.lineString(parkingLinePoints1);
-	console.log(parkingLinestring1);
+	//console.log(parkingLinestring1);
 	parkingLines(parkingLinestring1);
 }
  function removeParkingLines(){
@@ -1082,7 +1067,7 @@ function changePosition(lat,lon) {
 		for (var i = 0; i < my_json.features[0].geometry.coordinates[0].length; i++) {
 		  geojson_route.features[0].geometry.coordinates[0][i] = my_json.features[0].geometry.coordinates[0][i];
 		}
-		console.log(geojson_route);
+		//console.log(geojson_route);
 		//Add the Polygon json to the map ....
 		parkingLine.push ( osmb.addGeoJSON(geojson_route));
 	}
@@ -1107,23 +1092,121 @@ $("#locationSearch").focus(function(){
   $("#error-popup").hide();
 });
 
+
 //*****************************************************************************************************
  // for image zoom 
-   $('.garageImg').click(function(e){
+   $('.garageImg').on("click",function(e){
 	    var event = e || arguments[0] || window.event;
 	    console.log(event);
 	    event.stopPropagation();
-	});
-//*****************************************************************************************************
-//sorting list
 
-$('#cd-menu-trigger').on('click', function () {
+
+	});
+// ****************************************************************************    
+
+    var idToGetPosition;
+    function GetDirections(){
+	   // console.log($(this).attr('id').split('GetDirections')[1]);
+		
+		if (directionRoute!=null){
+			directionRoute.destroy();
+		}
+		$('#narrative').show();
+		$('#narrative').animate({ left: 20  },1000);
+    	navigator.geolocation.getCurrentPosition(success2, error, options);
+    }
+
+
+    $('.overlay').on("click",function(e){
+	    var event = e || arguments[0] || window.event;
+	    console.log(event);
+	    event.stopPropagation();
+	    idToGetPosition = $(this).attr('id').split('GetDirections')[1];
+	    GetDirections();
+    });
+
+    $('#narrative').click(function(){
+
+		$('#narrative').animate({ left: -450  },1000);
+		setTimeout(emptyNarrtive, 1100);
+		
+	});
+	function emptyNarrtive(){
+		$('#narrative').empty();
+		
+		$('#narrative').css('background', "url(static/images/gps.gif) no-repeat center center" );
+		$('#narrative').css('background-size', 100 );
+		$('#narrative').css('background-color', "#28aff8" );
+	}
+
+    $('.signLabel').click(function(){
+    	$('.signLabel').hide('fast');
+    });
+
+//*****************************************************************************************************
+//sorting list BY Price
+
+
+	var cheapest = document.getElementById("cheapest");
+
+	cheapest.addEventListener("click", function() {
+	if ($('#closest').hasClass("sortClicked")){
+		$('#closest').removeClass("sortClicked");
+		$('#closest').css('color',"#707070");
+	}
+	$('#cheapest').addClass("sortClicked");
+	$('#cheapest').css('color',"#333");
+
     var priceOrderedDivs = $(".parkingData").sort(function (a, b) {
         return ($(a).find(".one_hour").text() > $(b).find(".one_hour").text()? 1 : -1);
     });
-    $("#dataContainer").html(priceOrderedDivs);
+     var sortbyPrice = document.getElementById("Sortby");
+    $("#dataContainer").html(sortbyPrice);
+   	$("#dataContainer").append(priceOrderedDivs);
+   });
+//*****************************************************************************************************
+//sorting list BY Distance
+	var closest = document.getElementById("closest");
 
-    $('.parkingData').click(function(){
+	closest.addEventListener("click", function() {
+	if ($('#cheapest').hasClass("sortClicked")){
+		$('#cheapest').removeClass("sortClicked");
+		$('#cheapest').css('color',"#707070");
+	}
+	$('#closest').addClass("sortClicked");
+	$('#closest').css('color',"#333");
+	var distanceOrderedDivs = $(".parkingData").sort(function (a, b) {
+        return ($(a).find(".distance").text() > $(b).find(".distance").text()? 1 : -1);
+     });
+
+    var sortbyDistance = document.getElementById("Sortby");
+    $("#dataContainer").html(sortbyDistance);
+   	$("#dataContainer").append(distanceOrderedDivs);
+   	});
+
+
+   	var overlay=document.getElementsByClassName("overlay");
+   	for(var i=0;i<overlay.length;i++){
+    overlay[i].addEventListener('click',function (e){
+    	console.log(event);
+    	e.stopPropagation();
+    	idToGetPosition = $(this).attr('id').split('GetDirections')[1];
+    	GetDirections();
+    	});
+	}
+ 
+
+
+
+
+ //*********************************************************************************************************** 
+
+ 
+	var parkingData=document.getElementsByClassName("parkingData");
+   	for(var i=0;i<parkingData.length;i++){
+    parkingData[i].addEventListener('click',function (e){
+	// $('.parkingData').click(function(){
+		e.stopPropagation();
 	    $('.parkingData').removeClass('listClicked');
 	    $(".parkingData").find('.dataExpand').hide();
 	    $(this).find('.dataExpand').toggle("fast");
@@ -1133,8 +1216,66 @@ $('#cd-menu-trigger').on('click', function () {
 	    flyTo($(this).attr('id').split('parkingData')[1]);
 	    	    
 	});
-});
+	}
 
+//***********************************************************************************************************
+//get distance
+function GetDistance(lat,lon){
+	var from_lat = lat;
+	var from_lon = lon;
+	var to_lat = 0;
+	var to_lon = 0;
+	var query="";
+			
+
+      //var idSplit1 = id.substr(4);
+      //console.log(idSplit);
+      
+      {% for z in parkZones %}
+      	 	
+	 		to_lon = {{z.longitude}};
+	 		to_lat = {{z.latitude}};
+	 		query= "https://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
+	 		//console.log(query);
+
+			d3.json(query, function(error, response) {
+				if (error) return console.warn(error);
+				//console.log(response);
+				var distance = response.route.distance;
+				//console.log(distance);
+				
+				if (distance >2){
+					$('#parkingData'+ {{z.id}}).remove();
+					$('#label'+ {{z.id}}).remove();
+					for(i=0;i<markers.length;i++){
+						 //console.log('marker'+{{z.id}});
+						if(markers[i].forcedId == "marker"+{{z.id}}){
+							markers[i].destroy();
+						}
+					 }
+				}
+
+				$('#distance'+ {{z.id}}).text("Distance:"+distance+" mi");
+			});
+      {% endfor %}
+
+
+ checkEmpty();
+
+}
+
+function checkEmpty(){
+	if ($("#dataContainer").find(".parkingData").length > 0){ 
+
+      	$("#dataContainer").show("slow");
+    	$(".parkingData").show("slow");
+    	// $(".parkingData").show("slow");
+    	$(".labels").show("slow");
+    }else{
+      	$('#Sortby').remove();
+    }
+
+}
 
 //***********************************************************************************************************
 //loading overlay   *****  need to fix it  *****

@@ -33,6 +33,7 @@
 	  font-family: 'Open Sans';
 	  line-height: 100%;
 	}
+
 	#narrative{
 	  position: absolute;
 	  width: 450px;
@@ -64,14 +65,34 @@
 	  opacity: 0.7;
 	  top:70px;
 	  left:0;
-
-
 	}
 
 
 	.parkingData:hover {
 			background: #666;
 			color: #fff;
+	}
+
+	.Sortby{
+      position: relative;
+      width: 450px;
+      left: 20px;
+      top: 10px;
+      z-index: 1000;
+	  background: #fff;
+	  border: solid #fff;
+	  border-width: 1px ;
+	  border-radius: 3px ;
+	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	  color: #222;
+	  font-size: 1em;
+	  opacity: 0.99;
+	/*  padding: 15px 15px;*/
+	  overflow :auto;
+	  margin-bottom : 10px;
+	  font-family: 'Open Sans';
+	  line-height: 100%;
+
 	}
 
     .control {
@@ -245,6 +266,10 @@
 		text-align: center;
 		display: none;
 
+    }
+
+    .sortClicked{
+    	border-bottom: 2px solid #249ad9;
     }
 
 	#error-popup:before 
