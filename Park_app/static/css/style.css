@@ -95,6 +95,35 @@
 
 	}
 
+	.noParking{
+      position: relative;
+      width: 450px;
+      left: 20px;
+      top: 10px;
+      z-index: 1000;
+	  background: url(/static/images/gps.gif) no-repeat top+40px center;
+	  background-size: 80px;
+	  background-color: #249ad9;
+	  border: solid #fff;
+	  border-width: 1px ;
+	  border-radius: 4px ;
+	  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+	  color: #fff;
+	  font-size: 1em;
+	  opacity: 0.99;
+	  padding: 100px 39px;
+	  overflow :auto;
+	  margin-bottom : 10px;
+	  font-family: 'Open Sans';
+	  line-height: 150%;
+	  font-size: 1em;
+      text-align: center;
+
+
+
+
+	}
+
     .control {
       position: absolute;
       right: 0px;

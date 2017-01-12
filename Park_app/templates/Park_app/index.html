@@ -71,6 +71,7 @@
 			   </tr>
 		 </table> 
 		</div>
+		<div class="noParking" id="noParking" style="display: none;"><br>UNFORTUNATELY, It seems there are no parking garages nearby at this time.Try searching for a different location. </div>
 	{% for i in parkZones %}
 	<div class="parkingData" id="parkingData{{i.id}}" >
 		<p style= "font-size: 1.4em;"><b> {{i.name }} 	</b></p>
@@ -1251,8 +1252,10 @@ function GetDistance(lat,lon){
 						 //console.log('marker'+{{z.id}});
 						if(markers[i].forcedId == "marker"+{{z.id}}){
 							markers[i].destroy();
+
 						}
 					 }
+					 checkEmpty();
 				}
 
 				$('#distance'+ {{z.id}}).text("Distance:"+distance+" mi");
@@ -1272,7 +1275,8 @@ function checkEmpty(){
     	// $(".parkingData").show("slow");
     	$(".labels").show("slow");
     }else{
-      	$('#Sortby').remove();
+    	if($(".noParking").css('display') == 'none')
+      	$(".noParking").show("slow");
     }
 
 }
