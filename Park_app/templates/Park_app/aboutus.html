@@ -5,6 +5,7 @@
 	{% load static from staticfiles %}
 	<title> ParkZone</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic' rel='stylesheet' type='text/css'>
 	<link rel="alternative" href="{% static 'images/parkzone.obj' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
@@ -242,7 +243,7 @@
 	.logo a{
 		color:#595959;;
 		font-size:140%; 
-		font-family:Arial, Helvetica, sans-serif;
+		font-family:'Lato',sans-serif;
 	}
 	.logo li{
 		 list-style-type: none;
@@ -330,6 +331,29 @@
 
 	}
 
+	@keyframes bounce {
+  0%, 100%, 20%, 50%, 80%
+    {transform: translate(0, 0);}
+  40%
+    {transform :translate(0, -30px);}
+  60%
+    {transform :translate(0, -15px);}
+	}
+
+	#arrow{
+    position: absolute;
+    bottom:0;
+    left:50%;
+    margin-left: -20px;
+    width:40px;
+    height:40px;
+    background-size: contain;
+    animation: bounce 2s infinite;
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuNCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI5NC42N3B4IiBoZWlnaHQ9Ijk0LjY3cHgiIHZpZXdCb3g9IjAgMCA5NC42NyA5NC42NyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOTQuNjcgOTQuNjciIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNOTQuNjcsMjYuNzc2TDQ3LjMzNSw2OS4zOEwwLDI2Ljc3NmwxLjMzOC0xLjQ4Nmw0NS45OTcsNDEuMzk2bDQ1Ljk5Ny00MS4zOTZMOTQuNjcsMjYuNzc2eiIvPgo8L3N2Zz4=");
+
+	}
+
+
   </style>
   <style type="text/css"> ::-webkit-scrollbar {display:none;} </style>
 	
@@ -352,14 +376,16 @@
 	</header>
 	<div>
 		<section>
-		 <div id="main_Picture" >
-		 	 <canvas></canvas>
+		 <div id="main_Picture">
+			 <canvas></canvas>
+		 	<div id="arrow"></div>
+		 	 
 		 </div>
 		</section>
 		<section>
 			<div class="logo fade-in" style=" position:absolute; width:100%; height:700px; top:700px;">
 				<h1  style=" width:100% ; position:relative; text-align:center; font-size:65px; font-family:Impact, Charcoal, sans-serif; padding-top: 100px;"> The Problem We All Face. </h1>
-				<p style=" padding-top: 100px; width:100% ;  position: relative;line-height: 2.5;font-size:150%; font-family:Arial, Helvetica, sans-serif; text-align:center; color:#595959;">Everyday thousands of people travel in and out of New York City but more often than not they run into these common problems:<br>
+				<p style=" padding-top: 100px; width:100% ;  position: relative;line-height: 2.5;font-size:150%; font-family:'Lato',sans-serif; text-align:center; color:#595959;">Everyday thousands of people travel in and out of New York City but more often than not they run into these common problems:<br>
 					<ul style="width:100% ;  position:relative; text-align:center;">
 						<li><a>- You get to your destination and there is no parking available on the street or  ASPR info.</a></li>
 						<li><a>- You don’t know if your destination will provide parking or if you have to find a parking lot.</a></li>
@@ -372,7 +398,7 @@
 			<div id="text" style=" position:relative; width: 60%; align-items:center; float: left; "> 
 				<h1  style=" width:100% ; position:relative; text-align:center; font-size:50px; font-family:Impact, Charcoal, sans-serif; 
 				margin-top: 250px;  color:white;">Parking in NYC is complete madness! </h1>
-				<h1  style=" width:80% ; position:relative; text-align:left; font-size:18px; font-family:Verdana, Geneva, sans-serif; 
+				<h1  style=" width:80% ; position:relative; text-align:left; font-size:18px; font-family:'Lato',sans-serif;; 
 				 margin-left: 100px; color:white;">The Big Apple made close to $534 million in parking ticket payments in 2013. With parking tickets costing anywhere from $45 to $180, on-street parking in New York is risky.<br><br>That puts NEW YORK STATE on the top of the list.Here is a chart showing the parking tickets issued in the past 3 years</h1>
 			</div>
 			<div id="container" style=" float: left;  position:relative; min-width: 400px; max-width: 800px; display:block; margin-top: 175px;" ></div>
