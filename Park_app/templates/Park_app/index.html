@@ -29,7 +29,7 @@
 	
 	
 	 <div id="locationSearchContainer" >
-		<input  data-intro="Enter your address here <br>eg. <b>W 59 St,NY</b><br>An autocomplete menu will showup or you can click on MY LOCATION button " data-position="top" type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
+		<input  data-intro="Enter your address here <br>eg. <b>W 59 St,NY</b><br>An autocomplete menu will showup or you can click on LOCATION button " data-position="top" type="search" placeholder="Where do you want to Park?" id="locationSearch" onFocus="this.value='';"  />
 		<button id="locationSearchButton" data-intro="Click here after you enter the address " data-position="bottom"> 
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 		</button>
@@ -116,12 +116,13 @@
 </div>
 
 <div id="map"></div>
-
+<div id="labelsContainer">
 {% for i in parkZones %}
-<div class="labels"; id= 'label{{i.id}}' style="display: none;">
+<div class="labels" id= 'label{{i.id}}' style="display: none;">
  <p>{{i.one_hour }}</p>	
 </div>
-{% endfor %}	
+{% endfor %}
+</div>	
 
 <div class="control tilt" data-intro="Tilt" data-position="left">
   <button title="Tilt" class="dec">&#8601;</button>
@@ -262,7 +263,7 @@ $('.parkingData').click(function(){
 			$('.garages').removeClass('layersClicked');
 			$('.garages').css('color',"#fff");
 			$(".labels").show("slow");
-			plotMarker();
+			plotMarkerFiltered();
 		}else{
 			$('.garagesEM').css("background-image","none");
 			$('.garagesEM').css("background-image","url(static/images/garage-icon3.png)");
@@ -397,16 +398,26 @@ $("#locationSearchButton").click(function(){
  
  //***************************************************************************
  var markers = [];
+ var markersFiltered = [];
  var markerLayer;
 function plotMarker(){
-	
+	while (markers.length > 0) {
+    markers.pop();
+	} // Fastest
 	{% for z in parkZones %}
   		
   	obj = osmb.addOBJ('./static/images/parkzone1.obj', {longitude:{{z.longitude}},latitude: {{z.latitude}} },{id: "marker{{z.id}}" ,scale : 5, elevation :0, rotation : 0 , color: 'red'});
   	markers.push(obj);
 	{% endfor %}
-	
-
+}	
+function plotMarkerFiltered(){
+		while (markersFiltered.length > 0) {
+    markersFiltered.pop();
+	} // Fastest element erase
+	for(var i=0; i<markers.length;i++){
+  		obj =osmb.addOBJ('./static/images/parkzone1.obj', {longitude:markers[i].position.longitude,latitude: markers[i].position.latitude },{id: markers[i].forcedId ,scale : 5, elevation :0, rotation : 0 , color: 'red'});
+  		markersFiltered.push(obj);
+	}
 }		
  //***************************************************************************
  var signs = [];
@@ -459,14 +470,14 @@ function removeBuildings(){
 
 function removeSign(){
 
-	for(i=0;i<signs.length;i++){
+	for(var i=0;i<signs.length;i++){
 
 		signs[i].destroy();
 	}
 }
 function removeBikeRacks(){
 
-	for(i=0;i<racks.length;i++){
+	for(var i=0;i<racks.length;i++){
 
 		racks[i].destroy();
 	}
@@ -474,9 +485,14 @@ function removeBikeRacks(){
 
 function removeMarker(){
 
-	for(i=0;i<markers.length;i++){
+
+	for(var i=0;i<markers.length;i++){
 
 		markers[i].destroy();
+	}
+	for(var i=0;i<markersFiltered.length;i++){
+
+		markersFiltered[i].destroy();
 	}
 }
 
@@ -650,14 +666,28 @@ function animate(time) {
 }
 
 
-//*****************************   search    ************************************
-//*****************************   search    ************************************
+//*****************************   searchbar   ************************************
+//*****************************   searchbar    ************************************
+
+    var parkingDivs = $(".parkingData");
+    var labelsDivs = $(".labels");
+    var noParking  = $(".noParking");
 
 var locationSearchButton = document.getElementById("locationSearchButton");
 locationSearchButton.addEventListener("click", function(event) {
 	event.preventDefault();
 	if($.trim($("#locationSearch").val()).length>0){
-		plotMarker();
+		if ($('#locationSearchButton').hasClass("once")){
+
+			removeMarker();
+     		var sortby = document.getElementById("Sortby");
+   			$("#dataContainer").html(sortby);
+   			$("#dataContainer").append(parkingDivs);
+   			$("#dataContainer").append(noParking);
+   			$(".noParking").css('display','none');
+   			$("#labelsContainer").html(labelsDivs);	
+		}
+
 		changeLocation(locationSearch.value);
 		changeSearchLocation();
 
@@ -668,6 +698,7 @@ locationSearchButton.addEventListener("click", function(event) {
     	if (directionRoute!=null){
 			directionRoute.destroy();
 		}
+		$('#locationSearchButton').addClass("once");
 		$('.streetSignsEM').css("background-image","none");
 		$('.streetSignsEM').css("background-image","url(static/images/street-parking-icon2.png)");
 		$('.streetSigns').removeClass('layersClicked');
@@ -680,11 +711,17 @@ locationSearchButton.addEventListener("click", function(event) {
 		osmb.setTilt(osmb.getTilt()+0.01);
 		$('.layerBtn').trigger( "click" );
 		$('.streetSigns').trigger( "click" );
+		plotMarker();
 		//$('.garages').trigger( "click" );
+		$('.garagesEM').css("background-image","none");
+		$('.garagesEM').css("background-image","url(static/images/garage-icon.png)");
+		$('.garages').removeClass('layersClicked');
+		$('.garages').css('color',"#fff");
 		$('.garages').prop('disabled', false);
 		$('.streetSigns').prop('disabled', false);
 		$('.street').prop('disabled', false);
 		$('.bikeRacks').prop('disabled', false);
+
 	}else{
 		openError();
 	}	
@@ -1221,45 +1258,72 @@ $("#locationSearch").focus(function(){
 
 //***********************************************************************************************************
 //get distance
+	function deg2rad(deg) {
+		rad = deg * Math.PI/180; // radians = degrees * pi/180
+		return rad;
+	}
+
 function GetDistance(lat,lon){
 	var from_lat = lat;
 	var from_lon = lon;
 	var to_lat = 0;
 	var to_lon = 0;
-	var query="";
-			
+	//var query="";
+	var Rm = 3961; // mean radius of the earth (miles) at 39 degrees from the equator
+	var lat1, lon1, lat2, lon2, dlat, dlon, a, c, dm, mi,distance;
+		
 
-      //var idSplit1 = id.substr(4);
-      //console.log(idSplit);
+		
+		// convert coordinates to radians
+		lat1 = deg2rad(from_lat);
+		lon1 = deg2rad(from_lon);
+
       
       {% for z in parkZones %}
       	 	
 	 		to_lon = {{z.longitude}};
 	 		to_lat = {{z.latitude}};
-	 		query= "https://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
-	 		//console.log(query);
+	 		lat2 = deg2rad(to_lat);
+			lon2 = deg2rad(to_lon);
+			// find the differences between the coordinates
+			dlat = lat2 - lat1;
+			dlon = lon2 - lon1;
 
-			d3.json(query, function(error, response) {
-				if (error) return console.warn(error);
+			// calculating distance
+			a  = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
+			c  = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a)); // great circle distance in radians
+			dm = c * Rm; // great circle distance in miles
+			
+			// round the results down to the nearest 1/1000
+			mi = Math.round( dm * 1000) / 1000;
+			distance = mi;
+
+
+	 	// 	query= "https://www.mapquestapi.com/directions/v2/route?key=UcMstiNH8tFu5bp3A1GunGaxsWzDjhSO&shapeFormat=raw&generalize=0&locale=en_US&unit=m&from="+from_lat+","+from_lon+"&to="+to_lat+","+to_lon;
+	 	// 	//console.log(query);
+
+			// d3.json(query, function(error, response) {
+			// 	if (error) return console.warn(error);
 				//console.log(response);
-				var distance = response.route.distance;
+				//var distance = response.route.distance;
 				//console.log(distance);
 				
-				if (distance >2){
+				if (distance >1){
 					$('#parkingData'+ {{z.id}}).remove();
 					$('#label'+ {{z.id}}).remove();
 					for(i=0;i<markers.length;i++){
 						 //console.log('marker'+{{z.id}});
 						if(markers[i].forcedId == "marker"+{{z.id}}){
 							markers[i].destroy();
-
+							markers.splice( i, 1 );
+							i--;
 						}
 					 }
 					 checkEmpty();
 				}
 
 				$('#distance'+ {{z.id}}).text("Distance:"+distance+" mi");
-			});
+			//});
       {% endfor %}
 
 
