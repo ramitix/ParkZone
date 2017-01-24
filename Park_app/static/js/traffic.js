@@ -157,7 +157,7 @@ if(run==true){
     }
   }
   
-  var w = window.innerWidth, h = 700;
+  var w = window.innerWidth, h = window.innerHeight;
   canvas.width = w;
   canvas.height = h;
   var roads = [], intersections_arr = [], cars = [];
