@@ -142,94 +142,6 @@
 	  }
 	}
 
-	#cd-menu-trigger {
-	  position: absolute;
-	  right: 0;
-	  top: 0;
-	  height: 100%;
-	  width: 50px;
-	  background-color: #0798e6;
-	}
-	#cd-menu-trigger .cd-menu-text {
-	  height: 100%;
-	  text-transform: uppercase;
-	  color: #FFF;
-	  font-weight: 600;
-	  display: none;
-	}
-	#cd-menu-trigger .cd-menu-icon {
-	  /* this span is the central line in the menu menu */
-	  display: inline-block;
-	  position: absolute;
-	  left: 50%;
-	  top: 50%;
-	  bottom: auto;
-	  right: auto;
-	  -webkit-transform: translateX(-50%) translateY(-50%);
-	  -moz-transform: translateX(-50%) translateY(-50%);
-	  -ms-transform: translateX(-50%) translateY(-50%);
-	  -o-transform: translateX(-50%) translateY(-50%);
-	  transform: translateX(-50%) translateY(-50%);
-	  width: 18px;
-	  height: 2px;
-	  background-color: #FFF;
-	  /* these are the upper and lower lines in the menu menu */
-	}
-	#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
-	  content: '';
-	  width: 100%;
-	  height: 100%;
-	  position: absolute;
-	  background-color: inherit;
-	  left: 0;
-	}
-	#cd-menu-trigger .cd-menu-icon::before {
-	  bottom: 5px;
-	}
-	#cd-menu-trigger .cd-menu-icon::after {
-	  top: 5px;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon {
-	  background-color: #0798e6;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
-	  background-color: white;
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::before {
-	  bottom: 0;
-	  -webkit-transform: rotate(45deg);
-	  -moz-transform: rotate(45deg);
-	  -ms-transform: rotate(45deg);
-	  -o-transform: rotate(45deg);
-	  transform: rotate(45deg);
-	}
-	#cd-menu-trigger.is-clicked .cd-menu-icon::after {
-	  top: 0;
-	  -webkit-transform: rotate(-45deg);
-	  -moz-transform: rotate(-45deg);
-	  -ms-transform: rotate(-45deg);
-	  -o-transform: rotate(-45deg);
-	  transform: rotate(-45deg);
-	}
-	@media only screen and (min-width: 768px) {
-	  #cd-menu-trigger {
-	    width: 110px;
-	    padding-left: 1.25em;
-	  }
-	  #cd-menu-trigger .cd-menu-text {
-	    display: inline-block;
-	    line-height: 70px;
-	  }
-	  #cd-menu-trigger .cd-menu-icon {
-	    left: auto;
-	    right: 1.25em;
-	    -webkit-transform: translateX(0);
-	    -moz-transform: translateX(0);
-	    -ms-transform: translateX(0);
-	    -o-transform: translateX(0);
-	    transform: translateX(0);
-	  }
-	}
 
 	.logo{
 		margin:auto;
@@ -371,8 +283,7 @@
 				<li><a href="?aboutUs">ABOUT US</a></li>
 			</ul>
 		</nav>
-		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span></a>
-	
+		
 	</header>
 	<div>
 		<section>
@@ -384,8 +295,8 @@
 		</section>
 		<section>
 			<div class="logo fade-in" style=" position:absolute; width:100%; height:700px; top:700px;">
-				<h1  style=" width:100% ; position:relative; text-align:center; font-size:65px; font-family:Impact, Charcoal, sans-serif; padding-top: 150px;"> The Problem We All Face. </h1>
-				<p style=" padding-top: 100px; width:100% ;  position: relative;line-height: 2.5;font-size:150%; font-family:'Lato',sans-serif; text-align:center; color:#595959;">Everyday thousands of people travel in and out of New York City but more often than not 		they run into these common problems:<br></p>
+				<h1  style=" width:100% ; position:relative; text-align:center; font-size:65px; font-family:Impact, Charcoal, sans-serif; margin-top: 15vh;"> The Problem We All Face. </h1>
+				<p style=" margin-top: 20vh; width:100% ;  position: relative;line-height: 2.5;font-size:150%; font-family:'Lato',sans-serif; text-align:center; color:#595959;">Everyday thousands of people travel in and out of New York City but more often than not 		they run into these common problems:<br></p>
 					<ul style="width:100% ;  position:relative; text-align:center;">
 						<li><a>- You get to your destination and there is no parking available on the street or  ASPR info.</a></li>
 						<li><a>- You don’t know if your destination will provide parking or if you have to find a parking lot.</a></li>
